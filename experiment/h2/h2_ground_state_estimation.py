@@ -1,6 +1,7 @@
 """
-qiskit_vqe.py -- H2 dissociation curve by VQE, plotted live, next to a picture
-of the molecule pulling itself apart.
+h2_ground_state_estimation.py -- H2 ground-state energy by VQE across a range
+of bond lengths, plotted live, next to a picture of the molecule pulling
+itself apart.
 
 Simulator only. No IBM account, no queue, no quota -- every energy here is
 computed locally with Qiskit's exact ``StatevectorEstimator``. (The
@@ -41,8 +42,8 @@ second and a fine scan is cheap.
 
 USAGE
 ------
-    python experiment/h2/qiskit_vqe.py
-    python experiment/h2/qiskit_vqe.py --start 0.3 --stop 3.0 --step 0.05
+    python experiment/h2/h2_ground_state_estimation.py
+    python experiment/h2/h2_ground_state_estimation.py --start 0.3 --stop 3.0 --step 0.05
 """
 
 from __future__ import annotations
