@@ -21,6 +21,16 @@ cudaq-solvers>=0.2 ; sys_platform != "win32"
 # --- VQE live convergence plot (vqe.py) ----------------------------------
 matplotlib>=3.7
 
+# --- VQE on IBM Quantum hardware ("VQE demo on IBM Quantum Computer/qiskit_vqe.py")
+#   qiskit + qiskit-nature + qiskit-algorithms run VQE locally on an exact
+#   statevector simulator; qiskit-ibm-runtime is only needed once you call
+#   run_on_ibm_hardware() with .env (see .env.example) filled in to queue a
+#   job on real hardware.
+qiskit>=1.0
+qiskit-nature>=0.7
+qiskit-algorithms>=0.3
+qiskit-ibm-runtime>=0.30
+
 # --- optional extras (uncomment as needed) -----------------------------
 # rdkit>=2023.9        # build geometries from SMILES  (load_geometry("smiles:..."))
 # openfermion>=1.6     # Molecule.to_openfermion()
