@@ -1,0 +1,27 @@
+# ===========================================================================
+#  Molecular Simulation on Quantum Computing Systems  (CSE 402)
+#  Python 3.10+
+# ===========================================================================
+
+# --- numerics -------------------------------------------------------------
+numpy>=1.24
+scipy>=1.10
+
+# --- 3D molecular visualization (works on every platform) ----------------
+py3Dmol>=2.1          # 3Dmol.js wrapper - interactive viewer for Jupyter
+plotly>=5.18          # portable interactive HTML fallback + static export
+
+# --- molecule generation / quantum simulation ---------------------------
+#   CUDA-Q Solvers provides cudaq_solvers.create_molecule (see arXiv:2401.09253).
+#   Linux / WSL only - not available on native Windows.  Skipped automatically
+#   by the marker below so `pip install -r requirements.txt` still works on
+#   Windows for the visualization half.
+cudaq-solvers>=0.2 ; sys_platform != "win32"
+
+# --- optional extras (uncomment as needed) -----------------------------
+# rdkit>=2023.9        # build geometries from SMILES  (load_geometry("smiles:..."))
+# openfermion>=1.6     # Molecule.to_openfermion()
+# kaleido>=0.2         # static PNG/SVG/PDF export via save_image()
+# ase>=3.22            # extra geometry I/O and viewers
+# matplotlib>=3.7      # plotting potential-energy-surface scans
+# jupyterlab>=4.0      # notebooks

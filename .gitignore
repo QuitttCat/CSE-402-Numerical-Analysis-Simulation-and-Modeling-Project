@@ -112,8 +112,14 @@ ehthumbs.db
 desktop.ini
 
 # ---------------------------------------------------------------------------
-#  Project artifacts (uncomment as the project grows)
+#  Project artifacts
 # ---------------------------------------------------------------------------
+# scratch output from examples/ and visualize()
+out/
+# PySCF scratch files written to the cwd by cudaq-solvers' create_molecule()
+*-pyscf.chk
+*-pyscf.log
+*_metadata.json
 # data/
 # results/
 # figures/
