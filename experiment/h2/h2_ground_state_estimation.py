@@ -40,16 +40,28 @@ H2 in a minimal (STO-3G) basis is small -- 2 qubits and 3 parameters after
 the parity mapping's two-qubit reduction -- so each point takes well under a
 second and a fine scan is cheap.
 
+SAVING AND REOPENING
+----------------------
+Every finished scan is saved next to this script as ``h2_scan.json`` (full
+data plus the metadata needed to rebuild the plot) and ``h2_scan.csv`` (a
+flat table for reports and spreadsheets). Reopening a saved scan with
+``--load`` skips the VQE completely and drops you straight into review mode,
+so you never pay for the same points twice.
+
 USAGE
 ------
     python experiment/h2/h2_ground_state_estimation.py
     python experiment/h2/h2_ground_state_estimation.py --start 0.3 --stop 3.0 --step 0.05
+    python experiment/h2/h2_ground_state_estimation.py --load h2_scan.json     # no recompute
+    python experiment/h2/h2_ground_state_estimation.py --save fine_scan        # custom name
 """
 
 from __future__ import annotations
 
 import argparse
+import sys
 import time
+from pathlib import Path
 from typing import Any, Dict, List
 
 import matplotlib.pyplot as plt
@@ -57,6 +69,9 @@ import numpy as np
 from matplotlib.patches import Circle
 from matplotlib.widgets import Slider
 from scipy.optimize import minimize
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from scan_io import display_path, load_scan, resolve_target, save_scan  # noqa: E402
 
 from qiskit import transpile
 from qiskit.primitives import StatevectorEstimator
@@ -275,7 +290,29 @@ def main() -> None:
                         help="longest H-H bond length in Angstrom, inclusive (default 2.5)")
     parser.add_argument("--step", type=float, default=0.1,
                         help="spacing between bond lengths in Angstrom (default 0.1)")
+    parser.add_argument("--load", type=str, default=None, metavar="FILE",
+                        help="skip the VQE entirely and reopen a previously saved scan "
+                             "(a .json written by an earlier run) straight in review mode")
+    parser.add_argument("--save", type=str, default=None, metavar="FILE",
+                        help="where to save this scan (default: h2_scan.json/.csv next to "
+                             "this script). Pass --no-save to skip saving.")
+    parser.add_argument("--no-save", action="store_true",
+                        help="don't save the results of this scan")
     args = parser.parse_args()
+
+    here = Path(__file__).resolve().parent
+
+    # -- replay a finished scan, no VQE at all -------------------------
+    if args.load:
+        metadata, rows = load_scan(Path(args.load), default_dir=here)
+        print(f"loaded {len(rows)} points from {args.load} "
+              f"(scanned {metadata['start']:.2f}-{metadata['stop']:.2f} A, "
+              f"step {metadata['step']:.2f} A) -- no VQE re-run")
+        viewer = DissociationViewer(max_distance=float(metadata["max_distance"]))
+        for row in rows:
+            viewer.add_point(row)
+        viewer.enable_review()
+        return
 
     if args.step <= 0:
         parser.error("--step must be positive")
@@ -299,6 +336,20 @@ def main() -> None:
     best = min(viewer.rows, key=lambda r: r["vqe"])
     print(f"\nminimum VQE energy {best['vqe']:.6f} Ha at d = {best['distance']:.2f} A "
           f"(experimental H2 bond length is ~0.74 A)")
+
+    if not args.no_save:
+        target = resolve_target(args.save, here, "h2_scan")
+        metadata = {
+            "molecule": "H2", "basis": BASIS,
+            "start": float(distances[0]), "stop": float(distances[-1]), "step": float(args.step),
+            "max_distance": float(distances[-1]),
+        }
+        json_path, csv_path = save_scan(target, metadata, viewer.rows)
+        print(f"saved {display_path(json_path)}")
+        print(f"saved {display_path(csv_path)}")
+        print(f"reopen it later without recomputing:  "
+              f"python {display_path(Path(__file__))} --load {json_path.name}")
+
     viewer.enable_review()
 
 
