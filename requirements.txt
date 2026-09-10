@@ -18,10 +18,12 @@ plotly>=5.18          # portable interactive HTML fallback + static export
 #   Windows for the visualization half.
 cudaq-solvers>=0.2 ; sys_platform != "win32"
 
+# --- VQE live convergence plot (vqe.py) ----------------------------------
+matplotlib>=3.7
+
 # --- optional extras (uncomment as needed) -----------------------------
 # rdkit>=2023.9        # build geometries from SMILES  (load_geometry("smiles:..."))
 # openfermion>=1.6     # Molecule.to_openfermion()
 # kaleido>=0.2         # static PNG/SVG/PDF export via save_image()
 # ase>=3.22            # extra geometry I/O and viewers
-# matplotlib>=3.7      # plotting potential-energy-surface scans
 # jupyterlab>=4.0      # notebooks
