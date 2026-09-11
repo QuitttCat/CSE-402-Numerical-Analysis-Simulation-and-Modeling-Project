@@ -1,0 +1,165 @@
+{
+  "format_version": 1,
+  "metadata": {
+    "molecule": "F2",
+    "source_scan": "experiment/f2/f2_scan.json",
+    "method": "global_polynomial",
+    "column": "vqe",
+    "n_nodes": 17,
+    "node_spacing": 0.09999999999999998,
+    "featured_degree": 16,
+    "full_interpolating_degree": 16,
+    "in_sample_max_residual_mha": 2.5579538487363607e-10,
+    "polynomial_max_mha": NaN,
+    "polynomial_rms_mha": NaN,
+    "linear_max_mha": 100.08775728914543,
+    "linear_rms_mha": 31.282910488074133,
+    "best_degree": 13,
+    "best_degree_rms_mha": 0.02209275120756058,
+    "worst_degree": 1,
+    "worst_degree_rms_mha": 122.13868298567746,
+    "interpolated_min_bond": 1.3932023014351844,
+    "interpolated_min_energy": -196.0416728379905,
+    "best_node_bond": 1.4,
+    "best_node_energy": -196.0416329092188,
+    "experimental_bond": 1.412
+  },
+  "rows": [
+    {
+      "distance": 0.9,
+      "energy": -195.2288949886688,
+      "loo_polynomial": NaN,
+      "loo_linear": NaN,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": NaN
+    },
+    {
+      "distance": 1.0,
+      "energy": -195.65256029652875,
+      "loo_polynomial": NaN,
+      "loo_linear": 0.10008775728914543,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": 100.08775728914543
+    },
+    {
+      "distance": 1.1,
+      "energy": -195.8760500898104,
+      "loo_polynomial": NaN,
+      "loo_linear": 0.05661491502303306,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": 56.61491502303306
+    },
+    {
+      "distance": 1.2,
+      "energy": -195.986310053046,
+      "loo_polynomial": NaN,
+      "loo_linear": 0.03238861419350769,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": 32.38861419350769
+    },
+    {
+      "distance": 1.2999999999999998,
+      "energy": -196.03179278789457,
+      "loo_polynomial": NaN,
+      "loo_linear": 0.01782130676218685,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": 17.82130676218685
+    },
+    {
+      "distance": 1.4,
+      "energy": -196.0416329092188,
+      "loo_polynomial": NaN,
+      "loo_linear": 0.008607554805138307,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": 8.607554805138307
+    },
+    {
+      "distance": 1.5,
+      "energy": -196.03425792093273,
+      "loo_polynomial": NaN,
+      "loo_linear": 0.0030068094469868356,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": 3.0068094469868356
+    },
+    {
+      "distance": 1.5999999999999999,
+      "energy": -196.02086931375268,
+      "loo_polynomial": NaN,
+      "loo_linear": 5.761321909858452e-05,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": 0.05761321909858452
+    },
+    {
+      "distance": 1.6999999999999997,
+      "energy": -196.00736548013444,
+      "loo_polynomial": NaN,
+      "loo_linear": -0.0011372612512161595,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": -1.1372612512161595
+    },
+    {
+      "distance": 1.7999999999999998,
+      "energy": -195.99613616901863,
+      "loo_polynomial": NaN,
+      "loo_linear": -0.0013899576276514836,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": -1.3899576276514836
+    },
+    {
+      "distance": 1.9,
+      "energy": -195.98768677315812,
+      "loo_polynomial": NaN,
+      "loo_linear": -0.0012511196456728158,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": -1.2511196456728158
+    },
+    {
+      "distance": 1.9999999999999996,
+      "energy": -195.98173961658898,
+      "loo_polynomial": NaN,
+      "loo_linear": -0.0010038520715340837,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": -1.0038520715340837
+    },
+    {
+      "distance": 2.0999999999999996,
+      "energy": -195.97780016416291,
+      "loo_polynomial": NaN,
+      "loo_linear": -0.0007333112814364995,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": -0.7333112814364995
+    },
+    {
+      "distance": 2.1999999999999997,
+      "energy": -195.9753273342997,
+      "loo_polynomial": NaN,
+      "loo_linear": -0.000507930927255984,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": -0.507930927255984
+    },
+    {
+      "distance": 2.3,
+      "energy": -195.97387036629098,
+      "loo_polynomial": NaN,
+      "loo_linear": -0.000330669773433101,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": -0.330669773433101
+    },
+    {
+      "distance": 2.3999999999999995,
+      "energy": -195.97307473782914,
+      "loo_polynomial": NaN,
+      "loo_linear": -0.00020148007598663753,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": -0.20148007598663753
+    },
+    {
+      "distance": 2.4999999999999996,
+      "energy": -195.97268206951924,
+      "loo_polynomial": NaN,
+      "loo_linear": NaN,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": NaN
+    }
+  ]
+}
