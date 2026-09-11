@@ -1,0 +1,153 @@
+{
+  "format_version": 1,
+  "metadata": {
+    "molecule": "BeH2",
+    "source_scan": "experiment/beh2/beh2_stretch_scan.json",
+    "method": "cubic_spline",
+    "scan_type": "curve",
+    "coordinate": "stretch",
+    "column": "vqe",
+    "unit": "A",
+    "n_nodes": 16,
+    "node_spacing": 0.09999999999999996,
+    "spline_max_mha": 10.984317685313272,
+    "spline_rms_mha": 4.646570012056566,
+    "linear_max_mha": 25.3097941101057,
+    "linear_rms_mha": 10.119487012535481,
+    "interpolated_min_x": 1.2890002721373748,
+    "interpolated_min_energy": -15.567332766137499,
+    "best_node_x": 1.2999999999999998,
+    "best_node_energy": -15.56723276550046,
+    "reference_x": 1.3264
+  },
+  "rows": [
+    {
+      "bond": 0.9,
+      "energy": -15.346488264218127,
+      "loo_spline": NaN,
+      "loo_linear": NaN,
+      "loo_spline_mha": NaN,
+      "loo_linear_mha": NaN
+    },
+    {
+      "bond": 1.0,
+      "energy": -15.462869791385398,
+      "loo_spline": 0.0010457038625482085,
+      "loo_linear": 0.0253097941101057,
+      "loo_spline_mha": 1.0457038625482085,
+      "loo_linear_mha": 25.3097941101057
+    },
+    {
+      "bond": 1.1,
+      "energy": -15.528631730332458,
+      "loo_spline": -0.0006247571241360106,
+      "loo_linear": 0.017287632326016933,
+      "loo_spline_mha": -0.6247571241360106,
+      "loo_linear_mha": 17.287632326016933
+    },
+    {
+      "bond": 1.2,
+      "energy": -15.559818404627485,
+      "loo_spline": -0.00019580313455769272,
+      "loo_linear": 0.011886156711025109,
+      "loo_spline_mha": -0.19580313455769272,
+      "loo_linear_mha": 11.886156711025109
+    },
+    {
+      "bond": 1.2999999999999998,
+      "energy": -15.56723276550046,
+      "loo_spline": -0.0001736306276090005,
+      "loo_linear": 0.00820582920286661,
+      "loo_spline_mha": -0.1736306276090005,
+      "loo_linear_mha": 8.20582920286661
+    },
+    {
+      "bond": 1.4,
+      "energy": -15.558235467967702,
+      "loo_spline": -7.265916896237457e-05,
+      "loo_linear": 0.005670788073336652,
+      "loo_spline_mha": -0.07265916896237457,
+      "loo_linear_mha": 5.670788073336652
+    },
+    {
+      "bond": 1.5,
+      "energy": -15.53789659428827,
+      "loo_spline": -0.00017674269888345862,
+      "loo_linear": 0.00390211682488939,
+      "loo_spline_mha": -0.17674269888345862,
+      "loo_linear_mha": 3.90211682488939
+    },
+    {
+      "bond": 1.5999999999999999,
+      "energy": -15.50975348695906,
+      "loo_spline": 0.00035733104998669774,
+      "loo_linear": 0.002638562675777223,
+      "loo_spline_mha": 0.35733104998669774,
+      "loo_linear_mha": 2.638562675777223
+    },
+    {
+      "bond": 1.6999999999999997,
+      "energy": -15.476333254278295,
+      "loo_spline": -0.0015348919884523582,
+      "loo_linear": 0.001712693066878046,
+      "loo_spline_mha": -1.5348919884523582,
+      "loo_linear_mha": 1.712693066878046
+    },
+    {
+      "bond": 1.7999999999999998,
+      "energy": -15.439487635463774,
+      "loo_spline": 0.0055917992917251524,
+      "loo_linear": 0.0010146669104358352,
+      "loo_spline_mha": 5.591799291725152,
+      "loo_linear_mha": 1.0146669104358352
+    },
+    {
+      "bond": 1.9,
+      "energy": -15.400612682828383,
+      "loo_spline": -0.010984317685313272,
+      "loo_linear": -0.011464349322045209,
+      "loo_spline_mha": -10.984317685313272,
+      "loo_linear_mha": -11.464349322045209
+    },
+    {
+      "bond": 1.9999999999999996,
+      "energy": -15.384666428837084,
+      "loo_spline": 0.010525530107786452,
+      "loo_linear": 0.009347755073664032,
+      "loo_spline_mha": 10.525530107786452,
+      "loo_linear_mha": 9.347755073664032
+    },
+    {
+      "bond": 2.0999999999999996,
+      "energy": -15.350024664698457,
+      "loo_spline": -0.005103317805856378,
+      "loo_linear": -0.001014673106771724,
+      "loo_spline_mha": -5.103317805856378,
+      "loo_linear_mha": -1.014673106771724
+    },
+    {
+      "bond": 2.1999999999999997,
+      "energy": -15.317412246773376,
+      "loo_spline": 0.0015759953404881344,
+      "loo_linear": -0.001584706111902534,
+      "loo_spline_mha": 1.5759953404881344,
+      "loo_linear_mha": -1.584706111902534
+    },
+    {
+      "bond": 2.3,
+      "energy": -15.2879692410721,
+      "loo_spline": -0.0026378641415085724,
+      "loo_linear": -0.002220374320478058,
+      "loo_spline_mha": -2.6378641415085724,
+      "loo_linear_mha": -2.220374320478058
+    },
+    {
+      "bond": 2.3999999999999995,
+      "energy": -15.26296698401178,
+      "loo_spline": NaN,
+      "loo_linear": NaN,
+      "loo_spline_mha": NaN,
+      "loo_linear_mha": NaN
+    }
+  ]
+}
