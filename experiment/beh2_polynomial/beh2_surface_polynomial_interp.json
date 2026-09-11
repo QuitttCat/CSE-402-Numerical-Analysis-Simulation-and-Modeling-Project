@@ -1,0 +1,910 @@
+{
+  "format_version": 1,
+  "metadata": {
+    "molecule": "BeH2",
+    "source_scan": "experiment/beh2/beh2_surface_scan.json",
+    "method": "total_degree_polynomial",
+    "scan_type": "surface",
+    "column": "vqe",
+    "degree": 4,
+    "n_coefficients": 15,
+    "n_bond": 11,
+    "n_angle": 10,
+    "validation": "half_grid_holdout",
+    "in_sample_max_residual_mha": 8.583248789530984,
+    "polynomial_max_mha": 8.664079888360376,
+    "polynomial_rms_mha": 3.965882816085395,
+    "linear_max_mha": 48.85693364661137,
+    "linear_rms_mha": 17.9688000213872,
+    "interpolated_min_bond": 1.299497487437186,
+    "interpolated_min_angle": 176.3819095477387,
+    "interpolated_min_energy": -15.569327670951504,
+    "best_node_bond": 1.35,
+    "best_node_angle": 180.0,
+    "best_node_energy": -15.564425776833508,
+    "reference_bond": 1.3264,
+    "reference_angle": 180.0
+  },
+  "rows": [
+    {
+      "bond": 0.9,
+      "angle": 90.0,
+      "energy": -15.252287568554745,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 0.9,
+      "angle": 100.0,
+      "energy": -15.275222252772531,
+      "held_out": true,
+      "holdout_polynomial_mha": -0.037748042762686396,
+      "holdout_linear_mha": 2.172162319933335
+    },
+    {
+      "bond": 0.9,
+      "angle": 110.0,
+      "energy": -15.29381261235045,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 0.9,
+      "angle": 120.0,
+      "energy": -15.308800045735687,
+      "held_out": true,
+      "holdout_polynomial_mha": -0.04321666819251391,
+      "holdout_linear_mha": 1.5013644645129887
+    },
+    {
+      "bond": 0.9,
+      "angle": 130.0,
+      "energy": -15.320784750191898,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 0.9,
+      "angle": 140.0,
+      "energy": -15.330208412892588,
+      "held_out": true,
+      "holdout_polynomial_mha": -0.12996819440402874,
+      "holdout_linear_mha": 1.1317500027754335
+    },
+    {
+      "bond": 0.9,
+      "angle": 150.0,
+      "energy": -15.337368575587728,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 0.9,
+      "angle": 160.0,
+      "energy": -15.342434349178777,
+      "held_out": true,
+      "holdout_polynomial_mha": -0.3941924990407131,
+      "holdout_linear_mha": 1.0137671906864654
+    },
+    {
+      "bond": 0.9,
+      "angle": 170.0,
+      "energy": -15.345472588388454,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 0.9,
+      "angle": 180.0,
+      "energy": -15.34648801653346,
+      "held_out": true,
+      "holdout_polynomial_mha": -1.349084290506397,
+      "holdout_linear_mha": -3.0365782553563037
+    },
+    {
+      "bond": 1.05,
+      "angle": 90.0,
+      "energy": -15.405947558088684,
+      "held_out": true,
+      "holdout_polynomial_mha": 7.981688668772691,
+      "holdout_linear_mha": 46.61116073181404
+    },
+    {
+      "bond": 1.05,
+      "angle": 100.0,
+      "energy": -15.428728312218325,
+      "held_out": true,
+      "holdout_polynomial_mha": 7.911777082144411,
+      "holdout_linear_mha": 48.85693364661137
+    },
+    {
+      "bond": 1.05,
+      "angle": 110.0,
+      "energy": -15.44727579365901,
+      "held_out": true,
+      "holdout_polynomial_mha": 7.783223671872008,
+      "holdout_linear_mha": 46.86943387245179
+    },
+    {
+      "bond": 1.05,
+      "angle": 120.0,
+      "energy": -15.462335965704355,
+      "held_out": true,
+      "holdout_polynomial_mha": 7.732118312326008,
+      "holdout_linear_mha": 48.480900382998016
+    },
+    {
+      "bond": 1.05,
+      "angle": 130.0,
+      "energy": -15.47448443192917,
+      "held_out": true,
+      "holdout_polynomial_mha": 7.821680419414889,
+      "holdout_linear_mha": 47.18066107301233
+    },
+    {
+      "bond": 1.05,
+      "angle": 140.0,
+      "energy": -15.484120479327206,
+      "held_out": true,
+      "holdout_polynomial_mha": 8.036302088338942,
+      "holdout_linear_mha": 48.47808100599238
+    },
+    {
+      "bond": 1.05,
+      "angle": 150.0,
+      "energy": -15.491492911156707,
+      "held_out": true,
+      "holdout_polynomial_mha": 8.307380939124087,
+      "holdout_linear_mha": 47.511885370434825
+    },
+    {
+      "bond": 1.05,
+      "angle": 160.0,
+      "energy": -15.496729470229187,
+      "held_out": true,
+      "holdout_polynomial_mha": 8.542743405428155,
+      "holdout_linear_mha": 48.671600197714326
+    },
+    {
+      "bond": 1.05,
+      "angle": 170.0,
+      "energy": -15.49987427406327,
+      "held_out": true,
+      "holdout_polynomial_mha": 8.664079888360376,
+      "holdout_linear_mha": 47.73955978659572
+    },
+    {
+      "bond": 1.05,
+      "angle": 180.0,
+      "energy": -15.500925332095939,
+      "held_out": true,
+      "holdout_polynomial_mha": 8.644461967724837,
+      "holdout_linear_mha": 44.71377357406503
+    },
+    {
+      "bond": 1.2000000000000002,
+      "angle": 90.0,
+      "energy": -15.466385226158994,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 1.2000000000000002,
+      "angle": 100.0,
+      "energy": -15.488765162514934,
+      "held_out": true,
+      "holdout_polynomial_mha": 0.9964661453736312,
+      "holdout_linear_mha": 2.0724958241054026
+    },
+    {
+      "bond": 1.2000000000000002,
+      "angle": 110.0,
+      "energy": -15.507000107222662,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 1.2000000000000002,
+      "angle": 120.0,
+      "energy": -15.521835220708027,
+      "held_out": true,
+      "holdout_polynomial_mha": 0.7218366123655784,
+      "holdout_linear_mha": 1.4237713364870785
+    },
+    {
+      "bond": 1.2000000000000002,
+      "angle": 130.0,
+      "energy": -15.533822791520416,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 1.2000000000000002,
+      "angle": 140.0,
+      "energy": -15.543333067688009,
+      "held_out": true,
+      "holdout_polynomial_mha": 1.1264722170327701,
+      "holdout_linear_mha": 1.124933935395589
+    },
+    {
+      "bond": 1.2000000000000002,
+      "angle": 150.0,
+      "energy": -15.550593475984812,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 1.2000000000000002,
+      "angle": 160.0,
+      "energy": -15.555728633617292,
+      "held_out": true,
+      "holdout_polynomial_mha": 1.9050836408425198,
+      "holdout_linear_mha": 1.0334755424405984
+    },
+    {
+      "bond": 1.2000000000000002,
+      "angle": 170.0,
+      "energy": -15.558796840164892,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 1.2000000000000002,
+      "angle": 180.0,
+      "energy": -15.559818412799242,
+      "held_out": true,
+      "holdout_polynomial_mha": 2.6387738717517095,
+      "holdout_linear_mha": -3.080109455691371
+    },
+    {
+      "bond": 1.35,
+      "angle": 90.0,
+      "energy": -15.474385992960297,
+      "held_out": true,
+      "holdout_polynomial_mha": -3.3006531111308135,
+      "holdout_linear_mha": 14.939905136181153
+    },
+    {
+      "bond": 1.35,
+      "angle": 100.0,
+      "energy": -15.496080756961488,
+      "held_out": true,
+      "holdout_polynomial_mha": -3.4940700803876013,
+      "holdout_linear_mha": 17.074139482312845
+    },
+    {
+      "bond": 1.35,
+      "angle": 110.0,
+      "energy": -15.51373810072549,
+      "held_out": true,
+      "holdout_polynomial_mha": -3.7236071741233445,
+      "holdout_linear_mha": 15.170953591255198
+    },
+    {
+      "bond": 1.35,
+      "angle": 120.0,
+      "energy": -15.528092125650595,
+      "held_out": true,
+      "holdout_polynomial_mha": -3.8265407467683588,
+      "holdout_linear_mha": 16.64098342115139
+    },
+    {
+      "bond": 1.35,
+      "angle": 130.0,
+      "energy": -15.539668081638895,
+      "held_out": true,
+      "holdout_polynomial_mha": -3.7515093886000273,
+      "holdout_linear_mha": 15.332944314241814
+    },
+    {
+      "bond": 1.35,
+      "angle": 140.0,
+      "energy": -15.548813942345257,
+      "held_out": true,
+      "holdout_polynomial_mha": -3.5269386767851074,
+      "holdout_linear_mha": 16.498158828609277
+    },
+    {
+      "bond": 1.35,
+      "angle": 150.0,
+      "energy": -15.555748543300677,
+      "held_out": true,
+      "holdout_polynomial_mha": -3.2129030520060553,
+      "holdout_linear_mha": 15.452113592036909
+    },
+    {
+      "bond": 1.35,
+      "angle": 160.0,
+      "energy": -15.560605962571529,
+      "held_out": true,
+      "holdout_polynomial_mha": -2.856745159228069,
+      "holdout_linear_mha": 16.493485756541304
+    },
+    {
+      "bond": 1.35,
+      "angle": 170.0,
+      "energy": -15.563476991166446,
+      "held_out": true,
+      "holdout_polynomial_mha": -2.451605440800364,
+      "holdout_linear_mha": 15.548467245107389
+    },
+    {
+      "bond": 1.35,
+      "angle": 180.0,
+      "energy": -15.564425776833508,
+      "held_out": true,
+      "holdout_polynomial_mha": -1.9197783392961298,
+      "holdout_linear_mha": 12.681205805817442
+    },
+    {
+      "bond": 1.5,
+      "angle": 90.0,
+      "energy": -15.452506949489239,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 1.5,
+      "angle": 100.0,
+      "energy": -15.473263498310873,
+      "held_out": true,
+      "holdout_polynomial_mha": -2.6101554609105904,
+      "holdout_linear_mha": 1.9429300433486674
+    },
+    {
+      "bond": 1.5,
+      "angle": 110.0,
+      "energy": -15.49013418704581,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 1.5,
+      "angle": 120.0,
+      "energy": -15.503831728549844,
+      "held_out": true,
+      "holdout_polynomial_mha": -2.9151437220829024,
+      "holdout_linear_mha": 1.3408934624941082
+    },
+    {
+      "bond": 1.5,
+      "angle": 130.0,
+      "energy": -15.514847483128891,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 1.5,
+      "angle": 140.0,
+      "energy": -15.523502146500736,
+      "held_out": true,
+      "holdout_polynomial_mha": -2.8005167222744376,
+      "holdout_linear_mha": 1.0787132200551497
+    },
+    {
+      "bond": 1.5,
+      "angle": 150.0,
+      "energy": -15.52999938343247,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 1.5,
+      "angle": 160.0,
+      "energy": -15.534475801570341,
+      "held_out": true,
+      "holdout_polynomial_mha": -2.5324792034240318,
+      "holdout_linear_mha": 0.9460060152122196
+    },
+    {
+      "bond": 1.5,
+      "angle": 170.0,
+      "energy": -15.537060207677786,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 1.5,
+      "angle": 180.0,
+      "energy": -15.537896773707526,
+      "held_out": true,
+      "holdout_polynomial_mha": -1.8743771998561698,
+      "holdout_linear_mha": -2.693846092920893
+    },
+    {
+      "bond": 1.6500000000000001,
+      "angle": 90.0,
+      "energy": -15.413848943438012,
+      "held_out": true,
+      "holdout_polynomial_mha": 0.9392890804189591,
+      "holdout_linear_mha": 4.288137831558458
+    },
+    {
+      "bond": 1.6500000000000001,
+      "angle": 100.0,
+      "energy": -15.433466635095122,
+      "held_out": true,
+      "holdout_polynomial_mha": 0.9823478250066131,
+      "holdout_linear_mha": 6.211689649980201
+    },
+    {
+      "bond": 1.6500000000000001,
+      "angle": 110.0,
+      "energy": -15.449395513030597,
+      "held_out": true,
+      "holdout_polynomial_mha": 0.8902166462991801,
+      "holdout_linear_mha": 4.446427746765735
+    },
+    {
+      "bond": 1.6500000000000001,
+      "angle": 120.0,
+      "energy": -15.462317919965539,
+      "held_out": true,
+      "holdout_polynomial_mha": 0.8123561792068301,
+      "holdout_linear_mha": 5.755778385982069
+    },
+    {
+      "bond": 1.6500000000000001,
+      "angle": 130.0,
+      "energy": -15.47268619687842,
+      "held_out": true,
+      "holdout_polynomial_mha": 0.7657145763548812,
+      "holdout_linear_mha": 4.510999003137783
+    },
+    {
+      "bond": 1.6500000000000001,
+      "angle": 140.0,
+      "energy": -15.480787094156323,
+      "held_out": true,
+      "holdout_polynomial_mha": 0.6991386593266924,
+      "holdout_linear_mha": 5.556162007533061
+    },
+    {
+      "bond": 1.6500000000000001,
+      "angle": 150.0,
+      "energy": -15.48678820401927,
+      "held_out": true,
+      "holdout_polynomial_mha": 0.5398063429851163,
+      "holdout_linear_mha": 4.50153759696903
+    },
+    {
+      "bond": 1.6500000000000001,
+      "angle": 160.0,
+      "energy": -15.490791255663792,
+      "held_out": true,
+      "holdout_polynomial_mha": 0.24652177905615247,
+      "holdout_linear_mha": 5.5191571577548615
+    },
+    {
+      "bond": 1.6500000000000001,
+      "angle": 170.0,
+      "energy": -15.492940905676253,
+      "held_out": true,
+      "holdout_polynomial_mha": -0.08149423055847649,
+      "holdout_linear_mha": 4.683375086482755
+    },
+    {
+      "bond": 1.6500000000000001,
+      "angle": 180.0,
+      "energy": -15.493574466589113,
+      "held_out": true,
+      "holdout_polynomial_mha": -0.054875677518495536,
+      "holdout_linear_mha": 2.331503915607769
+    },
+    {
+      "bond": 1.8000000000000003,
+      "angle": 90.0,
+      "energy": -15.366614661723666,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 1.8000000000000003,
+      "angle": 100.0,
+      "energy": -15.384912221091476,
+      "held_out": true,
+      "holdout_polynomial_mha": 3.5059987515460023,
+      "holdout_linear_mha": 1.7228984687172044
+    },
+    {
+      "bond": 1.8000000000000003,
+      "angle": 110.0,
+      "energy": -15.39976398352185,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 1.8000000000000003,
+      "angle": 120.0,
+      "energy": -15.411822634334008,
+      "held_out": true,
+      "holdout_polynomial_mha": 3.539947234230567,
+      "holdout_linear_mha": 1.189186262246622
+    },
+    {
+      "bond": 1.8000000000000003,
+      "angle": 130.0,
+      "energy": -15.421502912621673,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 1.8000000000000003,
+      "angle": 140.0,
+      "energy": -15.429049616207465,
+      "held_out": true,
+      "holdout_polynomial_mha": 3.176460848118623,
+      "holdout_linear_mha": 1.011185190563424
+    },
+    {
+      "bond": 1.8000000000000003,
+      "angle": 150.0,
+      "energy": -15.43457394941213,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 1.8000000000000003,
+      "angle": 160.0,
+      "energy": -15.438062897665208,
+      "held_out": true,
+      "holdout_polynomial_mha": 1.7259817300523395,
+      "holdout_linear_mha": 1.048496208266414
+    },
+    {
+      "bond": 1.8000000000000003,
+      "angle": 170.0,
+      "energy": -15.439454853501754,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 1.8000000000000003,
+      "angle": 180.0,
+      "energy": -15.43948747826245,
+      "held_out": true,
+      "holdout_polynomial_mha": -0.7859512157288862,
+      "holdout_linear_mha": -2.4078272841148163
+    },
+    {
+      "bond": 1.9500000000000002,
+      "angle": 90.0,
+      "energy": -15.316531791346398,
+      "held_out": true,
+      "holdout_polynomial_mha": 1.9762804370060394,
+      "holdout_linear_mha": -0.9039085292190663
+    },
+    {
+      "bond": 1.9500000000000002,
+      "angle": 100.0,
+      "energy": -15.333297281352525,
+      "held_out": true,
+      "holdout_polynomial_mha": 2.4779434760660024,
+      "holdout_linear_mha": 0.7706450781519436
+    },
+    {
+      "bond": 1.9500000000000002,
+      "angle": 110.0,
+      "energy": -15.346934385625914,
+      "held_out": true,
+      "holdout_polynomial_mha": 2.6828227045925246,
+      "holdout_linear_mha": -0.6831870472154833
+    },
+    {
+      "bond": 1.9500000000000002,
+      "angle": 120.0,
+      "energy": -15.358073676873545,
+      "held_out": true,
+      "holdout_polynomial_mha": 2.727104409910197,
+      "holdout_linear_mha": 0.3360707418771369
+    },
+    {
+      "bond": 1.9500000000000002,
+      "angle": 130.0,
+      "energy": -15.36709918912829,
+      "held_out": true,
+      "holdout_polynomial_mha": 2.597925465556372,
+      "holdout_linear_mha": -0.758450461916027
+    },
+    {
+      "bond": 1.9500000000000002,
+      "angle": 140.0,
+      "energy": -15.374235592778312,
+      "held_out": true,
+      "holdout_polynomial_mha": 2.2205483607375953,
+      "holdout_linear_mha": -0.16863209868134277
+    },
+    {
+      "bond": 1.9500000000000002,
+      "angle": 150.0,
+      "energy": -15.379589793874196,
+      "held_out": true,
+      "holdout_polynomial_mha": 1.4999605073953148,
+      "holdout_linear_mha": -1.3610162895894007
+    },
+    {
+      "bond": 1.9500000000000002,
+      "angle": 160.0,
+      "energy": -15.383132894945705,
+      "held_out": true,
+      "holdout_polynomial_mha": 0.3028350570222216,
+      "holdout_linear_mha": -2.1993730998364214
+    },
+    {
+      "bond": 1.9500000000000002,
+      "angle": 170.0,
+      "energy": -15.384400811428453,
+      "held_out": true,
+      "holdout_polynomial_mha": -1.8418526727081996,
+      "holdout_linear_mha": -5.3129144988464105
+    },
+    {
+      "bond": 1.9500000000000002,
+      "angle": 180.0,
+      "energy": -15.380761589671256,
+      "held_out": true,
+      "holdout_polynomial_mha": -7.475507190571662,
+      "holdout_linear_mha": -13.333594137799665
+    },
+    {
+      "bond": 2.1,
+      "angle": 90.0,
+      "energy": -15.268256738027567,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 2.1,
+      "angle": 100.0,
+      "energy": -15.283196176686069,
+      "held_out": true,
+      "holdout_polynomial_mha": -1.8877201810774125,
+      "holdout_linear_mha": 1.3322267600806015
+    },
+    {
+      "bond": 2.1,
+      "angle": 110.0,
+      "energy": -15.295471161824409,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 2.1,
+      "angle": 120.0,
+      "energy": -15.305686003386734,
+      "held_out": true,
+      "holdout_polynomial_mha": -1.4599308347662543,
+      "holdout_linear_mha": 0.8442391951621886
+    },
+    {
+      "bond": 2.1,
+      "angle": 130.0,
+      "energy": -15.314212366558737,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 2.1,
+      "angle": 140.0,
+      "energy": -15.321323679985227,
+      "held_out": true,
+      "holdout_polynomial_mha": -1.7271083861913894,
+      "holdout_linear_mha": 0.5536612481371606
+    },
+    {
+      "bond": 2.1,
+      "angle": 150.0,
+      "energy": -15.327327670915441,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 2.1,
+      "angle": 160.0,
+      "energy": -15.332846422620172,
+      "held_out": true,
+      "holdout_polynomial_mha": -1.8033601810252264,
+      "holdout_linear_mha": -0.803712013970781
+    },
+    {
+      "bond": 2.1,
+      "angle": 170.0,
+      "energy": -15.339972598352844,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 2.1,
+      "angle": 180.0,
+      "energy": -15.35002457061603,
+      "held_out": true,
+      "holdout_polynomial_mha": 7.790157786436325,
+      "holdout_linear_mha": 3.7295085444846166
+    },
+    {
+      "bond": 2.25,
+      "angle": 90.0,
+      "energy": -15.226448357790966,
+      "held_out": true,
+      "holdout_polynomial_mha": -5.982620042008335,
+      "holdout_linear_mha": -6.24493765884182
+    },
+    {
+      "bond": 2.25,
+      "angle": 100.0,
+      "energy": -15.239121286503185,
+      "held_out": true,
+      "holdout_polynomial_mha": -5.6192598884461376,
+      "holdout_linear_mha": -4.973478591548286
+    },
+    {
+      "bond": 2.25,
+      "angle": 110.0,
+      "energy": -15.249840653870072,
+      "held_out": true,
+      "holdout_polynomial_mha": -5.374226595902698,
+      "holdout_linear_mha": -5.655580869587951
+    },
+    {
+      "bond": 2.25,
+      "angle": 120.0,
+      "energy": -15.259143043590223,
+      "held_out": true,
+      "holdout_polynomial_mha": -5.166827218923586,
+      "holdout_linear_mha": -5.051859519412005
+    },
+    {
+      "bond": 2.25,
+      "angle": 130.0,
+      "energy": -15.267383910474644,
+      "held_out": true,
+      "holdout_polynomial_mha": -5.000008439290937,
+      "holdout_linear_mha": -5.509661004966304
+    },
+    {
+      "bond": 2.25,
+      "angle": 140.0,
+      "energy": -15.274900763563965,
+      "held_out": true,
+      "holdout_polynomial_mha": -4.797173448826797,
+      "holdout_linear_mha": -5.1284942276925705
+    },
+    {
+      "bond": 2.25,
+      "angle": 150.0,
+      "energy": -15.282146308403167,
+      "held_out": true,
+      "holdout_polynomial_mha": -4.269039674646535,
+      "holdout_linear_mha": -5.018635700540841
+    },
+    {
+      "bond": 2.25,
+      "angle": 160.0,
+      "energy": -15.289758074390132,
+      "held_out": true,
+      "holdout_polynomial_mha": -2.844011430621407,
+      "holdout_linear_mha": -3.9442953851516194
+    },
+    {
+      "bond": 2.25,
+      "angle": 170.0,
+      "energy": -15.297802225638865,
+      "held_out": true,
+      "holdout_polynomial_mha": -0.4243690541603229,
+      "holdout_linear_mha": -2.4375698079950325
+    },
+    {
+      "bond": 2.25,
+      "angle": 180.0,
+      "energy": -15.302218210072176,
+      "held_out": true,
+      "holdout_polynomial_mha": -0.9416198135117071,
+      "holdout_linear_mha": -4.559011046257666
+    },
+    {
+      "bond": 2.4000000000000004,
+      "angle": 90.0,
+      "energy": -15.19712985287205,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 2.4000000000000004,
+      "angle": 100.0,
+      "energy": -15.206777082682024,
+      "held_out": true,
+      "holdout_polynomial_mha": 0.26676506026745983,
+      "holdout_linear_mha": 0.45150241854230444
+    },
+    {
+      "bond": 2.4000000000000004,
+      "angle": 110.0,
+      "energy": -15.215521307654914,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 2.4000000000000004,
+      "angle": 120.0,
+      "energy": -15.223711792949606,
+      "held_out": true,
+      "holdout_polynomial_mha": 0.06392819504519309,
+      "holdout_linear_mha": 0.16375092190656915
+    },
+    {
+      "bond": 2.4000000000000004,
+      "angle": 130.0,
+      "energy": -15.231574776400485,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 2.4000000000000004,
+      "angle": 140.0,
+      "energy": -15.239299458728375,
+      "held_out": true,
+      "holdout_polynomial_mha": 0.4450345025475144,
+      "holdout_linear_mha": 0.010961882145110735
+    },
+    {
+      "bond": 2.4000000000000004,
+      "angle": 150.0,
+      "energy": -15.247002217291975,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 2.4000000000000004,
+      "angle": 160.0,
+      "energy": -15.254454865507652,
+      "held_out": true,
+      "holdout_polynomial_mha": 0.7815113200191348,
+      "holdout_linear_mha": 0.7002605912287407
+    },
+    {
+      "bond": 2.4000000000000004,
+      "angle": 170.0,
+      "energy": -15.260506992540874,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "bond": 2.4000000000000004,
+      "angle": 180.0,
+      "energy": -15.262966983317902,
+      "held_out": true,
+      "holdout_polynomial_mha": -5.121201308618595,
+      "holdout_linear_mha": -4.292396847420221
+    }
+  ]
+}
