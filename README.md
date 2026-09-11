@@ -44,6 +44,26 @@
 
 <div align="center">
 
+## 🎬&nbsp; A Scan in Action
+
+<img src="assets/beh2_surface_scan_3d.gif" alt="BeH2 potential-energy surface rising out of the grid point by point as VQE solves each geometry, then rotating once; the molecule stretches and bends alongside" width="100%">
+
+<sub>BeH₂ ground-state energy surface — 110 VQE energies rising out of a bond-length × bond-angle
+grid in scan order while the molecule redraws to match, then one turn around the finished
+surface. The trough runs along the angle axis: bending is soft, stretching is stiff.</sub>
+
+</div>
+
+Rebuilt from the saved scan. Reopen the scan yourself — no VQE re-run, it takes a few seconds:
+
+```bash
+python experiment/beh2/beh2_ground_state_estimation.py --load beh2_surface_scan.json
+```
+
+<img src="assets/wave.svg" alt="" width="100%">
+
+<div align="center">
+
 ## 🧪&nbsp; Experiments
 
 </div>
