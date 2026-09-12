@@ -1,0 +1,129 @@
+{
+  "format_version": 1,
+  "metadata": {
+    "molecule": "H2O2",
+    "source_scan": "experiment/h2o2/h2o2_bend_scan.json",
+    "method": "cubic_spline",
+    "scan_type": "curve",
+    "coordinate": "bend",
+    "column": "vqe",
+    "unit": "deg",
+    "n_nodes": 13,
+    "node_spacing": 5.0,
+    "spline_max_mha": 1.4874256841608258,
+    "spline_rms_mha": 0.7757109250324902,
+    "linear_max_mha": 4.319270272048925,
+    "linear_rms_mha": 2.4398701404410525,
+    "interpolated_min_x": 93.93801920666542,
+    "interpolated_min_energy": -148.80060981037852,
+    "best_node_x": 95.0,
+    "best_node_energy": -148.8003812156167,
+    "reference_x": 101.9
+  },
+  "rows": [
+    {
+      "angle": 80.0,
+      "energy": -148.767895102808,
+      "loo_spline": NaN,
+      "loo_linear": NaN,
+      "loo_spline_mha": NaN,
+      "loo_linear_mha": NaN
+    },
+    {
+      "angle": 85.0,
+      "energy": -148.7862811077204,
+      "loo_spline": 2.75972134602398e-05,
+      "loo_linear": 0.0035083403461158014,
+      "loo_spline_mha": 0.0275972134602398,
+      "loo_linear_mha": 3.5083403461158014
+    },
+    {
+      "angle": 90.0,
+      "energy": -148.7976504319406,
+      "loo_spline": -1.6487990848190748e-05,
+      "loo_linear": 0.004319270272048925,
+      "loo_spline_mha": -0.016487990848190748,
+      "loo_linear_mha": 4.319270272048925
+    },
+    {
+      "angle": 95.0,
+      "energy": -148.8003812156167,
+      "loo_spline": 0.000930535449015224,
+      "loo_linear": 0.0041051823540101395,
+      "loo_spline_mha": 0.930535449015224,
+      "loo_linear_mha": 4.1051823540101395
+    },
+    {
+      "angle": 100.0,
+      "energy": -148.7949016345848,
+      "loo_spline": -0.0010219714046684203,
+      "loo_linear": 0.0007747912875970542,
+      "loo_spline_mha": -1.0219714046684203,
+      "loo_linear_mha": 0.7747912875970542
+    },
+    {
+      "angle": 105.0,
+      "energy": -148.78787247097767,
+      "loo_spline": 3.222097700472659e-05,
+      "loo_linear": 0.0011995984195323217,
+      "loo_spline_mha": 0.03222097700472659,
+      "loo_linear_mha": 1.1995984195323217
+    },
+    {
+      "angle": 110.0,
+      "energy": -148.77844411053147,
+      "loo_spline": 0.00041222905798576903,
+      "loo_linear": 0.0021976462159898347,
+      "loo_spline_mha": 0.41222905798576903,
+      "loo_linear_mha": 2.1976462159898347
+    },
+    {
+      "angle": 115.0,
+      "energy": -148.76462045765328,
+      "loo_spline": -0.00045773930881409797,
+      "loo_linear": 0.0017322972872193532,
+      "loo_spline_mha": -0.45773930881409797,
+      "loo_linear_mha": 1.7322972872193532
+    },
+    {
+      "angle": 120.0,
+      "energy": -148.74733221020063,
+      "loo_spline": 0.0007187766830725195,
+      "loo_linear": 0.0021053334015732617,
+      "loo_spline_mha": 0.7187766830725195,
+      "loo_linear_mha": 2.1053334015732617
+    },
+    {
+      "angle": 125.0,
+      "energy": -148.72583329594485,
+      "loo_spline": -0.0008990833318875957,
+      "loo_linear": 0.0006436540400898139,
+      "loo_spline_mha": -0.8990833318875957,
+      "loo_linear_mha": 0.6436540400898139
+    },
+    {
+      "angle": 130.0,
+      "energy": -148.70304707360887,
+      "loo_spline": 0.0008886643974790331,
+      "loo_linear": 0.0016785203181086672,
+      "loo_spline_mha": 0.8886643974790331,
+      "loo_linear_mha": 1.6785203181086672
+    },
+    {
+      "angle": 135.0,
+      "energy": -148.6769038106367,
+      "loo_spline": -0.0014874256841608258,
+      "loo_linear": 0.00036272454377694885,
+      "loo_spline_mha": -1.4874256841608258,
+      "loo_linear_mha": 0.36272454377694885
+    },
+    {
+      "angle": 140.0,
+      "energy": -148.65003509857695,
+      "loo_spline": NaN,
+      "loo_linear": NaN,
+      "loo_spline_mha": NaN,
+      "loo_linear_mha": NaN
+    }
+  ]
+}
