@@ -1,0 +1,160 @@
+{
+  "format_version": 1,
+  "metadata": {
+    "molecule": "NO2",
+    "source_scan": "no2/no2_stretch_scan.json",
+    "method": "global_polynomial",
+    "scan_type": "curve",
+    "coordinate": "stretch",
+    "column": "vqe",
+    "unit": "A",
+    "n_nodes": 16,
+    "node_spacing": 0.09999999999999996,
+    "featured_degree": 15,
+    "full_interpolating_degree": 15,
+    "in_sample_max_residual_mha": 9.947598300641403e-10,
+    "polynomial_max_mha": NaN,
+    "polynomial_rms_mha": NaN,
+    "linear_max_mha": 168.03562639623237,
+    "linear_rms_mha": 54.19356946027009,
+    "best_degree": 9,
+    "best_degree_rms_mha": 5.233205223828668,
+    "worst_degree": 14,
+    "worst_degree_rms_mha": 1071.751584918773,
+    "interpolated_min_x": 2.3728388518377543,
+    "interpolated_min_energy": -201.48653516677192,
+    "best_node_x": 1.2999999999999998,
+    "best_node_energy": -201.35000736448734,
+    "reference_x": 1.194
+  },
+  "rows": [
+    {
+      "bond": 0.9,
+      "energy": -200.32204925140297,
+      "loo_polynomial": NaN,
+      "loo_linear": NaN,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": NaN
+    },
+    {
+      "bond": 1.0,
+      "energy": -200.94739342604947,
+      "loo_polynomial": NaN,
+      "loo_linear": 0.16803562639623237,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": 168.03562639623237
+    },
+    {
+      "bond": 1.1,
+      "energy": -201.23666634790354,
+      "loo_polynomial": NaN,
+      "loo_linear": 0.09336876089176371,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": 93.36876089176371
+    },
+    {
+      "bond": 1.2,
+      "energy": -201.33920174797407,
+      "loo_polynomial": NaN,
+      "loo_linear": 0.04586489177864905,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": 45.86489177864905
+    },
+    {
+      "bond": 1.2999999999999998,
+      "energy": -201.35000736448734,
+      "loo_polynomial": NaN,
+      "loo_linear": 0.027483954110749664,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": 27.483954110749664
+    },
+    {
+      "bond": 1.4,
+      "energy": -201.3058450727791,
+      "loo_polynomial": NaN,
+      "loo_linear": 0.01764955607779939,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": 17.64955607779939
+    },
+    {
+      "bond": 1.5,
+      "energy": -201.22638366891528,
+      "loo_polynomial": NaN,
+      "loo_linear": 0.01353082893436408,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": 13.53082893436408
+    },
+    {
+      "bond": 1.5999999999999999,
+      "energy": -201.11986060718274,
+      "loo_polynomial": NaN,
+      "loo_linear": -0.010596213800880605,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": -10.596213800880605
+    },
+    {
+      "bond": 1.6999999999999997,
+      "energy": -201.03452997305197,
+      "loo_polynomial": NaN,
+      "loo_linear": -0.01249528435329239,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": -12.49528435329239
+    },
+    {
+      "bond": 1.7999999999999998,
+      "energy": -200.9741899076278,
+      "loo_polynomial": NaN,
+      "loo_linear": -0.014542873558042402,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": -14.542873558042402
+    },
+    {
+      "bond": 1.9,
+      "energy": -200.94293558931972,
+      "loo_polynomial": NaN,
+      "loo_linear": -0.007931624361248168,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": -7.9316243612481685
+    },
+    {
+      "bond": 1.9999999999999996,
+      "energy": -200.92754451973414,
+      "loo_polynomial": NaN,
+      "loo_linear": -0.0013003134029929697,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": -1.3003134029929697
+    },
+    {
+      "bond": 2.0999999999999996,
+      "energy": -200.91475407695452,
+      "loo_polynomial": NaN,
+      "loo_linear": 0.0072860729356989395,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": 7.2860729356989395
+    },
+    {
+      "bond": 2.1999999999999997,
+      "energy": -200.88739148830354,
+      "loo_polynomial": NaN,
+      "loo_linear": -0.014484526024091338,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": -14.484526024091338
+    },
+    {
+      "bond": 2.3,
+      "energy": -200.8889979517007,
+      "loo_polynomial": NaN,
+      "loo_linear": 0.0016003961825390434,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": 1.6003961825390434
+    },
+    {
+      "bond": 2.3999999999999995,
+      "energy": -200.8874036227328,
+      "loo_polynomial": NaN,
+      "loo_linear": NaN,
+      "loo_polynomial_mha": NaN,
+      "loo_linear_mha": NaN
+    }
+  ]
+}

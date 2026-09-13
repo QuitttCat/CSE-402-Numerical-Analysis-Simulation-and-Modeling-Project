@@ -1,0 +1,508 @@
+{
+  "format_version": 1,
+  "metadata": {
+    "molecule": "N2O",
+    "source_scan": "n2o/n2o_surface_scan.json",
+    "method": "bicubic_spline",
+    "scan_type": "surface",
+    "column": "vqe",
+    "n_rnn": 10,
+    "n_rno": 6,
+    "fixed_angle": 180.0,
+    "validation": "half_grid_holdout",
+    "spline_max_mha": 96.80039053301925,
+    "spline_rms_mha": 43.208394484996546,
+    "linear_max_mha": 231.02510405911403,
+    "linear_rms_mha": 74.71775251413476,
+    "interpolated_min_rnn": 1.2120603015075377,
+    "interpolated_min_rno": 1.187437185929648,
+    "interpolated_min_energy": -181.29672199896757,
+    "best_node_rnn": 1.2000000000000002,
+    "best_node_rno": 1.2499999999999998,
+    "best_node_energy": -181.2878400436579,
+    "reference_rnn": 1.128,
+    "reference_rno": 1.185
+  },
+  "rows": [
+    {
+      "r_nn": 0.9,
+      "r_no": 0.95,
+      "energy": -180.64341975674037,
+      "held_out": false,
+      "holdout_spline_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 0.9,
+      "r_no": 1.0999999999999999,
+      "energy": -180.8624002565303,
+      "held_out": true,
+      "holdout_spline_mha": 58.46386301783468,
+      "holdout_linear_mha": 93.47266466733117
+    },
+    {
+      "r_nn": 0.9,
+      "r_no": 1.2499999999999998,
+      "energy": -180.89443542698552,
+      "held_out": false,
+      "holdout_spline_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 0.9,
+      "r_no": 1.3999999999999997,
+      "energy": -180.87821203670134,
+      "held_out": true,
+      "holdout_spline_mha": -36.704820458226095,
+      "holdout_linear_mha": -1.696018808701183
+    },
+    {
+      "r_nn": 0.9,
+      "r_no": 1.5499999999999996,
+      "energy": -180.86538068403453,
+      "held_out": false,
+      "holdout_spline_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 0.9,
+      "r_no": 1.6999999999999995,
+      "energy": -180.86093027952793,
+      "held_out": true,
+      "holdout_spline_mha": -4.450404506627592,
+      "holdout_linear_mha": 10.076966968910028
+    },
+    {
+      "r_nn": 1.05,
+      "r_no": 0.95,
+      "energy": -180.97102368750404,
+      "held_out": true,
+      "holdout_spline_mha": 27.46055958422744,
+      "holdout_linear_mha": 131.75541204543606
+    },
+    {
+      "r_nn": 1.05,
+      "r_no": 1.0999999999999999,
+      "energy": -181.1962281094493,
+      "held_out": true,
+      "holdout_spline_mha": 96.80039053301925,
+      "holdout_linear_mha": 231.02510405911403
+    },
+    {
+      "r_nn": 1.05,
+      "r_no": 1.2499999999999998,
+      "energy": -181.21903619568164,
+      "held_out": true,
+      "holdout_spline_mha": 37.85261169727505,
+      "holdout_linear_mha": 127.89846035991559
+    },
+    {
+      "r_nn": 1.05,
+      "r_no": 1.3999999999999997,
+      "energy": -181.18545618724488,
+      "held_out": true,
+      "holdout_spline_mha": -3.374535879288487,
+      "holdout_linear_mha": 126.55380212657974
+    },
+    {
+      "r_nn": 1.05,
+      "r_no": 1.5499999999999996,
+      "energy": -181.15899601884456,
+      "held_out": true,
+      "holdout_spline_mha": 36.62688250895485,
+      "holdout_linear_mha": 132.32898392965353
+    },
+    {
+      "r_nn": 1.05,
+      "r_no": 1.6999999999999995,
+      "energy": -181.14860356100846,
+      "held_out": true,
+      "holdout_spline_mha": 26.23442467285031,
+      "holdout_linear_mha": 154.1718762969424
+    },
+    {
+      "r_nn": 1.2000000000000002,
+      "r_no": 0.95,
+      "energy": -181.03511679417684,
+      "held_out": false,
+      "holdout_spline_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 1.2000000000000002,
+      "r_no": 1.0999999999999999,
+      "energy": -181.26958885224514,
+      "held_out": true,
+      "holdout_spline_mha": 64.03419490982287,
+      "holdout_linear_mha": 108.11043332776649
+    },
+    {
+      "r_nn": 1.2000000000000002,
+      "r_no": 1.2499999999999998,
+      "energy": -181.2878400436579,
+      "held_out": false,
+      "holdout_spline_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 1.2000000000000002,
+      "r_no": 1.3999999999999997,
+      "energy": -181.23382814669614,
+      "held_out": true,
+      "holdout_spline_mha": -48.14480644844821,
+      "holdout_linear_mha": -4.068568030419328
+    },
+    {
+      "r_nn": 1.2000000000000002,
+      "r_no": 1.5499999999999996,
+      "energy": -181.18795338579525,
+      "held_out": false,
+      "holdout_spline_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 1.2000000000000002,
+      "r_no": 1.6999999999999995,
+      "energy": -181.16818443181063,
+      "held_out": true,
+      "holdout_spline_mha": -19.76895398462375,
+      "holdout_linear_mha": 30.174374946682292
+    },
+    {
+      "r_nn": 1.35,
+      "r_no": 0.95,
+      "energy": -180.99752899515562,
+      "held_out": true,
+      "holdout_spline_mha": -4.297291484959942,
+      "holdout_linear_mha": 16.25202984672569
+    },
+    {
+      "r_nn": 1.35,
+      "r_no": 1.0999999999999999,
+      "energy": -181.2408994078704,
+      "held_out": true,
+      "holdout_spline_mha": 50.13590252056588,
+      "holdout_linear_mha": 125.96596275886895
+    },
+    {
+      "r_nn": 1.35,
+      "r_no": 1.2499999999999998,
+      "energy": -181.2652403212867,
+      "held_out": true,
+      "holdout_spline_mha": -11.279968504709359,
+      "holdout_linear_mha": 16.65039637256882
+    },
+    {
+      "r_nn": 1.35,
+      "r_no": 1.3999999999999997,
+      "energy": -181.19579143750394,
+      "held_out": true,
+      "holdout_spline_mha": -63.30520246149263,
+      "holdout_linear_mha": 11.921686092193795
+    },
+    {
+      "r_nn": 1.35,
+      "r_no": 1.5499999999999996,
+      "energy": -181.12293936622766,
+      "held_out": true,
+      "holdout_spline_mha": -15.553189644123222,
+      "holdout_linear_mha": 3.7897883183006797
+    },
+    {
+      "r_nn": 1.35,
+      "r_no": 1.6999999999999995,
+      "energy": -181.08656588390534,
+      "held_out": true,
+      "holdout_spline_mha": -51.92667196644152,
+      "holdout_linear_mha": 32.13647949834808
+    },
+    {
+      "r_nn": 1.5,
+      "r_no": 0.95,
+      "energy": -180.92743713644094,
+      "held_out": false,
+      "holdout_spline_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 1.5,
+      "r_no": 1.0999999999999999,
+      "energy": -181.17274711158663,
+      "held_out": true,
+      "holdout_spline_mha": 49.24655204641226,
+      "holdout_linear_mha": 104.35864028093533
+    },
+    {
+      "r_nn": 1.5,
+      "r_no": 1.2499999999999998,
+      "energy": -181.20933980617042,
+      "held_out": false,
+      "holdout_spline_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 1.5,
+      "r_no": 1.3999999999999997,
+      "energy": -181.14551730829152,
+      "held_out": true,
+      "holdout_spline_mha": -39.43756803997189,
+      "holdout_linear_mha": 15.6745201945796
+    },
+    {
+      "r_nn": 1.5,
+      "r_no": 1.5499999999999996,
+      "energy": -181.05034577002348,
+      "held_out": false,
+      "holdout_spline_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 1.5,
+      "r_no": 1.6999999999999995,
+      "energy": -180.98916685030977,
+      "held_out": true,
+      "holdout_spline_mha": -61.178919713682944,
+      "holdout_linear_mha": 18.318098359742407
+    },
+    {
+      "r_nn": 1.6500000000000001,
+      "r_no": 0.95,
+      "energy": -180.8771044835941,
+      "held_out": true,
+      "holdout_spline_mha": -2.2768895813953804,
+      "holdout_linear_mha": -16.53259478422342
+    },
+    {
+      "r_nn": 1.6500000000000001,
+      "r_no": 1.0999999999999999,
+      "energy": -181.10183999043082,
+      "held_out": true,
+      "holdout_spline_mha": 40.35194294962707,
+      "holdout_linear_mha": 80.8716383677961
+    },
+    {
+      "r_nn": 1.6500000000000001,
+      "r_no": 1.2499999999999998,
+      "energy": -181.1342697790868,
+      "held_out": true,
+      "holdout_spline_mha": -5.569405058196253,
+      "holdout_linear_mha": -14.02984666091811
+    },
+    {
+      "r_nn": 1.6500000000000001,
+      "r_no": 1.3999999999999997,
+      "energy": -181.08785425686193,
+      "held_out": true,
+      "holdout_spline_mha": -26.580526304968544,
+      "holdout_linear_mha": 14.454909708973673
+    },
+    {
+      "r_nn": 1.6500000000000001,
+      "r_no": 1.5499999999999996,
+      "energy": -181.0019621660847,
+      "held_out": true,
+      "holdout_spline_mha": 16.687321537744992,
+      "holdout_linear_mha": 3.463097526491765
+    },
+    {
+      "r_nn": 1.6500000000000001,
+      "r_no": 1.6999999999999995,
+      "energy": -180.93498408786758,
+      "held_out": true,
+      "holdout_spline_mha": -50.29075667937377,
+      "holdout_linear_mha": 11.385297904126901
+    },
+    {
+      "r_nn": 1.8000000000000003,
+      "r_no": 0.95,
+      "energy": -180.85983702031572,
+      "held_out": false,
+      "holdout_spline_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 1.8000000000000003,
+      "r_no": 1.0999999999999999,
+      "energy": -181.07661840727084,
+      "held_out": true,
+      "holdout_spline_mha": 57.06648654535229,
+      "holdout_linear_mha": 103.07017445049382
+    },
+    {
+      "r_nn": 1.8000000000000003,
+      "r_no": 1.2499999999999998,
+      "energy": -181.08725944532497,
+      "held_out": false,
+      "holdout_spline_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 1.8000000000000003,
+      "r_no": 1.3999999999999997,
+      "energy": -181.02153777979294,
+      "held_out": true,
+      "holdout_spline_mha": -41.42181432118264,
+      "holdout_linear_mha": 4.581873583987317
+    },
+    {
+      "r_nn": 1.8000000000000003,
+      "r_no": 1.5499999999999996,
+      "energy": -180.94665236709292,
+      "held_out": false,
+      "holdout_spline_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 1.8000000000000003,
+      "r_no": 1.6999999999999995,
+      "energy": -180.89792856307673,
+      "held_out": true,
+      "holdout_spline_mha": -48.72380401616283,
+      "holdout_linear_mha": 21.579735099862773
+    },
+    {
+      "r_nn": 1.9500000000000002,
+      "r_no": 0.95,
+      "energy": -180.85282238347685,
+      "held_out": true,
+      "holdout_spline_mha": -1.8462163242816132,
+      "holdout_linear_mha": -1.9664434666992747
+    },
+    {
+      "r_nn": 1.9500000000000002,
+      "r_no": 1.0999999999999999,
+      "energy": -181.0701013444385,
+      "held_out": true,
+      "holdout_spline_mha": 68.30728261815011,
+      "holdout_linear_mha": 102.01028613562357
+    },
+    {
+      "r_nn": 1.9500000000000002,
+      "r_no": 1.2499999999999998,
+      "energy": -181.07770774785362,
+      "held_out": true,
+      "holdout_spline_mha": 15.441028968638193,
+      "holdout_linear_mha": -3.685541808607695
+    },
+    {
+      "r_nn": 1.9500000000000002,
+      "r_no": 1.3999999999999997,
+      "energy": -181.00283169307383,
+      "held_out": true,
+      "holdout_spline_mha": -33.254877921166326,
+      "holdout_linear_mha": -0.49151308260775295
+    },
+    {
+      "r_nn": 1.9500000000000002,
+      "r_no": 1.5499999999999996,
+      "energy": -180.90651535022607,
+      "held_out": true,
+      "holdout_spline_mha": -16.738267924267802,
+      "holdout_linear_mha": -18.737772424515242
+    },
+    {
+      "r_nn": 1.9500000000000002,
+      "r_no": 1.6999999999999995,
+      "energy": -180.84684800567615,
+      "held_out": true,
+      "holdout_spline_mha": -76.40561247418987,
+      "holdout_linear_mha": -0.33503346861607497
+    },
+    {
+      "r_nn": 2.1,
+      "r_no": 0.95,
+      "energy": -180.84974063357137,
+      "held_out": false,
+      "holdout_spline_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 2.1,
+      "r_no": 1.0999999999999999,
+      "energy": -181.06687407665825,
+      "held_out": true,
+      "holdout_spline_mha": 54.55772334539688,
+      "holdout_linear_mha": 104.24019287282249
+    },
+    {
+      "r_nn": 2.1,
+      "r_no": 1.2499999999999998,
+      "energy": -181.07552713399951,
+      "held_out": false,
+      "holdout_spline_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 2.1,
+      "r_no": 1.3999999999999997,
+      "energy": -181.0016422703853,
+      "held_out": true,
+      "holdout_spline_mha": -37.730705246019625,
+      "holdout_linear_mha": 11.951764281405985
+    },
+    {
+      "r_nn": 2.1,
+      "r_no": 1.5499999999999996,
+      "energy": -180.90385387820828,
+      "held_out": false,
+      "holdout_spline_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 2.1,
+      "r_no": 1.6999999999999995,
+      "energy": -180.83942265393534,
+      "held_out": true,
+      "holdout_spline_mha": -64.43122427293702,
+      "holdout_linear_mha": 21.405403622708263
+    },
+    {
+      "r_nn": 2.25,
+      "r_no": 0.95,
+      "energy": -180.8482232079054,
+      "held_out": true,
+      "holdout_spline_mha": -1.5174256659804541,
+      "holdout_linear_mha": 3.5307677061950926
+    },
+    {
+      "r_nn": 2.25,
+      "r_no": 1.0999999999999999,
+      "energy": -181.06537637416352,
+      "held_out": true,
+      "holdout_spline_mha": 53.06002085066552,
+      "holdout_linear_mha": 108.19966489552257
+    },
+    {
+      "r_nn": 2.25,
+      "r_no": 1.2499999999999998,
+      "energy": -181.07485106424983,
+      "held_out": true,
+      "holdout_spline_mha": -0.6760697496872581,
+      "holdout_linear_mha": 5.190085913028497
+    },
+    {
+      "r_nn": 2.25,
+      "r_no": 1.3999999999999997,
+      "energy": -181.00232846982058,
+      "held_out": true,
+      "holdout_spline_mha": -37.0445058107407,
+      "holdout_linear_mha": 26.27066376922471
+    },
+    {
+      "r_nn": 2.25,
+      "r_no": 1.5499999999999996,
+      "energy": -180.90600220975654,
+      "held_out": true,
+      "holdout_spline_mha": 2.1483315482555554,
+      "holdout_linear_mha": 23.547575990619407
+    },
+    {
+      "r_nn": 2.25,
+      "r_no": 1.6999999999999995,
+      "energy": -180.83990723619428,
+      "held_out": true,
+      "holdout_spline_mha": -63.946642014002464,
+      "holdout_linear_mha": 51.05577471377387
+    }
+  ]
+}
