@@ -31,6 +31,11 @@ qiskit-nature>=0.7
 qiskit-algorithms>=0.3
 qiskit-ibm-runtime>=0.30
 
+# --- quantum chemistry driver (experiment/*/  ground-state estimation scripts)
+#   qiskit-nature's PySCFDriver wraps this -- required for every script under
+#   experiment/, not optional. Tested against pyscf 2.14.0.
+pyscf>=2.14
+
 # --- optional extras (uncomment as needed) -----------------------------
 # rdkit>=2023.9        # build geometries from SMILES  (load_geometry("smiles:..."))
 # openfermion>=1.6     # Molecule.to_openfermion()

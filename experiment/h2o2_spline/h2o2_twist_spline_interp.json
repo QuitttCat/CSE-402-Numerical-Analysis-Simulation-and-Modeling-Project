@@ -1,0 +1,177 @@
+{
+  "format_version": 1,
+  "metadata": {
+    "molecule": "H2O2",
+    "source_scan": "experiment/h2o2/h2o2_twist_scan.json",
+    "method": "cubic_spline",
+    "scan_type": "curve",
+    "coordinate": "twist",
+    "column": "vqe",
+    "unit": "deg",
+    "n_nodes": 19,
+    "node_spacing": 10.0,
+    "spline_max_mha": 3.0439161657227487,
+    "spline_rms_mha": 1.3651077653036616,
+    "linear_max_mha": 3.719565211184772,
+    "linear_rms_mha": 1.4213892404123776,
+    "interpolated_min_x": 134.27799069764774,
+    "interpolated_min_energy": -148.80102889303132,
+    "best_node_x": 150.0,
+    "best_node_energy": -148.8005795846947,
+    "reference_x": 111.5
+  },
+  "rows": [
+    {
+      "dihedral": 0.0,
+      "energy": -148.78482403629542,
+      "loo_spline": NaN,
+      "loo_linear": NaN,
+      "loo_spline_mha": NaN,
+      "loo_linear_mha": NaN
+    },
+    {
+      "dihedral": 10.0,
+      "energy": -148.78528737464936,
+      "loo_spline": 7.898049710775012e-05,
+      "loo_linear": -0.00031200160597677495,
+      "loo_spline_mha": 0.07898049710775012,
+      "loo_linear_mha": -0.31200160597677495
+    },
+    {
+      "dihedral": 20.0,
+      "energy": -148.78637471621522,
+      "loo_spline": -4.71870000637864e-05,
+      "loo_linear": -0.00012733082274962726,
+      "loo_spline_mha": -0.0471870000637864,
+      "loo_linear_mha": -0.12733082274962726
+    },
+    {
+      "dihedral": 30.0,
+      "energy": -148.78771671942656,
+      "loo_spline": 0.00017096752429779372,
+      "loo_linear": 3.8059280171864884e-05,
+      "loo_spline_mha": 0.17096752429779372,
+      "loo_linear_mha": 0.038059280171864884
+    },
+    {
+      "dihedral": 40.0,
+      "energy": -148.78898260407755,
+      "loo_spline": -0.0002477597109873386,
+      "loo_linear": -0.0002552033173799373,
+      "loo_spline_mha": -0.24775971098733862,
+      "loo_linear_mha": -0.2552033173799373
+    },
+    {
+      "dihedral": 50.0,
+      "energy": -148.7907588953633,
+      "loo_spline": 0.00018026803329007635,
+      "loo_linear": 0.00021953474777092197,
+      "loo_spline_mha": 0.18026803329007635,
+      "loo_linear_mha": 0.21953474777092197
+    },
+    {
+      "dihedral": 60.0,
+      "energy": -148.79209611715353,
+      "loo_spline": -2.585374033969856e-05,
+      "loo_linear": 0.00015866686831600418,
+      "loo_spline_mha": -0.02585374033969856,
+      "loo_linear_mha": 0.15866686831600418
+    },
+    {
+      "dihedral": 70.0,
+      "energy": -148.7931160052071,
+      "loo_spline": -0.00014990645109946854,
+      "loo_linear": 0.0001852057232269999,
+      "loo_spline_mha": -0.14990645109946854,
+      "loo_linear_mha": 0.1852057232269999
+    },
+    {
+      "dihedral": 80.0,
+      "energy": -148.79376548181426,
+      "loo_spline": 0.00040055892054624564,
+      "loo_linear": 0.000480783265146556,
+      "loo_spline_mha": 0.40055892054624564,
+      "loo_linear_mha": 0.480783265146556
+    },
+    {
+      "dihedral": 90.0,
+      "energy": -148.79345339189112,
+      "loo_spline": -0.0008434148907667804,
+      "loo_linear": 4.800641315227949e-05,
+      "loo_spline_mha": -0.8434148907667804,
+      "loo_linear_mha": 0.04800641315227949
+    },
+    {
+      "dihedral": 100.0,
+      "energy": -148.79304528914167,
+      "loo_spline": 0.0015305701219858747,
+      "loo_linear": 0.0013407160127201223,
+      "loo_spline_mha": 1.5305701219858747,
+      "loo_linear_mha": 1.3407160127201223
+    },
+    {
+      "dihedral": 110.0,
+      "energy": -148.7899557543668,
+      "loo_spline": -0.0007760669553533717,
+      "loo_linear": -0.0027526081361770594,
+      "loo_spline_mha": -0.7760669553533717,
+      "loo_linear_mha": -2.7526081361770594
+    },
+    {
+      "dihedral": 120.0,
+      "energy": -148.79237143586425,
+      "loo_spline": -0.0018958631279701876,
+      "loo_linear": -0.0026958296202508336,
+      "loo_spline_mha": -1.8958631279701876,
+      "loo_linear_mha": -2.6958296202508336
+    },
+    {
+      "dihedral": 130.0,
+      "energy": -148.80017877660222,
+      "loo_spline": 0.0030439161657227487,
+      "loo_linear": 0.003719565211184772,
+      "loo_spline_mha": 3.0439161657227487,
+      "loo_linear_mha": 3.719565211184772
+    },
+    {
+      "dihedral": 140.0,
+      "energy": -148.8005469869178,
+      "loo_spline": -0.0019488663853337584,
+      "loo_linear": 0.00016780626933154963,
+      "loo_spline_mha": -1.9488663853337584,
+      "loo_linear_mha": 0.16780626933154963
+    },
+    {
+      "dihedral": 150.0,
+      "energy": -148.8005795846947,
+      "loo_spline": 0.0013574693919338188,
+      "loo_linear": 0.0006976731418433246,
+      "loo_spline_mha": 1.3574693919338188,
+      "loo_linear_mha": 0.6976731418433246
+    },
+    {
+      "dihedral": 160.0,
+      "energy": -148.79921683618792,
+      "loo_spline": -0.0015563251298260639,
+      "loo_linear": -0.001305091857801699,
+      "loo_spline_mha": -1.5563251298260639,
+      "loo_linear_mha": -1.305091857801699
+    },
+    {
+      "dihedral": 170.0,
+      "energy": -148.80046427139672,
+      "loo_spline": 0.0026049406029358124,
+      "loo_linear": 0.0010627491501509212,
+      "loo_spline_mha": 2.6049406029358124,
+      "loo_linear_mha": 1.0627491501509212
+    },
+    {
+      "dihedral": 180.0,
+      "energy": -148.79958620830521,
+      "loo_spline": NaN,
+      "loo_linear": NaN,
+      "loo_spline_mha": NaN,
+      "loo_linear_mha": NaN
+    }
+  ]
+}
