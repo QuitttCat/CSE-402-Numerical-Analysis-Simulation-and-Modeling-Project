@@ -1,0 +1,511 @@
+{
+  "format_version": 1,
+  "metadata": {
+    "molecule": "N2O",
+    "source_scan": "n2o/n2o_surface_scan.json",
+    "method": "total_degree_polynomial",
+    "scan_type": "surface",
+    "column": "vqe",
+    "degree": 4,
+    "n_coefficients": 15,
+    "n_rnn": 10,
+    "n_rno": 6,
+    "fixed_angle": 180.0,
+    "validation": "half_grid_holdout",
+    "in_sample_max_residual_mha": 30.715901637393017,
+    "polynomial_max_mha": 10362.769340494167,
+    "polynomial_rms_mha": 5186.44841639754,
+    "linear_max_mha": 231.02510405911403,
+    "linear_rms_mha": 74.71775251413476,
+    "interpolated_min_rnn": 1.2256281407035177,
+    "interpolated_min_rno": 1.2062814070351757,
+    "interpolated_min_energy": -181.30222333276697,
+    "best_node_rnn": 1.2000000000000002,
+    "best_node_rno": 1.2499999999999998,
+    "best_node_energy": -181.2878400436579,
+    "reference_rnn": 1.128,
+    "reference_rno": 1.185
+  },
+  "rows": [
+    {
+      "r_nn": 0.9,
+      "r_no": 0.95,
+      "energy": -180.64341975674037,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 0.9,
+      "r_no": 1.0999999999999999,
+      "energy": -180.8624002565303,
+      "held_out": true,
+      "holdout_polynomial_mha": -2984.9442161195157,
+      "holdout_linear_mha": 93.47266466733117
+    },
+    {
+      "r_nn": 0.9,
+      "r_no": 1.2499999999999998,
+      "energy": -180.89443542698552,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 0.9,
+      "r_no": 1.3999999999999997,
+      "energy": -180.87821203670134,
+      "held_out": true,
+      "holdout_polynomial_mha": 2532.3917385640016,
+      "holdout_linear_mha": -1.696018808701183
+    },
+    {
+      "r_nn": 0.9,
+      "r_no": 1.5499999999999996,
+      "energy": -180.86538068403453,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 0.9,
+      "r_no": 1.6999999999999995,
+      "energy": -180.86093027952793,
+      "held_out": true,
+      "holdout_polynomial_mha": -10362.769340494167,
+      "holdout_linear_mha": 10.076966968910028
+    },
+    {
+      "r_nn": 1.05,
+      "r_no": 0.95,
+      "energy": -180.97102368750404,
+      "held_out": true,
+      "holdout_polynomial_mha": 25.105409016504154,
+      "holdout_linear_mha": 131.75541204543606
+    },
+    {
+      "r_nn": 1.05,
+      "r_no": 1.0999999999999999,
+      "energy": -181.1962281094493,
+      "held_out": true,
+      "holdout_polynomial_mha": -2959.4689027821346,
+      "holdout_linear_mha": 231.02510405911403
+    },
+    {
+      "r_nn": 1.05,
+      "r_no": 1.2499999999999998,
+      "energy": -181.21903619568164,
+      "held_out": true,
+      "holdout_polynomial_mha": 18.170771284104603,
+      "holdout_linear_mha": 127.89846035991559
+    },
+    {
+      "r_nn": 1.05,
+      "r_no": 1.3999999999999997,
+      "energy": -181.18545618724488,
+      "held_out": true,
+      "holdout_polynomial_mha": 2547.562476748624,
+      "holdout_linear_mha": 126.55380212657974
+    },
+    {
+      "r_nn": 1.05,
+      "r_no": 1.5499999999999996,
+      "energy": -181.15899601884456,
+      "held_out": true,
+      "holdout_polynomial_mha": 29.049597643677316,
+      "holdout_linear_mha": 132.32898392965353
+    },
+    {
+      "r_nn": 1.05,
+      "r_no": 1.6999999999999995,
+      "energy": -181.14860356100846,
+      "held_out": true,
+      "holdout_polynomial_mha": -10298.278901338961,
+      "holdout_linear_mha": 154.1718762969424
+    },
+    {
+      "r_nn": 1.2000000000000002,
+      "r_no": 0.95,
+      "energy": -181.03511679417684,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 1.2000000000000002,
+      "r_no": 1.0999999999999999,
+      "energy": -181.26958885224514,
+      "held_out": true,
+      "holdout_polynomial_mha": -2977.241693697067,
+      "holdout_linear_mha": 108.11043332776649
+    },
+    {
+      "r_nn": 1.2000000000000002,
+      "r_no": 1.2499999999999998,
+      "energy": -181.2878400436579,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 1.2000000000000002,
+      "r_no": 1.3999999999999997,
+      "energy": -181.23382814669614,
+      "held_out": true,
+      "holdout_polynomial_mha": 2516.532593972187,
+      "holdout_linear_mha": -4.068568030419328
+    },
+    {
+      "r_nn": 1.2000000000000002,
+      "r_no": 1.5499999999999996,
+      "energy": -181.18795338579525,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 1.2000000000000002,
+      "r_no": 1.6999999999999995,
+      "energy": -181.16818443181063,
+      "held_out": true,
+      "holdout_polynomial_mha": -10302.59147002434,
+      "holdout_linear_mha": 30.174374946682292
+    },
+    {
+      "r_nn": 1.35,
+      "r_no": 0.95,
+      "energy": -180.99752899515562,
+      "held_out": true,
+      "holdout_polynomial_mha": -6.3668622203465475,
+      "holdout_linear_mha": 16.25202984672569
+    },
+    {
+      "r_nn": 1.35,
+      "r_no": 1.0999999999999999,
+      "energy": -181.2408994078704,
+      "held_out": true,
+      "holdout_polynomial_mha": -2980.802302261992,
+      "holdout_linear_mha": 125.96596275886895
+    },
+    {
+      "r_nn": 1.35,
+      "r_no": 1.2499999999999998,
+      "energy": -181.2652403212867,
+      "held_out": true,
+      "holdout_polynomial_mha": 0.8427844405503038,
+      "holdout_linear_mha": 16.65039637256882
+    },
+    {
+      "r_nn": 1.35,
+      "r_no": 1.3999999999999997,
+      "energy": -181.19579143750394,
+      "held_out": true,
+      "holdout_polynomial_mha": 2511.927888613741,
+      "holdout_linear_mha": 11.921686092193795
+    },
+    {
+      "r_nn": 1.35,
+      "r_no": 1.5499999999999996,
+      "energy": -181.12293936622766,
+      "held_out": true,
+      "holdout_polynomial_mha": -15.73494657228025,
+      "holdout_linear_mha": 3.7897883183006797
+    },
+    {
+      "r_nn": 1.35,
+      "r_no": 1.6999999999999995,
+      "energy": -181.08656588390534,
+      "held_out": true,
+      "holdout_polynomial_mha": -10307.532866368632,
+      "holdout_linear_mha": 32.13647949834808
+    },
+    {
+      "r_nn": 1.5,
+      "r_no": 0.95,
+      "energy": -180.92743713644094,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 1.5,
+      "r_no": 1.0999999999999999,
+      "energy": -181.17274711158663,
+      "held_out": true,
+      "holdout_polynomial_mha": -2982.196228813137,
+      "holdout_linear_mha": 104.35864028093533
+    },
+    {
+      "r_nn": 1.5,
+      "r_no": 1.2499999999999998,
+      "energy": -181.20933980617042,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 1.5,
+      "r_no": 1.3999999999999997,
+      "energy": -181.14551730829152,
+      "held_out": true,
+      "holdout_polynomial_mha": 2534.405685979152,
+      "holdout_linear_mha": 15.6745201945796
+    },
+    {
+      "r_nn": 1.5,
+      "r_no": 1.5499999999999996,
+      "energy": -181.05034577002348,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 1.5,
+      "r_no": 1.6999999999999995,
+      "energy": -180.98916685030977,
+      "held_out": true,
+      "holdout_polynomial_mha": -10300.079168391732,
+      "holdout_linear_mha": 18.318098359742407
+    },
+    {
+      "r_nn": 1.6500000000000001,
+      "r_no": 0.95,
+      "energy": -180.8771044835941,
+      "held_out": true,
+      "holdout_polynomial_mha": -0.5598912004813883,
+      "holdout_linear_mha": -16.53259478422342
+    },
+    {
+      "r_nn": 1.6500000000000001,
+      "r_no": 1.0999999999999999,
+      "energy": -181.10183999043082,
+      "held_out": true,
+      "holdout_polynomial_mha": -2993.024481159324,
+      "holdout_linear_mha": 80.8716383677961
+    },
+    {
+      "r_nn": 1.6500000000000001,
+      "r_no": 1.2499999999999998,
+      "energy": -181.1342697790868,
+      "held_out": true,
+      "holdout_polynomial_mha": -1.0197903453388335,
+      "holdout_linear_mha": -14.02984666091811
+    },
+    {
+      "r_nn": 1.6500000000000001,
+      "r_no": 1.3999999999999997,
+      "energy": -181.08785425686193,
+      "held_out": true,
+      "holdout_polynomial_mha": 2541.6243613061624,
+      "holdout_linear_mha": 14.454909708973673
+    },
+    {
+      "r_nn": 1.6500000000000001,
+      "r_no": 1.5499999999999996,
+      "energy": -181.0019621660847,
+      "held_out": true,
+      "holdout_polynomial_mha": 20.292133725774875,
+      "holdout_linear_mha": 3.463097526491765
+    },
+    {
+      "r_nn": 1.6500000000000001,
+      "r_no": 1.6999999999999995,
+      "energy": -180.93498408786758,
+      "held_out": true,
+      "holdout_polynomial_mha": -10267.304829534709,
+      "holdout_linear_mha": 11.385297904126901
+    },
+    {
+      "r_nn": 1.8000000000000003,
+      "r_no": 0.95,
+      "energy": -180.85983702031572,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 1.8000000000000003,
+      "r_no": 1.0999999999999999,
+      "energy": -181.07661840727084,
+      "held_out": true,
+      "holdout_polynomial_mha": -2986.831930526222,
+      "holdout_linear_mha": 103.07017445049382
+    },
+    {
+      "r_nn": 1.8000000000000003,
+      "r_no": 1.2499999999999998,
+      "energy": -181.08725944532497,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 1.8000000000000003,
+      "r_no": 1.3999999999999997,
+      "energy": -181.02153777979294,
+      "held_out": true,
+      "holdout_polynomial_mha": 2511.4530893594065,
+      "holdout_linear_mha": 4.581873583987317
+    },
+    {
+      "r_nn": 1.8000000000000003,
+      "r_no": 1.5499999999999996,
+      "energy": -180.94665236709292,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 1.8000000000000003,
+      "r_no": 1.6999999999999995,
+      "energy": -180.89792856307673,
+      "held_out": true,
+      "holdout_polynomial_mha": -10255.046292832247,
+      "holdout_linear_mha": 21.579735099862773
+    },
+    {
+      "r_nn": 1.9500000000000002,
+      "r_no": 0.95,
+      "energy": -180.85282238347685,
+      "held_out": true,
+      "holdout_polynomial_mha": -0.05417214546810101,
+      "holdout_linear_mha": -1.9664434666992747
+    },
+    {
+      "r_nn": 1.9500000000000002,
+      "r_no": 1.0999999999999999,
+      "energy": -181.0701013444385,
+      "held_out": true,
+      "holdout_polynomial_mha": -2986.2610279233763,
+      "holdout_linear_mha": 102.01028613562357
+    },
+    {
+      "r_nn": 1.9500000000000002,
+      "r_no": 1.2499999999999998,
+      "energy": -181.07770774785362,
+      "held_out": true,
+      "holdout_polynomial_mha": -12.535200937151103,
+      "holdout_linear_mha": -3.685541808607695
+    },
+    {
+      "r_nn": 1.9500000000000002,
+      "r_no": 1.3999999999999997,
+      "energy": -181.00283169307383,
+      "held_out": true,
+      "holdout_polynomial_mha": 2505.6131650673306,
+      "holdout_linear_mha": -0.49151308260775295
+    },
+    {
+      "r_nn": 1.9500000000000002,
+      "r_no": 1.5499999999999996,
+      "energy": -180.90651535022607,
+      "held_out": true,
+      "holdout_polynomial_mha": -20.168358043122225,
+      "holdout_linear_mha": -18.737772424515242
+    },
+    {
+      "r_nn": 1.9500000000000002,
+      "r_no": 1.6999999999999995,
+      "energy": -180.84684800567615,
+      "held_out": true,
+      "holdout_polynomial_mha": -10287.879437325899,
+      "holdout_linear_mha": -0.33503346861607497
+    },
+    {
+      "r_nn": 2.1,
+      "r_no": 0.95,
+      "energy": -180.84974063357137,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 2.1,
+      "r_no": 1.0999999999999999,
+      "energy": -181.06687407665825,
+      "held_out": true,
+      "holdout_polynomial_mha": -2976.064131215395,
+      "holdout_linear_mha": 104.24019287282249
+    },
+    {
+      "r_nn": 2.1,
+      "r_no": 1.2499999999999998,
+      "energy": -181.07552713399951,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 2.1,
+      "r_no": 1.3999999999999997,
+      "energy": -181.0016422703853,
+      "held_out": true,
+      "holdout_polynomial_mha": 2525.7921418020433,
+      "holdout_linear_mha": 11.951764281405985
+    },
+    {
+      "r_nn": 2.1,
+      "r_no": 1.5499999999999996,
+      "energy": -180.90385387820828,
+      "held_out": false,
+      "holdout_polynomial_mha": NaN,
+      "holdout_linear_mha": NaN
+    },
+    {
+      "r_nn": 2.1,
+      "r_no": 1.6999999999999995,
+      "energy": -180.83942265393534,
+      "held_out": true,
+      "holdout_polynomial_mha": -10275.223832774287,
+      "holdout_linear_mha": 21.405403622708263
+    },
+    {
+      "r_nn": 2.25,
+      "r_no": 0.95,
+      "energy": -180.8482232079054,
+      "held_out": true,
+      "holdout_polynomial_mha": 54.218895202780004,
+      "holdout_linear_mha": 3.5307677061950926
+    },
+    {
+      "r_nn": 2.25,
+      "r_no": 1.0999999999999999,
+      "energy": -181.06537637416352,
+      "held_out": true,
+      "holdout_polynomial_mha": -2900.8153020057534,
+      "holdout_linear_mha": 108.19966489552257
+    },
+    {
+      "r_nn": 2.25,
+      "r_no": 1.2499999999999998,
+      "energy": -181.07485106424983,
+      "held_out": true,
+      "holdout_polynomial_mha": 90.07277472790065,
+      "holdout_linear_mha": 5.190085913028497
+    },
+    {
+      "r_nn": 2.25,
+      "r_no": 1.3999999999999997,
+      "energy": -181.00232846982058,
+      "held_out": true,
+      "holdout_polynomial_mha": 2614.45405810025,
+      "holdout_linear_mha": 26.27066376922471
+    },
+    {
+      "r_nn": 2.25,
+      "r_no": 1.5499999999999996,
+      "energy": -180.90600220975654,
+      "held_out": true,
+      "holdout_polynomial_mha": 85.71755286942562,
+      "holdout_linear_mha": 23.547575990619407
+    },
+    {
+      "r_nn": 2.25,
+      "r_no": 1.6999999999999995,
+      "energy": -180.83990723619428,
+      "held_out": true,
+      "holdout_polynomial_mha": -10193.600758113405,
+      "holdout_linear_mha": 51.05577471377387
+    }
+  ]
+}
