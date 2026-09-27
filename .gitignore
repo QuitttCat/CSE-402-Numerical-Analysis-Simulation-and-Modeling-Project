@@ -19,6 +19,7 @@ __pypackages__/
 .env
 .env.*
 !.env.example
+apikey.json
 
 # ---------------------------------------------------------------------------
 #  Byte-compiled / optimized / C-extension files
