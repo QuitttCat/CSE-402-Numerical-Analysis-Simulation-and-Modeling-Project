@@ -128,3 +128,15 @@ out/
 # *.npz
 # *.log
 NEW_MOLECULE_PROMPT.md
+
+
+# LaTeX build files
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.toc
+*.synctex.gz
+CSE402_report_acm/*.log
