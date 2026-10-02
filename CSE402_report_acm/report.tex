@@ -1,0 +1,2760 @@
+%% =====================================================================
+%%  Molecular Simulation on Quantum Computing Systems
+%%  CSE 402 -- Numerical Analysis, Simulation and Modeling
+%%  Group 09, Section A -- ACM sigconf template
+%%
+%%  Build:   latexmk -pdf report.tex      (or pdflatex/bibtex/pdflatex x2)
+%%  Tables:  python gen_tables.py         (regenerates tables/*.tex from the
+%%           repository's saved scan files; nothing is typed in by hand)
+%% =====================================================================
+\documentclass[sigconf,screen,nonacm]{acmart}
+
+\usepackage{mathtools}
+\usepackage[version=4]{mhchem}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{adjustbox}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{placeins}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+
+\graphicspath{{figures/}}
+
+% chemical formulae inside headings should not upset the PDF bookmarks
+\pdfstringdefDisableCommands{\def\ce#1{#1}}
+
+% ---------------------------------------------------------------------
+%  Float placement: let figures and tables sit close to the text that
+%  discusses them (a placeins barrier before every section and molecule
+%  subsection keeps them from drifting into the next topic).
+% ---------------------------------------------------------------------
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.7}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\dblfloatpagefraction}{0.7}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{6}
+\setcounter{dbltopnumber}{2}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\dbltextfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\emergencystretch}{2em}
+
+% ---------------------------------------------------------------------
+%  Project banner (course / group / section / supervisor + GitHub link).
+%  Used under the title, at the end of the abstract and in the
+%  "Code and Installation" section.
+% ---------------------------------------------------------------------
+\newcommand{\BannerCourse}{CSE 402: Numerical Analysis, Simulation and Modeling \textbullet{} Group 09 \textbullet{} Section A \textbullet{} Supervisor: Ishrat Jahan}
+\newcommand{\BannerGitHub}{\href{https://github.com/QuitttCat/CSE-402-Numerical-Analysis-Simulation-and-Modeling-Project}{\faGithub\hspace{0.3em}https://github.com/QuitttCat/CSE-402-Numerical-Analysis-Simulation-and-Modeling-Project}}
+\newcommand{\ProjectBanner}{{\centering\small\BannerCourse\par\smallskip\BannerGitHub\par}}
+
+% ---------------------------------------------------------------------
+%  Figure helpers.  Plots are one column wide; the two-panel surface
+%  renders are far too detailed for a column, so they span the page.
+%  \figpair places two column-width figures one after the other.
+% ---------------------------------------------------------------------
+\newcommand{\figone}[3]{%
+  \begin{figure}[!htbp]\centering
+  \includegraphics[width=\columnwidth]{#1}
+  \Description{Plot or render described in the caption.}
+  \caption{#2}\label{fig:#3}
+  \end{figure}}
+
+\newcommand{\figwide}[3]{%
+  \begin{figure*}[!t]\centering
+  \includegraphics[width=0.94\textwidth]{#1}
+  \Description{Plot or render described in the caption.}
+  \caption{#2}\label{fig:#3}
+  \end{figure*}}
+
+\newcommand{\figpair}[6]{\figone{#1}{#2}{#3}\figone{#4}{#5}{#6}}
+
+% ---------------------------------------------------------------------
+%  Code listings (floating, one column wide)
+% ---------------------------------------------------------------------
+\definecolor{lstbg}{gray}{0.96}
+\definecolor{lstkw}{rgb}{0.10,0.25,0.60}
+\definecolor{lstcm}{rgb}{0.30,0.45,0.30}
+\definecolor{lststr}{rgb}{0.60,0.20,0.15}
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\fontsize{6.6}{7.9}\selectfont,
+  keywordstyle=\color{lstkw}\bfseries,
+  commentstyle=\color{lstcm}\itshape,
+  stringstyle=\color{lststr},
+  backgroundcolor=\color{lstbg},
+  numbers=left, numberstyle=\tiny\color{gray}, numbersep=4pt,
+  frame=leftline, framerule=0.5pt, rulecolor=\color{gray},
+  breaklines=true, breakatwhitespace=false,
+  postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space},
+  showstringspaces=false, columns=fullflexible,
+  captionpos=b, xleftmargin=9pt, aboveskip=2pt, belowskip=2pt,
+  float=tbp,
+  literate={--}{{-{}-}}2
+}
+
+\newcommand{\mHa}{\,\text{mHa}}
+\newcommand{\Ha}{\,\text{Ha}}
+\newcommand{\Ang}{\text{\AA}}
+
+% ---------------------------------------------------------------------
+%  Title block
+% ---------------------------------------------------------------------
+\acmConference[CSE 402]{CSE 402 Project Report}{Group 09, Section A}{BUET, Dhaka, Bangladesh}
+\settopmatter{authorsperrow=3}
+
+\begin{document}
+
+\title{Molecular Simulation on Quantum Computing Systems}
+\subtitle{Variational Ground-State Energy Surfaces and Their Reconstruction by Polynomial and Spline Interpolation\\[6pt]{\normalfont\normalsize\BannerCourse}\\[3pt]{\normalfont\small\BannerGitHub}}
+
+\author{Shahraz Hussain Siyam}
+\affiliation{\position{Student ID: 2105023}\department{Department of CSE}\institution{Bangladesh University of Engineering and Technology}\city{Dhaka}\country{Bangladesh}}
+\author{Nabiha Tahseen}
+\affiliation{\position{Student ID: 2105031}\department{Department of CSE}\institution{Bangladesh University of Engineering and Technology}\city{Dhaka}\country{Bangladesh}}
+\author{Debashri Roy}
+\affiliation{\position{Student ID: 2105035}\department{Department of CSE}\institution{Bangladesh University of Engineering and Technology}\city{Dhaka}\country{Bangladesh}}
+\author{Niloy Kumar Mondal}
+\affiliation{\position{Student ID: 2105044}\department{Department of CSE}\institution{Bangladesh University of Engineering and Technology}\city{Dhaka}\country{Bangladesh}}
+\author{Amit Saha}
+\affiliation{\position{Student ID: 2105049}\department{Department of CSE}\institution{Bangladesh University of Engineering and Technology}\city{Dhaka}\country{Bangladesh}}
+
+% ---------------------------------------------------------------------
+%  Abstract (body 150--250 words) + project banner at the end
+% ---------------------------------------------------------------------
+\begin{abstract}
+This report simulates the ground-state potential energy of eleven molecules with the Variational Quantum Eigensolver (VQE) and then asks a numerical-analysis question: given a few expensive samples of a smooth function, how well can it be filled in between them? We ran 23 scans, 692 independent variational optimisations over active spaces of six to ten qubits, and checked every energy against exact diagonalisation of the same active-space Hamiltonian. Fourteen of the 23 scans fall inside the 1.6~mHa chemical-accuracy threshold; the rest miss it because the optimiser ran out of budget on the deepest circuits or the ansatz could not represent the state, not because the variational principle failed. Each scan was reconstructed by piecewise-linear interpolation, a single global polynomial, and cubic or bicubic splines, all scored out of sample: leave-one-out cross-validation in one dimension, a half-grid holdout in two. Splines reduce the error of the linear baseline by a factor of about 2 to 15 on most scans and place equilibrium bond lengths within 0.001--0.09~\AA{} of the reference from grids spaced 0.075--0.25~\AA{} apart, roughly an order of magnitude of resolution for no extra quantum cost. One result ran against expectation: on \ce{LiH} the global polynomial, which textbook theory says should collapse into Runge's phenomenon, beats the cubic spline by a factor of 38. We show why, find the node spacing at which the failure does appear, and use the full campaign to decide which reconstruction method to trust and when.
+\par\medskip
+\ProjectBanner
+\end{abstract}
+
+\ccsdesc[500]{Computing methodologies~Quantum mechanic simulation}
+\ccsdesc[300]{Mathematics of computing~Interpolation}
+\ccsdesc[300]{Applied computing~Chemistry}
+\ccsdesc[100]{Hardware~Quantum computation}
+
+\keywords{Variational quantum eigensolver, potential energy surface, polynomial interpolation, cubic spline, Runge's phenomenon, cross-validation, numerical simulation, quantum chemistry}
+
+\maketitle
+
+% =====================================================================
+\FloatBarrier
+\section{Introduction and Base Paper Review}
+\label{sec:intro}
+
+\subsection{Background and motivation}
+The central quantity in computational chemistry is the ground-state
+electronic energy of a molecule as a function of where its nuclei sit. That
+function, the \emph{potential energy surface} (PES), decides equilibrium
+geometries, reaction barriers and vibrational frequencies. Almost everything
+a chemist wants to predict comes from the shape of this surface, not from any
+single point on it.
+
+Two facts make the PES a clean subject for a numerical-analysis project, and
+this report leans on both.
+
+The first is that computing one point on the surface is a well-posed
+eigenvalue problem. Under the Born--Oppenheimer approximation the nuclei are
+held fixed, and the electronic Hamiltonian becomes a finite Hermitian matrix
+whose smallest eigenvalue is the energy we want. For the small active spaces
+used here, that matrix can be diagonalised exactly, so every approximate
+result in this report can be checked against ground truth, a comparison
+simulation work rarely gets to make.
+
+The second is that each point is expensive, and gets more expensive as the
+system grows. The matrix has dimension $2^{n_q}\times2^{n_q}$ in the qubit
+representation, so exact diagonalisation scales exponentially with the number
+of spin-orbitals kept. The Variational Quantum Eigensolver
+(VQE)~\cite{peruzzo2014,mcclean2016} sidesteps that exponential storage cost
+by replacing diagonalisation with minimisation of a Rayleigh quotient over a
+family of trial states. It is approximate, it is why ``quantum computing for
+chemistry'' is an active research area, and, seen from the outside, it is
+simply an expensive black-box function $\theta \mapsto E(\theta)$ handed to a
+classical optimiser.
+
+That expense is what turns building a PES into an interpolation problem. A
+one-dimensional scan of a bond length at $0.1\Ang$ resolution over a
+$1.5\Ang$ window costs sixteen variational optimisations. A two-dimensional
+surface at the same resolution on both axes costs the square of that. The
+most expensive single scan in this project, the \ce{BeH2} surface, needed
+$110$ optimisations; halving the grid spacing on both axes would have needed
+$440$. Meanwhile, what a chemist actually wants from the surface, the
+location of the minimum, the curvature at the bottom of the well, the height
+of a barrier, is a property of the continuous function, not of the sampled
+points. Interpolation bridges that gap, and how well it bridges it is a
+numerical-analysis question with a measurable answer.
+
+\subsection{Base paper review}
+\label{sec:basepaper}
+
+\paragraph{Citation.}
+The base paper for this project is A.~Peruzzo, J.~McClean, P.~Shadbolt,
+M.-H.~Yung, X.-Q.~Zhou, P.~J.~Love, A.~Aspuru-Guzik and J.~L.~O'Brien,
+``A variational eigenvalue solver on a photonic quantum processor,''
+\emph{Nature Communications} 5, 4213 (2014)~\cite{peruzzo2014}, the paper
+that introduced the Variational Quantum Eigensolver.
+
+\paragraph{Problem addressed.}
+The standard quantum route to molecular ground-state energies, quantum phase
+estimation, needs long, deep, fully coherent circuits, far beyond what
+near-term devices can run. The base paper asks whether the same quantity can
+be obtained with only short quantum circuits, by moving most of the work to a
+classical computer.
+
+\paragraph{Method.}
+The paper splits the calculation into a hybrid loop. The quantum processor
+prepares a parametrised trial state and estimates the expectation value of
+each Pauli term of the qubit Hamiltonian; the classical computer sums the
+terms into an energy and hands it to a classical optimiser (Nelder--Mead in the
+paper), which proposes new parameters. The variational principle guarantees
+that every energy the loop reports is an upper bound on the true ground-state
+energy, so minimising it drives the trial state towards the ground state. Each
+energy evaluation needs only a short state preparation, at the price of many
+repeated measurements.
+
+\paragraph{Demonstration and findings.}
+The algorithm was run on a two-qubit photonic chip to compute the
+ground-state energy of the helium hydride ion \ce{HeH+} in a minimal basis
+over a range of bond lengths. The paper's central claim is that variational
+hybrid algorithms trade circuit depth for repetitions, which makes molecular
+simulation a realistic target for small, noisy quantum hardware. McClean
+\emph{et~al.}~\cite{mcclean2016} later formalised the theory, and Kandala
+\emph{et~al.}~\cite{kandala2017} introduced the hardware-efficient ansatz
+used in this report.
+
+\paragraph{How this work builds on it.}
+We implement the same loop (Algorithm~\ref{alg:vqe}) and rely on the same
+variational bound as a correctness check. We extend the base paper in four
+directions: from one two-qubit molecule to eleven molecules on six to ten
+qubits; from a single bond coordinate to bends, a dihedral twist and five
+two-dimensional surfaces; from a device-specific parametrisation to UCCSD and
+hardware-efficient ansatze driven by classical optimisers, including an exact
+parameter-shift gradient; and, most importantly for this course, from
+sampling a curve point by point to asking how accurately the curve can be
+reconstructed \emph{between} the sampled points. The base paper samples the
+dissociation curve but never asks how to fill it in; that interpolation
+question is the numerical-analysis core of this report.
+
+\paragraph{Related work.}
+Our project plan also surveyed the broader VQE literature. The review of
+Tilly \emph{et~al.}~\cite{tilly2022} covers methods and best practices for the
+algorithm. Two open difficulties it highlights, the choice of a good ansatz
+and optimisation landscapes that flatten into barren
+plateaus~\cite{larocca2024bp} where gradient variance vanishes, motivated
+generative approaches such as the Generative Quantum
+Eigensolver~\cite{nakaji2024gqe}, which trains a GPT-2 style model to propose
+circuits and was demonstrated on \ce{H2}, \ce{LiH}, \ce{BeH2} and \ce{N2}.
+This report does not pursue those directions. It takes the standard VQE as
+given and studies a question all of them leave untouched: what to do with the
+expensive samples once they exist.
+
+\subsection{Core objective}
+
+The core objective of this work is twofold. First, to implement the
+Variational Quantum Eigensolver as a numerical algorithm and verify it, point
+by point, against exact diagonalisation of the same active-space Hamiltonian
+across a broad campaign of molecules and geometric coordinates. Second, to
+treat the resulting potential energy surfaces as a reconstruction problem, a
+smooth function known only at a few expensive samples, and to measure
+strictly out of sample how well piecewise-linear, global polynomial and spline
+interpolation recover it, so as to decide which reconstruction method to
+trust, and when.
+
+\subsection{What this report covers}
+\label{sec:contributions}
+
+This report documents a full simulation campaign and the numerical analysis
+built on top of it.
+
+\textbf{Simulation.} We implement VQE in two forms. A core library
+(\texttt{src/}) is built from scratch on CUDA-Q~\cite{cudaq} and
+PySCF~\cite{pyscf}: a hardware-efficient ansatz, a UCCSD ansatz, seven SciPy
+optimisers and a hand-written gradient-descent routine that computes its
+gradients exactly through the parameter-shift rule~\cite{schuld2019} rather
+than through finite differences. The $23$-scan campaign itself is produced by
+per-molecule drivers that use Qiskit Nature's UCCSD
+ansatz~\cite{qiskit}, an exact statevector estimator and SciPy's SLSQP or
+COBYLA. Section~\ref{sec:theory} develops the theory and
+Section~\ref{sec:impl} the implementation.
+
+\textbf{Campaign.} We run $23$ scans over $11$ molecules, \ce{H2}, \ce{LiH},
+\ce{BeH2}, \ce{H2O}, \ce{NH3}, \ce{N2}, \ce{O2}, \ce{F2}, \ce{H2O2}, \ce{NO2}
+and \ce{N2O}, covering bond stretches, bend angles, a dihedral twist, and
+five two-dimensional surfaces. Table~\ref{tab:campaign} lists all of them.
+Every energy is checked against exact diagonalisation of the same
+active-space Hamiltonian (Table~\ref{tab:vqeacc}).
+
+\textbf{Reconstruction.} We reconstruct every scan with piecewise-linear
+interpolation, a global polynomial, and a cubic or bicubic spline, and score
+each one out of sample, leave-one-out in 1-D, half-grid holdout in 2-D.
+Results are collected in Table~\ref{tab:interp} and discussed per molecule in
+Section~\ref{sec:results}.
+
+\textbf{Geometry recovery.} We use the reconstructions to find equilibrium
+geometries at sub-grid resolution and compare them against experimental and
+model reference values (Table~\ref{tab:geom}).
+
+\textbf{An honest negative result.} On \ce{LiH} the global polynomial does
+not show Runge's phenomenon over the scanned interval, and beats the cubic
+spline by a factor of $38$. We report this, explain why, and find the node
+density at which the expected failure does show up
+(Section~\ref{sec:lih}).
+
+\subsection{What this project is not}
+
+Two things are worth clearing up before the rest of the report. First, none
+of the main results need physical quantum hardware: the quantum circuits are simulated exactly on a classical CPU by a statevector simulator. This is
+a numerical simulation project, and VQE appears here as a numerical
+algorithm, an ansatz, a cost function and an optimiser, not as a piece of
+hardware engineering. A supplementary demonstration that runs the same
+calculation on real IBM Quantum hardware is discussed in
+Section~\ref{sec:ibm}, mainly to show the gap between noiseless simulation
+and present-day devices.
+
+Second, the absolute energies reported here are not meant to be chemically
+predictive. Every calculation uses a minimal STO-3G basis and a small
+complete active space. The energies are internally consistent and exactly
+checkable, but they are not converged to the basis-set limit, and the
+equilibrium geometries we recover deviate from experiment by amounts that
+belong to the \emph{model}, not to the solver. We say explicitly, for every
+number, which reference it is being measured against.
+
+\subsection{How the rest of the report is organised}
+
+Section~\ref{sec:method} is the methodology: the quantum-chemical and
+variational theory behind VQE (Section~\ref{sec:theory}), then the
+interpolation methods and how we validate them, with pseudocode for the main
+algorithms (Section~\ref{sec:numerics}). Section~\ref{sec:impl} covers
+implementation and experiments: the software, with code excerpts
+(Section~\ref{sec:software}), the simulation setup and computational protocol
+(Section~\ref{sec:protocol}), and the parameter choices, datasets and
+benchmarks (Section~\ref{sec:params}). Section~\ref{sec:resdisc} presents the
+results molecule by molecule, with every figure placed next to the discussion
+it belongs to (Section~\ref{sec:results}), then the campaign-wide accuracy and
+reconstruction results (Sections~\ref{sec:accuracy} and~\ref{sec:recon}) and
+the discussion that only makes sense across molecules, including a comparison
+with the base paper (Section~\ref{sec:discussion}).
+Section~\ref{sec:conclusion} gives the key takeaways, the limitations and the
+future work, and Section~\ref{sec:code} explains how to obtain and run the
+code.
+
+% =====================================================================
+\FloatBarrier
+\section{Methodology}
+\label{sec:method}
+
+\subsection{Background: quantum chemistry and the variational method}
+\label{sec:theory}
+\subsubsection{The electronic structure problem}
+
+For a molecule with $M$ nuclei of charge $Z_A$ at positions $\mathbf{R}_A$ and
+$N$ electrons at positions $\mathbf{r}_i$, the non-relativistic Hamiltonian in
+atomic units~\cite{szabo,helgaker} is
+\begin{equation}
+\hat{H} = -\sum_{i=1}^{N}\frac{\nabla_i^2}{2}
+          -\sum_{i=1}^{N}\sum_{A=1}^{M}\frac{Z_A}{|\mathbf{r}_i-\mathbf{R}_A|}
+          +\sum_{i<j}\frac{1}{|\mathbf{r}_i-\mathbf{r}_j|},
+\label{eq:elec-ham}
+\end{equation}
+where nuclear kinetic energy has been dropped and nuclear repulsion enters as
+an additive constant. This is the Born--Oppenheimer approximation: a proton
+is roughly $1836$ times heavier than an electron, so the electrons settle
+into equilibrium essentially instantly at any nuclear configuration, and the
+electronic energy can be computed at a fixed $\{\mathbf{R}_A\}$. The map
+\begin{equation}
+\{\mathbf{R}_A\} \;\longmapsto\; E_0(\{\mathbf{R}_A\})
+\end{equation}
+is the potential energy surface this project samples and reconstructs.
+
+The difficulty sits entirely in the last term of~\eqref{eq:elec-ham}. Drop
+electron--electron repulsion and the problem separates into $N$ independent
+one-electron problems. Keep it, and the exact wavefunction lives in a space
+whose dimension grows combinatorially with the number of electrons and basis
+functions.
+
+\subsubsection{Second quantisation and the active space}
+
+Expanding the wavefunction in a finite one-particle basis
+$\{\phi_p\}_{p=1}^{K}$ (here the minimal STO-3G set) and moving to second
+quantisation turns~\eqref{eq:elec-ham} into
+\begin{equation}
+\hat{H} = \sum_{pq} h_{pq}\, a_p^\dagger a_q
+        + \tfrac{1}{2}\sum_{pqrs} h_{pqrs}\, a_p^\dagger a_q^\dagger a_r a_s
+        + E_{\text{nuc}},
+\label{eq:secondquant}
+\end{equation}
+where $a_p^\dagger,a_p$ create and annihilate an electron in spin-orbital
+$p$, and the one- and two-body integrals $h_{pq}$, $h_{pqrs}$ are computed
+classically by PySCF. The Hilbert space now has dimension $2^{2K}$ before any
+symmetry restriction, still exponential.
+
+The standard remedy, used throughout this work, is the \emph{complete active
+space} (CAS) approximation. Orbitals split into a set held doubly occupied, a
+set held empty, and an active set of $n_{\text{act}}$ orbitals holding
+$n_{\text{el}}$ electrons, where full configuration interaction is carried
+out. We write this as $(n_{\text{el}}\text{e}, n_{\text{act}}\text{o})$. The
+choice trades accuracy for tractability; Table~\ref{tab:campaign} records the
+active space used for every scan, ranging from $(2\text{e},5\text{o})$ for
+\ce{LiH} to $(10\text{e},6\text{o})$ for \ce{F2}.
+
+This is the single most consequential approximation in the report. It is why
+the computed equilibrium geometries differ from experiment by tenths of an
+\AA ngstr\"om in some cases, and it is also why exact diagonalisation stays
+feasible, which is why every variational result here can be checked.
+
+\subsubsection{Fermion-to-qubit mapping}
+
+To write~\eqref{eq:secondquant} in terms of qubits, the fermionic operators
+must be mapped onto Pauli operators in a way that preserves the
+anticommutation relations $\{a_p, a_q^\dagger\} = \delta_{pq}$. The
+Jordan--Wigner transformation~\cite{jordanwigner} does this with
+\begin{equation}
+a_p^\dagger = \Big(\bigotimes_{k<p} Z_k\Big)\otimes \frac{X_p - iY_p}{2},
+\end{equation}
+where the leading string of $Z$ operators enforces antisymmetry under
+exchange. The Bravyi--Kitaev encoding~\cite{bravyikitaev} does the same job
+with $\mathcal{O}(\log K)$ rather than $\mathcal{O}(K)$ operator weight.
+Either way, the result is a qubit Hamiltonian
+\begin{equation}
+\hat{H} = \sum_{j} c_j\, \hat{P}_j,
+\qquad
+\hat{P}_j \in \{I,X,Y,Z\}^{\otimes n_q},
+\label{eq:pauli}
+\end{equation}
+a weighted sum of Pauli strings with real coefficients $c_j$. Every energy
+evaluation in this project is an expectation value of the
+form~\eqref{eq:pauli}, and the qubit counts $n_q$ in Table~\ref{tab:campaign}
+(six, eight or ten) are twice the number of active spatial orbitals minus
+two: the parity mapping used by the experiment drivers removes two qubits by
+exploiting the conserved particle-number parities.
+
+\subsubsection{The variational principle}
+
+The whole VQE algorithm rests on one fact from linear algebra, which a
+numerical-analysis reader already knows as the Rayleigh quotient bound. For
+any normalised state $|\psi\rangle$,
+\begin{equation}
+\boxed{\;\langle\psi|\hat{H}|\psi\rangle \;\geq\; E_0
+= \min\operatorname{spec}(\hat{H}),\;}
+\label{eq:variational}
+\end{equation}
+with equality only if $|\psi\rangle$ is a ground eigenvector. The proof is
+short: expand $|\psi\rangle=\sum_k c_k|\phi_k\rangle$ in the eigenbasis, so
+$\langle\psi|\hat{H}|\psi\rangle=\sum_k |c_k|^2 E_k \geq E_0\sum_k|c_k|^2 =
+E_0$.
+
+Equation~\eqref{eq:variational} turns an eigenvalue problem into a
+minimisation problem, and minimisation is something numerical analysis knows
+how to handle. Given a family of trial states
+$|\psi(\boldsymbol\theta)\rangle$ that we can cheaply prepare and measure,
+\begin{equation}
+E(\boldsymbol\theta)
+= \langle\psi(\boldsymbol\theta)|\hat{H}|\psi(\boldsymbol\theta)\rangle,
+\end{equation}
+minimising $E$ over $\boldsymbol\theta$ gives the best estimate of $E_0$
+available inside that family. Equation~\eqref{eq:variational} also
+guarantees the estimate is an \emph{upper bound}: the optimiser can never
+report an energy below the true ground state, so any energy that comes out
+lower than the exact reference signals a bug, not a discovery. We use this
+one-sided error as a correctness check throughout the report.
+
+\subsubsection{Ansatz design}
+
+The trial-state family is the \emph{ansatz}. Choosing one is the same
+trade-off as choosing a polynomial degree in Section~\ref{sec:numerics}:
+expressive power against optimisation difficulty. We implement two ansatz
+families.
+
+\paragraph{Hardware-efficient ansatz.}
+The hardware-efficient ansatz~\cite{kandala2017} prepares the Hartree--Fock
+reference, then applies $d$ layers of an independent $R_y$ rotation on every
+qubit followed by a CNOT ladder:
+\begin{equation}
+|\psi(\boldsymbol\theta)\rangle = \prod_{\ell=1}^{d}
+\Big[\, U_{\text{CNOT}} \prod_{q=1}^{n_q} R_y(\theta_{\ell q}) \Big]
+\,|\psi_{\text{HF}}\rangle .
+\end{equation}
+The parameter count is exactly $p = n_q d$. The rotations give it flexibility;
+the entangling ladder gives it the correlation a Hartree--Fock product state
+cannot represent on its own. This family knows nothing about the chemistry
+it is fitting: it is cheap and shallow, and it comes with no guarantee of
+containing a good approximation to the true ground state.
+
+\paragraph{UCCSD ansatz.}
+The unitary coupled-cluster singles-and-doubles ansatz is chemically
+motivated:
+\begin{equation}
+|\psi(\boldsymbol\theta)\rangle
+= e^{\hat{T}(\boldsymbol\theta)-\hat{T}^\dagger(\boldsymbol\theta)}
+  |\psi_{\text{HF}}\rangle,
+\qquad
+\hat{T} = \hat{T}_1 + \hat{T}_2,
+\end{equation}
+where $\hat{T}_1$ and $\hat{T}_2$ generate single and double excitations out
+of the Hartree--Fock determinant. Its parameter count is not a free choice:
+it is fixed by the number of symmetry-allowed excitations, which is why the
+$p$ column of Table~\ref{tab:campaign} ranges so widely, from $20$ parameters
+for \ce{NO2} in a $(5\text{e},4\text{o})$ space to $117$ for \ce{N2} in
+$(6\text{e},6\text{o})$. UCCSD is far more expressive than the
+hardware-efficient ansatz, but its circuits are deeper and its optimisation
+landscape harder, which shows up directly in the accuracy results of
+Section~\ref{sec:protocol}.
+
+\subsubsection{Classical optimisation and the parameter-shift rule}
+
+From the optimiser's point of view, $E(\boldsymbol\theta)$ is just an
+expensive black-box scalar function. The codebase wires up eight optimisers
+in total. Three are gradient-free methods from \texttt{scipy.optimize}~\cite{scipy},
+COBYLA~\cite{powell1994}, Nelder--Mead and Powell; four more are gradient-based or
+quasi-Newton methods from the same library, BFGS, L-BFGS-B, CG and SLSQP,
+which by default estimate their gradients by finite differences. Which one
+was used for each scan is recorded in Table~\ref{tab:campaign}.
+
+The eighth optimiser is a gradient-descent routine we wrote from scratch, for
+a reason specific to this course: the gradient of $E$ can be computed
+\emph{exactly}, with no finite-difference truncation error. Because each
+$\theta_i$ enters the circuit only through a rotation
+$\exp(-i\theta_i \hat{P}/2)$ with $\hat{P}^2 = I$, we have the \emph{parameter-shift rule}~\cite{schuld2019}
+\begin{equation}
+\frac{\partial E}{\partial \theta_i}
+= \frac{1}{2}\Big[
+  E\big(\boldsymbol\theta + \tfrac{\pi}{2}\mathbf{e}_i\big)
+- E\big(\boldsymbol\theta - \tfrac{\pi}{2}\mathbf{e}_i\big)\Big].
+\label{eq:paramshift}
+\end{equation}
+This looks like a central difference, but the step is a fixed, macroscopic
+$\pi/2$, and the result is \emph{exact}, not $\mathcal{O}(h^2)$. There is no
+truncation error to trade off against floating-point cancellation, so the
+usual optimal-step-size analysis simply does not apply. It is a rare case in
+which a numerical derivative carries no discretisation error at all. Its
+cost is $2p$ energy evaluations per gradient, which is why COBYLA remains the
+practical default for production scans.
+
+Putting the last three subsections together gives the full VQE loop that
+every scan in this report runs at every geometry, summarised in
+Algorithm~\ref{alg:vqe}. Steps 3 and 4 are the only quantum part; everything
+else is classical bookkeeping around a scalar minimisation.
+
+\begin{algorithm}[!ht]
+\caption{Variational Quantum Eigensolver at one fixed geometry}
+\label{alg:vqe}
+\begin{algorithmic}[1]\small
+\Require qubit Hamiltonian $\hat H=\sum_j c_j\hat P_j$, ansatz
+  $|\psi(\boldsymbol\theta)\rangle$ with $p$ parameters, optimiser, tolerance
+  $\varepsilon$
+\Ensure estimate $E^\star \geq E_0$ of the ground-state energy
+\State $\boldsymbol\theta \gets$ initial guess (Hartree--Fock reference, all
+  rotation angles zero)
+\Repeat
+  \State prepare $|\psi(\boldsymbol\theta)\rangle$ on the (simulated) circuit
+  \State measure $E(\boldsymbol\theta) = \sum_j c_j
+    \langle\psi(\boldsymbol\theta)|\hat P_j|\psi(\boldsymbol\theta)\rangle$
+  \If{optimiser needs a gradient}
+    \For{$i = 1, \dots, p$}
+      \State $g_i \gets \tfrac12\big[E(\boldsymbol\theta+\tfrac{\pi}{2}
+        \mathbf e_i) - E(\boldsymbol\theta-\tfrac{\pi}{2}\mathbf e_i)\big]$
+        \Comment{parameter-shift rule, exact}
+    \EndFor
+  \EndIf
+  \State $\boldsymbol\theta \gets$ optimiser step using $E(\boldsymbol\theta)$
+    (and $\mathbf g$, if used)
+\Until{$|E(\boldsymbol\theta) - E_{\text{prev}}| < \varepsilon$ or the
+  evaluation budget is spent}
+\State \Return $E^\star \gets E(\boldsymbol\theta)$
+\end{algorithmic}
+\end{algorithm}
+
+A full scan repeats Algorithm~\ref{alg:vqe} once per sampled geometry,
+building up exactly the small, expensive, unevenly reliable data set that
+Section~\ref{sec:numerics} then has to reconstruct.
+
+Optimiser choice interacts with circuit depth in a way that shows up
+throughout the campaign. \texttt{NEW\_MOLECULE\_PROMPT.md}, the project's own
+notes for extending the pipeline to a new molecule, records a concrete
+comparison on \ce{O2}'s hardest geometry: tripling COBYLA's evaluation budget
+improved the energy by $0.6\mHa$ ($1.7\%$), while warm-starting the optimiser
+from the previous geometry's converged parameters improved it by $4.0\mHa$,
+roughly \emph{seven times} more, for no extra cost at all. More budget helps
+a stuck optimiser a little; a better starting point helps it a lot. Both
+tools appear in the codebase, and Section~\ref{sec:discussion} returns to
+this trade-off when it explains which scans do and do not reach chemical
+accuracy.
+
+\subsubsection{The reference calculations}
+
+Three energies are recorded at every geometry, and keeping them apart matters
+for reading every table in this report.
+
+\begin{itemize}[leftmargin=1.5em]
+\item $E_{\text{HF}}$, the Hartree--Fock mean-field energy. Each electron
+      moves in the averaged field of the others, and correlation is absent
+      entirely. This is the starting point the variational calculation is
+      meant to improve on.
+\item $E_{\text{VQE}}$, the variational result: the quantity under test.
+\item $E_{\text{exact}}$, exact diagonalisation of the identical active-space
+      Hamiltonian, computed with \texttt{numpy.linalg.eigvalsh}. This is
+      ground truth for the model, not for the molecule.
+\end{itemize}
+
+Two error measures follow:
+\begin{align}
+\delta &= E_{\text{VQE}} - E_{\text{exact}}
+   && \text{(variational error, $\geq 0$)},\\
+E_{\text{corr}} &= E_{\text{HF}} - E_{\text{exact}}
+   && \text{(correlation energy)} .
+\end{align}
+$E_{\text{corr}}$ is what the whole exercise is trying to recover; $\delta$
+is how much of it VQE missed. A run is only doing useful work when $\delta
+\ll E_{\text{corr}}$, and Table~\ref{tab:vqeacc} reports both side by side so
+that ratio can be read off directly. The conventional target is
+\emph{chemical accuracy}, $\delta < 1.6\mHa$
+($1\,\text{kcal}\,\text{mol}^{-1}$), the threshold below which errors in
+predicted reaction rates become tolerable.
+
+\subsection{Numerical methods for surface reconstruction}
+\label{sec:numerics}
+Once we have $n$ expensive samples $\{(x_i, y_i)\}_{i=1}^{n}$ of a smooth
+function, $y_i$ an energy and $x_i$ a geometric coordinate, the rest of the
+project is a classical reconstruction problem: fill in the function between
+the samples. This section covers the three methods we use and, just as
+important, how we grade them.
+
+\subsubsection{The piecewise-linear baseline}
+
+Every raw scan plot in this project joins neighbouring points with straight
+lines. That default is itself an interpolation scheme, and the crudest one
+available:
+\begin{equation}
+L(x) = y_i + \frac{y_{i+1}-y_i}{x_{i+1}-x_i}(x - x_i),
+\quad x \in [x_i, x_{i+1}].
+\end{equation}
+Its weaknesses matter because they motivate everything that follows. $L$ is
+continuous but not differentiable at the nodes; its second derivative is
+zero on every interval and undefined at every node, so it carries no
+curvature information; and the minimum it implies is always exactly one of
+the sampled points. A piecewise-linear reconstruction can never locate an
+equilibrium geometry more finely than the grid spacing, which for these scans
+is $0.1$--$0.25\Ang$, one to two orders of magnitude coarser than the
+precision chemists usually quote. For equally spaced nodes with spacing $h$,
+the classical bound is
+\begin{equation}
+\|f - L\|_\infty \leq \frac{h^2}{8}\,\|f''\|_\infty ,
+\label{eq:linbound}
+\end{equation}
+so halving the grid quarters the error, but doubles a cost that is already
+quadratic on a surface. That is exactly the wrong direction, and it is why a
+better interpolant is worth having. The \emph{Linear} columns in
+Table~\ref{tab:interp} report this baseline throughout.
+
+\subsubsection{Global polynomial interpolation}
+
+Given $n$ distinct nodes, exactly one polynomial of degree at most $n-1$
+passes through all of them~\cite{burden,trefethen}. In Lagrange form,
+\begin{equation}
+P_{n-1}(x) = \sum_{i=1}^{n} y_i \ell_i(x),
+\qquad
+\ell_i(x) = \prod_{j\neq i}\frac{x-x_j}{x_i-x_j}.
+\label{eq:lagrange}
+\end{equation}
+On paper this looks like the ideal answer: one smooth closed-form curve,
+infinitely differentiable, exact at every node, with no piecewise
+bookkeeping. The classical error theorem gives, for $f \in C^n$,
+\begin{equation}
+f(x) - P_{n-1}(x) = \frac{f^{(n)}(\xi)}{n!}\prod_{i=1}^{n}(x - x_i)
+\label{eq:polyerror}
+\end{equation}
+for some $\xi$ in the interval. The $1/n!$ factor is reassuring; the factors
+$f^{(n)}(\xi)$ and the node polynomial are not. For equally spaced nodes the
+node polynomial grows sharply near the ends of the interval, and $f^{(n)}$
+can grow faster than $n!$ shrinks.
+
+\paragraph{Runge's phenomenon.}
+The resulting failure is Runge's phenomenon~\cite{runge1901}: on equally
+spaced nodes, a high-degree interpolant can oscillate violently between
+nodes, and the oscillation gets worse as more nodes are added. Runge's own
+example, $f(x)=1/(1+25x^2)$ on $[-1,1]$, diverges in the supremum norm as
+$n\to\infty$.
+
+Two points matter for reading our results correctly, and Section~\ref{sec:lih}
+comes back to both of them.
+
+First, a zero fit residual is not evidence of accuracy. The interpolant
+passes through every node by construction, so the in-sample residual is zero
+to machine precision, our runs record maxima as low as $1.4\times
+10^{-11}\mHa$, while the interpolant may be doing anything at all between
+nodes. Any honest check has to be out of sample.
+
+Second, Runge's phenomenon is a property of the function being interpolated,
+not of the degree by itself. It shows up when the function has a
+singularity in the complex plane close to the real interval; Runge's example
+has poles at $\pm i/5$. A function that stays analytic over a wide
+neighbourhood of the interval is approximated very well by high-degree
+polynomials. Whether a given PES falls into the good case or the bad case is
+an empirical question, and we answer it separately for each scan.
+
+\paragraph{Degree sweeps.}
+Because the best degree is not known in advance, each 1-D scan is fitted at
+every degree from $1$ up to $n-2$ and scored out of sample. The resulting
+curves, the \texttt{*\_degree\_sweep.png} figures throughout
+Section~\ref{sec:results}, tabulated in the \texttt{tab:deg:*} tables, show
+error falling as the model gains the flexibility to follow the function,
+then, in the Runge regime, rising again as it gains the flexibility to
+oscillate. The minimum of that curve is the degree we actually use.
+
+\subsubsection{Cubic spline interpolation}
+
+The spline resolves the same tension differently: instead of one
+high-degree polynomial over the whole interval, fit a separate cubic on each
+subinterval and force the pieces to join smoothly. On $[x_i,x_{i+1}]$,
+\begin{equation}
+S_i(x) = a_i + b_i(x-x_i) + c_i(x-x_i)^2 + d_i(x-x_i)^3,
+\end{equation}
+subject to the interpolation conditions $S_i(x_i)=y_i$,
+$S_i(x_{i+1})=y_{i+1}$ and, at every interior node, the continuity conditions
+\begin{equation}
+S_{i-1}'(x_i) = S_i'(x_i),
+\qquad
+S_{i-1}''(x_i) = S_i''(x_i),
+\end{equation}
+\cite{deboor}. These constraints fix all coefficients up to two boundary
+conditions (here the \texttt{not-a-knot} condition, SciPy's default). The
+resulting linear system is tridiagonal and diagonally dominant, so it solves
+in $\mathcal{O}(n)$ operations and is unconditionally stable.
+
+The structural difference from~\eqref{eq:lagrange} that matters is
+\emph{locality}: each cubic piece is determined mostly by nearby data, so a
+perturbation at one node decays geometrically along the spline rather than
+propagating globally. There is no mechanism for a Runge-style blow-up, and
+the classical bound
+\begin{equation}
+\|f - S\|_\infty \leq \frac{5}{384}\,h^4\,\|f^{(4)}\|_\infty
+\label{eq:splinebound}
+\end{equation}
+is $\mathcal{O}(h^4)$ rather than the $\mathcal{O}(h^2)$
+of~\eqref{eq:linbound}: halving the grid cuts the error by sixteen. Because
+the spline is $C^2$, it also has a meaningful second derivative, which is
+what makes estimating vibrational frequencies and barrier curvature possible
+at all.
+
+\subsubsection{Two-dimensional reconstruction}
+
+The five surface scans need 2-D versions of all three methods.
+
+\paragraph{Bilinear} The straight-line baseline generalises to bilinear
+interpolation on a rectangular grid: interpolate along one axis, then along
+the other. It inherits every weakness of its 1-D counterpart.
+
+\paragraph{Bicubic spline} The tensor-product cubic spline
+\begin{equation}
+S(x,y) = \sum_{i=0}^{3}\sum_{j=0}^{3} c_{ij}\,(x-x_k)^i (y-y_l)^j
+\end{equation}
+is fitted on the rectangular grid, cubic in each direction, with SciPy's
+\texttt{RectBivariateSpline}. The spline order on each axis drops
+automatically when that axis has too few points to support a cubic, a real
+constraint on the $10\times5$ \ce{H2O2} grid.
+
+\paragraph{Total-degree polynomial} The 2-D analogue of the polynomial fits
+\begin{equation}
+P(x,y) = \sum_{i+j\leq d} c_{ij}\, x^i y^j,
+\end{equation}
+which has $\binom{d+2}{2}$ coefficients. Unlike the 1-D case this is
+generally a \emph{least-squares} fit rather than an exact interpolant,
+because a rectangular grid of $N$ points does not in general admit an exact
+total-degree interpolant. The in-sample residual is therefore nonzero, and we
+report it alongside the out-of-sample error, a distinction that turns out to
+matter for \ce{N2O} and \ce{NO2}.
+
+\subsubsection{Validation methodology}
+\label{sec:holdout}
+
+In-sample residuals tell us nothing about an interpolant, so every
+reconstruction error in this report is measured out of sample.
+
+\paragraph{Leave-one-out cross-validation (1-D).}
+For each interior node $i$, we rebuild the interpolant on the remaining
+$n-1$ points and evaluate it at the withheld $x_i$:
+\begin{equation}
+e_i = \mathcal{I}_{\setminus i}(x_i) - y_i .
+\end{equation}
+Algorithm~\ref{alg:loo} states this precisely. Endpoints are excluded:
+removing an endpoint turns interpolation into extrapolation, a different and
+harder question. Nodes where the remaining data cannot support the requested
+degree are excluded too and marked \texttt{n/a}. This is why the fully
+interpolating degree $n-1$ often cannot be scored at all, and why the tables
+report a \emph{best} degree from the sweep instead.
+
+\begin{algorithm}[!ht]
+\caption{Leave-one-out cross-validation at the interior nodes}
+\label{alg:loo}
+\begin{algorithmic}[1]\small
+\Require nodes $x_1,\dots,x_n$, values $y_1,\dots,y_n$, polynomial degree $d$
+\Ensure error $e_i$ at every interior node $i=2,\dots,n-1$
+\For{$i = 2, \dots, n-1$}
+  \State $X \gets \{x_1,\dots,x_n\} \setminus \{x_i\}$,\quad
+         $Y \gets \{y_1,\dots,y_n\} \setminus \{y_i\}$
+  \If{$|X| \geq d+1$}
+    \State fit degree-$d$ polynomial $P$ to $(X,Y)$
+    \State $e_i^{\text{poly}} \gets P(x_i) - y_i$
+  \Else
+    \State $e_i^{\text{poly}} \gets$ \texttt{n/a}
+  \EndIf
+  \State $e_i^{\text{linear}} \gets \mathrm{linear\_interp}(X,Y,x_i) - y_i$
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Half-grid holdout (2-D).}
+Leave-one-out does not work on a grid interpolant: remove one cell and the
+grid stops being rectangular, so \texttt{RectBivariateSpline} cannot be built
+on what remains. Instead, we keep every other value on each axis, which keeps
+the subgrid rectangular while withholding about three quarters of the
+points. The interpolant is built on the coarse subgrid and scored on
+everything held out, as in Algorithm~\ref{alg:holdout}.
+
+\begin{algorithm}[!ht]
+\caption{Half-grid holdout for a 2-D surface}
+\label{alg:holdout}
+\begin{algorithmic}[1]\small
+\Require full grid $Z[i,j]$ over axes $x_1,\dots,x_m$ and $y_1,\dots,y_k$
+\Ensure error at every held-out grid point
+\State $B \gets \{1,3,5,\dots\}$, \quad $A \gets \{1,3,5,\dots\}$
+  \Comment{every other index on each axis}
+\State build coarse grid from $x[B]$, $y[A]$, $Z[B,A]$
+\State fit bicubic spline $S$ and bilinear interpolant $\ell$ on the coarse
+  grid
+\For{each $(i,j)$ \textbf{not} in $B\times A$}
+  \State $e^{\text{spline}}_{ij} \gets S(x_i,y_j) - Z[i,j]$
+  \State $e^{\text{linear}}_{ij} \gets \ell(x_i,y_j) - Z[i,j]$
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+This holdout answers the question that actually matters for an $N^2$-cost
+campaign: \emph{if we had run only half the grid on each axis, at a quarter
+of the quantum cost, how much would we have lost?} A good answer is what
+licenses coarse grids on molecules too expensive to sample densely, and it
+is the single most practically useful measurement in this report.
+
+\paragraph{Error metrics.}
+All errors are reported in milli-Hartree over the withheld set
+$\mathcal{S}$:
+\begin{align}
+\text{max} &= \max_{i\in\mathcal{S}} |e_i| \times 10^3, \\
+\text{RMS} &= \Big(\tfrac{1}{|\mathcal{S}|}\textstyle\sum_{i\in\mathcal{S}} e_i^2\Big)^{1/2}\times 10^3, \\
+\text{MAE} &= \tfrac{1}{|\mathcal{S}|}\textstyle\sum_{i\in\mathcal{S}} |e_i| \times 10^3 .
+\end{align}
+We rank by RMS because it penalises the isolated large excursions typical of
+polynomial failure, which MAE would water down.
+
+\subsubsection{Locating the minimum}
+
+We extract the equilibrium geometry from a reconstruction by dense sampling
+to bracket the minimum, then a bounded scalar minimiser. The search is kept
+inside the data range on purpose: outside it, a high-degree polynomial
+diverges quickly, and any minimum found there would just be an artefact of
+extrapolation. We also count the number of interior minima of the fitted
+polynomial, since a physically sensible curve over these intervals should
+have exactly one; a count above one is direct evidence of spurious
+oscillation. Results are in Table~\ref{tab:geom}.
+
+% =====================================================================
+\FloatBarrier
+\section{Implementation and Experiments}
+\label{sec:impl}
+
+\subsection{Software architecture}
+\label{sec:software}
+
+The codebase is roughly $24{,}400$ lines of Python in three layers: a
+molecular-modelling and VQE core, a per-molecule experiment layer, and a
+numerical post-processing layer. This section covers the design decisions
+that affect the results we report.
+
+\subsubsection{Layer 1: core (\texttt{src/})}
+
+\texttt{molecule.py} (1887 lines) wraps NVIDIA CUDA-Q Solvers'
+\texttt{create\_molecule}~\cite{cudaq}. It runs the classical
+pre-computation, Hartree--Fock, MP2, CASCI, CASSCF, CCSD and FCI through
+PySCF~\cite{pyscf}, and exposes the qubit Hamiltonian together with
+energies, one- and two-body integrals, qubit counts, the Pauli decomposition,
+an exact-diagonalisation reference, the Hartree--Fock reference state and
+UCCSD operator pools. It also renders molecules three different ways: through
+py3Dmol, through Plotly, and through a dependency-free 3Dmol.js HTML page
+that needs nothing but a browser. A \texttt{visualize()} helper picks a
+backend automatically, py3Dmol inside a notebook, Plotly otherwise, or a
+standalone HTML file if neither is available, and these are the renderings
+shown alongside the energy curves in the live scan windows. The four
+generated files in \texttt{out/} (\texttt{caffeine\_ball\_and\_stick.html},
+\texttt{benzene\_spacefill.html}, \texttt{h2o\_ball\_and\_stick.html} and
+\texttt{nh3\_plotly.html}) are checked-in examples of exactly this: two
+standalone 3Dmol.js pages, one HTML export from py3Dmol, and one Plotly
+export, produced by \texttt{examples/molecule\_demo.py}.
+
+\texttt{vqe.py} (740 lines) implements the algorithm of
+Section~\ref{sec:theory}, including both ansatze, all eight optimisers, and
+the parameter-shift gradient. Listing~\ref{lst:hea} shows the
+hardware-efficient ansatz: the Hartree--Fock reference is prepared by
+flipping the first $n_{\text{el}}$ qubits, after which each layer applies one
+independent $R_y$ rotation per qubit and a nearest-neighbour CNOT ladder.
+
+\begin{lstlisting}[caption={Hardware-efficient ansatz. The parameter count is
+exactly \texttt{n\_qubits * depth}; increasing \texttt{depth} enlarges the
+trial-state family at the cost of a harder optimisation, the same
+flexibility-versus-conditioning trade-off as raising a polynomial degree.},
+label={lst:hea}]
+def build_hardware_efficient_ansatz(
+        n_qubits, n_electrons, depth=2):
+    n_params = n_qubits * depth
+
+    @cudaq.kernel
+    def kernel(thetas: list[float]):
+        qubits = cudaq.qvector(n_qubits)
+        # (a) Hartree-Fock reference
+        for i in range(n_electrons):
+            x(qubits[i])
+        # (b) `depth` layers of rotations + entanglers
+        idx = 0
+        for _layer in range(depth):
+            for q in range(n_qubits):
+                ry(thetas[idx], qubits[q])
+                idx += 1
+            for q in range(n_qubits - 1):
+                x.ctrl(qubits[q], qubits[q + 1])
+
+    return kernel, n_params
+\end{lstlisting}
+
+Listing~\ref{lst:psr} shows the hand-written optimiser implementing the
+parameter-shift rule of~\eqref{eq:paramshift} and Algorithm~\ref{alg:vqe}. We
+kept it in the codebase on purpose, so the gradient computation is visible
+rather than hidden inside a library call.
+
+\begin{lstlisting}[caption={Gradient descent with parameter-shift gradients.
+The inner loop costs $2p$ energy evaluations per gradient, which is why
+COBYLA is the practical default for production scans.},
+label={lst:psr}]
+theta = np.array(theta0, dtype=float)
+p = len(theta)
+prev_energy = cost(theta)
+for k in range(max_iterations):
+    grad = np.empty(p)
+    for i in range(p):
+        shift_vec = np.zeros(p)
+        shift_vec[i] = shift          # pi/2, exact
+        grad[i] = 0.5 * (cost(theta + shift_vec)
+                         - cost(theta - shift_vec))
+    theta = theta - learning_rate * grad
+    energy = cost(theta)
+    if abs(prev_energy - energy) < tol:
+        prev_energy = energy
+        break
+    prev_energy = energy
+\end{lstlisting}
+
+Two short scripts under \texttt{examples/} exercise this layer end to end
+without touching any single molecule's experiment folder:
+\texttt{molecule\_demo.py} builds caffeine, benzene, water and ammonia and
+renders each one through all three visualisation backends, and
+\texttt{vqe\_demo.py} runs \ce{H2} three ways back to back, UCCSD with
+COBYLA, UCCSD with the hand-written gradient descent, and the
+hardware-efficient ansatz with COBYLA, plotting the live loss curves and
+printing a side-by-side comparison. They are the fastest way to see every
+ansatz, optimiser and visualisation backend work without running a full
+molecular scan.
+
+One platform note affects reproducibility: \texttt{cudaq-solvers} is
+declared in \texttt{requirements.txt} as a Linux/WSL-only dependency
+(\texttt{sys\_platform != "win32"}), so the \texttt{src/} core and the demo
+scripts need WSL or a Linux machine. The campaign drivers use Qiskit and PySCF
+instead (Section~\ref{sec:params}) and do not depend on it.
+
+\subsubsection{Layer 2: experiments (\texttt{experiment/})}
+
+Each molecule has a directory with a \texttt{*\_ground\_state\_%
+estimation.py} driver. A run sweeps a geometric coordinate, solves the
+variational problem at every point, and plots the curve live next to a
+rendering of the deforming molecule. When the sweep finishes, the window
+switches to \emph{review mode}: arrow keys or a slider walk back and forth
+along the completed curve while the molecular rendering redraws to match the
+selected geometry.
+
+\paragraph{The chemistry engine of the drivers.}
+Every driver follows the same recipe. PySCF builds the Hamiltonian for the
+geometry, restricted to a complete active space by Qiskit Nature's
+\texttt{ActiveSpaceTransformer} where the full problem is too large. The parity
+mapper, with two-qubit reduction, maps it onto qubits. A UCCSD circuit built on
+the Hartree--Fock reference state is transpiled once, outside the optimiser
+loop, and its energy is evaluated by Qiskit's exact
+\texttt{StatevectorEstimator}, with the nuclear-repulsion and inactive-orbital
+constants added back. SciPy's \texttt{minimize} then drives the parameters,
+warm-started from the previous geometry. The \texttt{src/} core of
+Layer~1 implements the same algorithm on CUDA-Q instead and is exercised by the
+demo scripts.
+
+\paragraph{Persistence and the \texttt{scan\_io} contract.}
+VQE points are expensive: a fraction of a second each for \ce{H2}, but two to
+four minutes each for the larger active spaces, so a single \ce{H2O} stretch
+scan runs for roughly forty minutes and the \ce{BeH2} surface considerably
+longer. No result should ever be paid for twice. Every completed scan
+therefore saves itself automatically to two files:
+
+\begin{itemize}[leftmargin=1.5em]
+\item \texttt{*\_scan.json}, energies plus full metadata (coordinate, fixed
+      values, active space, optimiser, range). This is what \texttt{--load}
+      reads, and what every table in this report was generated from.
+\item \texttt{*\_scan.csv}, the same energies as a flat table, for
+      spreadsheets and external plotting.
+\end{itemize}
+
+The format is shared across all molecules through
+\texttt{experiment/}\allowbreak\texttt{scan\_io.py} (140 lines), so the drivers cannot drift into
+writing files each other cannot read. Each file records a
+\texttt{format\_version} and is refused outright on a mismatch instead of
+half-loading and failing confusingly later, a small decision that saves real
+time on a project with several people touching the same code. Reloading a
+saved scan re-enters the interactive review window in seconds, with no
+chemistry re-executed.
+
+\paragraph{Animating a surface.}
+Three scripts, \texttt{beh2\_surface\_gif.py}, \texttt{h2o2\_surface\_gif.py}
+and \texttt{h2o2\_twist\_gif.py}, turn a saved scan into an animated GIF
+showing the surface rising out of the grid point by point (the animation
+lives in \texttt{assets/}). The three \texttt{*\_anim\_still.png} figures in
+this report, marked as animation frames wherever they appear, are single
+frames pulled from those GIFs, since a printed page cannot show motion.
+
+\paragraph{Extending the pipeline.}
+\texttt{NEW\_MOLECULE\_PROMPT.md} is the project's internal playbook for
+adding a new molecule: how to decide whether a coordinate needs a curve or a
+surface, which code patterns to reuse (the \texttt{ParityMapper}, transpiling
+once instead of per point, warm-starting from the previous geometry, a
+serpentine traversal order for surface grids), and a list of concrete traps
+found the hard way, among them an open-shell molecule silently defaulting to
+a restricted reference, an active space too small to keep the energy curve
+monotonic, and the cost of SLSQP's finite-difference gradient scaling with
+the number of parameters. It functioned as the project's shared debugging
+notebook as much as a template for new code.
+
+\subsubsection{Layer 3: numerical post-processing}
+
+Each molecule additionally has \texttt{*\_polynomial/} and \texttt{*\_spline/}
+directories. These run no chemistry at all: they load a saved scan and do
+pure numerical analysis on it, so they finish in seconds and can be re-run
+freely. Listing~\ref{lst:loo} shows the leave-one-out driver behind
+Algorithm~\ref{alg:loo}, the single most important measurement in the
+post-processing layer.
+
+\begin{lstlisting}[caption={Leave-one-out cross-validation at the interior
+nodes. Endpoints return \texttt{NaN} because withholding one turns the
+problem into extrapolation; nodes where the remaining data cannot support the
+requested degree are excluded the same way.},
+label={lst:loo}]
+def leave_one_out(x, y, degree):
+    n = len(x)
+    poly_err   = np.full(n, np.nan)
+    linear_err = np.full(n, np.nan)
+
+    for i in range(1, n - 1):
+        keep = np.ones(n, dtype=bool)
+        keep[i] = False
+        xk, yk = x[keep], y[keep]
+        # fitting degree d needs at least d+1 points
+        if len(xk) >= degree + 1:
+            poly_err[i] = float(
+                Polynomial.fit(xk, yk, degree)(x[i])) - y[i]
+        linear_err[i] = float(np.interp(x[i], xk, yk)) - y[i]
+
+    return {"polynomial": poly_err, "linear": linear_err}
+\end{lstlisting}
+
+Listing~\ref{lst:holdout} shows the 2-D half-grid holdout of
+Algorithm~\ref{alg:holdout}, including the automatic spline-order reduction
+needed when a coarse axis has fewer than four points.
+
+\begin{lstlisting}[caption={Half-grid holdout for surfaces. Taking every
+other value on each axis keeps the subgrid rectangular, which leave-one-out
+cannot do, while withholding roughly three quarters of the points.},
+label={lst:holdout}]
+bi = np.arange(0, len(bond), 2)
+aj = np.arange(0, len(angle), 2)
+coarse_bond, coarse_angle = bond[bi], angle[aj]
+coarse_Z = Z[np.ix_(bi, aj)]
+
+# spline order must stay below the number of points per axis
+kx = min(3, len(coarse_bond)  - 1)
+ky = min(3, len(coarse_angle) - 1)
+spline = RectBivariateSpline(coarse_bond, coarse_angle,
+                             coarse_Z, kx=kx, ky=ky)
+
+held_out = np.ones_like(Z, dtype=bool)
+held_out[np.ix_(bi, aj)] = False
+for i in range(len(bond)):
+    for j in range(len(angle)):
+        if not held_out[i, j] or not np.isfinite(Z[i, j]):
+            continue
+        spline_err[i, j] = float(
+            spline(bond[i], angle[j])[0, 0]) - Z[i, j]
+        linear_err[i, j] = _bilinear(
+            coarse_bond, coarse_angle, coarse_Z,
+            bond[i], angle[j]) - Z[i, j]
+\end{lstlisting}
+
+\subsubsection{Reproducibility}
+
+Because every scan is saved with its metadata, every number and every figure
+in this report can be regenerated without re-running any quantum simulation.
+The tables in this document were generated programmatically from the stored
+JSON files rather than typed in by hand, which rules out an entire class of
+transcription error. Section~\ref{sec:repro} lists the commands.
+
+\subsection{Simulation setup and computational protocol}
+\label{sec:protocol}
+All calculations use the minimal STO-3G basis with an active space chosen
+per molecule. Geometries are built analytically from the scanned internal
+coordinates, with every other coordinate held at the fixed value recorded in
+the scan metadata. For each geometry the driver builds the active-space
+Hamiltonian with PySCF, maps it to qubits, starts the ansatz parameters at
+the Hartree--Fock reference, minimises the energy with the recorded
+optimiser, and stores $E_{\text{HF}}$, $E_{\text{VQE}}$, $E_{\text{exact}}$,
+the qubit count, the parameter count, the converged parameter vector, and,
+where the optimiser reports it, the number of energy evaluations used.
+
+Table~\ref{tab:campaign} is the full inventory: $23$ scans over $11$
+molecules, $692$ variational optimisations in total. Qubit counts range from
+six to ten, and ansatz parameter counts from $20$ to $117$.
+Table~\ref{tab:surfaces} gives the detail on the five two-dimensional grids.
+
+\input{tables/tab_campaign}
+\input{tables/tab_surfaces}
+
+\subsection{Parameter choices, datasets and benchmarks}
+\label{sec:params}
+
+\paragraph{Chemistry model.}
+Every calculation uses the minimal STO-3G basis. PySCF supplies the orbitals,
+from restricted Hartree--Fock for the closed-shell molecules and restricted
+open-shell Hartree--Fock for the open-shell \ce{O2} and \ce{NO2}. An active
+space $(n_{\text{el}}\text{e},n_{\text{act}}\text{o})$ chosen per molecule,
+from $(2\text{e},5\text{o})$ for \ce{LiH} to $(10\text{e},6\text{o})$ for
+\ce{F2}, keeps the problem at six to ten qubits (Table~\ref{tab:campaign}).
+Where a bond breaks, the larger active space is used: our own tests showed
+that $(4\text{e},4\text{o})$ is too small to describe a breaking bond, and
+yields a curve that dips back down past its minimum instead of rising towards
+dissociation. This is why the \ce{N2O} stretches use $(6\text{e},5\text{o})$
+while its bend and surface use $(4\text{e},4\text{o})$.
+
+\paragraph{Ansatz, optimiser and starting point.}
+Every campaign scan uses a UCCSD ansatz. Its parameter count is fixed by the
+active space, from $20$ for \ce{NO2} to $117$ for \ce{N2} (the $p$ column of
+Table~\ref{tab:campaign}). The first geometry of a scan starts from the
+Hartree--Fock reference with all parameters zero; every later geometry
+warm-starts from the previous geometry's converged parameters, falling back to
+zeros if the parameter count changes. SciPy's SLSQP is used for the smaller
+ans\"atze (\ce{H2}, \ce{LiH}, \ce{BeH2}, \ce{H2O}, \ce{NH3}, \ce{F2},
+\ce{N2O}) and COBYLA for the deepest ones (\ce{N2}, \ce{O2}, \ce{H2O2},
+\ce{NO2}), each with a ceiling of $1000$ iterations. The \emph{Optimizer}
+column of Table~\ref{tab:campaign} records the choice.
+
+\paragraph{Scan grids.}
+The grids are a deliberate budget decision, because coarse sampling is
+exactly what the reconstruction experiment is about. Bond lengths are sampled
+from $0.05\Ang$ steps for \ce{H2} up to $0.25\Ang$ for \ce{LiH}; bend angles
+at $3^\circ$ or $5^\circ$; the \ce{H2O2} dihedral at $10^\circ$; and the five
+surfaces on grids of between $7\times7$ and $11\times10$ points
+(Table~\ref{tab:surfaces}).
+
+\paragraph{Datasets.}
+No external dataset is used. The data are the $23$ scans produced by this
+project, stored in the repository as \texttt{*\_scan.json} (energies plus
+full metadata) and \texttt{*\_scan.csv}. Together they hold the $692$ VQE
+energies, each with its Hartree--Fock and exact reference energy and the
+converged parameter vector. Every table and figure in this report is
+generated from those files.
+
+\paragraph{Benchmarks and metrics.}
+Three energies are recorded at every geometry, $E_{\text{HF}}$,
+$E_{\text{VQE}}$ and $E_{\text{exact}}$ (exact diagonalisation of the
+identical active-space Hamiltonian), and the variational error is judged
+against the chemical-accuracy threshold of $1.6\mHa$. Reconstructions are
+scored strictly out of sample, by leave-one-out cross-validation in one
+dimension and the half-grid holdout in two (Section~\ref{sec:holdout}), using
+max, RMS and MAE errors, and are always compared with the piecewise-linear
+baseline. Recovered equilibrium geometries are compared with the experimental
+value where the scan metadata records one, and otherwise with the model's own
+optimised geometry (Table~\ref{tab:geom}).
+
+% =====================================================================
+\FloatBarrier
+\section{Results and Discussion}
+\label{sec:resdisc}
+
+\subsection{Results by molecule}
+\label{sec:results}
+Molecules appear in order of increasing electron count, from \ce{H2} to
+\ce{N2O}. Each subsection states the model setup, gives the variational
+results, and then discusses the reconstruction, with every figure placed
+immediately next to the paragraph that discusses it. All figures are
+reproduced unmodified from the repository; the three marked \emph{animation
+frame} are single frames pulled from animated GIFs, which a printed page
+cannot show moving.
+
+\subsubsection{\ce{H2}: hydrogen}
+\label{sec:h2}
+
+
+\input{tables/tab_data_h2_bond}
+\paragraph{Setup.}
+\ce{H2} has two electrons in two spin-orbitals, so it needs no active-space
+truncation at all: the STO-3G calculation \emph{is} the full configuration
+interaction. The bond was scanned from $0.30$ to $3.00\Ang$ in $0.05\Ang$
+steps, $55$ geometries, by a wide margin the densest sampling in the
+campaign, affordable only because each point costs a fraction of a second.
+
+\paragraph{Variational results.}
+Table~\ref{tab:data:h2:bond} is the complete scan. The variational solution
+is essentially exact: the largest deviation from exact diagonalisation
+anywhere on the curve is $3\times10^{-4}\mHa$, roughly $5000$ times below the
+chemical-accuracy threshold, and the mean rounds to zero at four decimal
+places. The energy minimum falls at $r=0.75\Ang$ with $E=-1.137117\Ha$,
+matching the accepted STO-3G result.
+
+The correlation column is the interesting one pedagogically. Near
+equilibrium, Hartree--Fock misses only a few tens of milli-Hartree, but by
+$r=3.0\Ang$ the deficit has grown to $277.6\mHa$. This is the textbook
+failure of restricted Hartree--Fock at dissociation: the single-determinant
+reference forces both electrons to share a delocalised molecular orbital even
+as the atoms separate, which describes two isolated hydrogen atoms poorly.
+The variational treatment tracks the exact curve throughout, exactly the
+regime where correlated methods earn their cost.
+
+
+\paragraph{Reconstruction.}
+None was done. The repository has no \texttt{h2\_polynomial/} or
+\texttt{h2\_spline/} directory, so \ce{H2} contributes no rows to
+Table~\ref{tab:interp} and no figures to this report. The gap is defensible
+on its own terms, with $55$ nodes at $0.05\Ang$ spacing there is not much for
+an interpolant to recover, and the piecewise-linear reconstruction is already
+adequate, but it does mean the densest scan in the campaign is the one scan
+with no interpolation evidence behind it. We flag it as a gap rather than
+paper over it.
+
+% ---------------------------------------------------------------------
+\FloatBarrier
+\subsubsection{\ce{LiH}: lithium hydride, and a negative result}
+\label{sec:lih}
+
+\paragraph{Setup.}
+\ce{LiH} has four electrons, two of which are correlated in a
+$(2\text{e},5\text{o})$ active space over eight qubits with a $24$-parameter
+ansatz. The bond was scanned from $0.9$ to $3.9\Ang$ in $0.25\Ang$ steps,
+$13$ nodes, a deliberately coarse grid, and optimised with SLSQP, which
+converged in an average of $167$ energy evaluations.
+
+\paragraph{Variational results.}
+Table~\ref{tab:data:lih:bond} gives the scan. Accuracy is excellent: mean
+variational error $0.0001\mHa$, maximum $0.0006\mHa$, against a correlation
+energy that reaches $153.2\mHa$ at the stretched end. The lowest computed
+node is $-7.880947\Ha$ at $r=1.65\Ang$. The efficiency is notable too:
+$167$ evaluations on a $24$-parameter landscape converges comfortably, and it
+is the reason this system is accurate where the deeper-circuit molecules of
+Sections~\ref{sec:n2} and \ref{sec:o2} are not.
+
+\figone{lih_polynomial_curve.png}{\ce{LiH} dissociation curve reconstructed by
+a single global polynomial through all $13$ nodes (degree $12$). The fit
+passes through every computed point by construction, with an in-sample
+residual of $1.4\times10^{-11}\mHa$, machine precision. That residual is
+\emph{not} evidence of accuracy, which is the whole point of the
+out-of-sample analysis in Fig.~\ref{fig:lih_poly_err}.}{lih_poly_curve}
+
+\figone{lih_polynomial_degree_sweep.png}{\ce{LiH} polynomial degree sweep:
+leave-one-out error against fitted degree, tabulated in
+Table~\ref{tab:deg:lih:bond}. The Runge signature we expected, a minimum
+followed by a rise, does not appear. Error falls essentially monotonically to
+the highest testable degree.}{lih_poly_sweep}
+\input{tables/tab_deg_lih_bond}
+
+
+\figone{lih_polynomial_error.png}{\ce{LiH} leave-one-out error at each
+interior node for the polynomial and for the piecewise-linear baseline. The
+polynomial sits below the baseline everywhere, by two to three orders of
+magnitude.}{lih_poly_err}
+
+
+\input{tables/tab_data_lih_bond}
+
+\paragraph{The result the experiment did not expect.}
+The \ce{LiH} polynomial experiment was written to reproduce Runge's
+phenomenon. It did not, and saying so plainly is more useful than shipping
+the story we expected to tell.
+
+Table~\ref{tab:deg:lih:bond} and Fig.~\ref{fig:lih_poly_sweep} show
+leave-one-out RMS falling from $31.64\mHa$ at degree $2$ to $0.047\mHa$ at
+degree $11$, the \emph{highest degree the $13$-node scan can test}, with no
+rise anywhere. The full degree-$12$ interpolant has exactly one interior
+minimum, so it invents no spurious features at all. The headline comparison
+comes out backwards from what the textbook predicts:
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+Method & LOO RMS \\
+\midrule
+Piecewise linear      & $13.373\mHa$ \\
+Cubic spline          & $1.815\mHa$ \\
+Global polynomial ($d=11$) & $\mathbf{0.047\mHa}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The global polynomial beats the cubic spline by a factor of $38$, and the
+linear baseline by a factor of $282$.
+
+\paragraph{Why.}
+Runge's phenomenon is a property of the \emph{function being interpolated},
+not an automatic consequence of high degree. It bites when the function has a
+singularity in the complex plane close to the real interval, Runge's own
+$1/(1+25x^2)$ has poles at $\pm i/5$, right next to $[-1,1]$. The \ce{LiH}
+CAS$(2,5)$ curve over $[0.9, 3.9]\Ang$ is smooth and gently varying with no
+nearby singularity, so a high-degree polynomial approximates it very well.
+Equation~\eqref{eq:polyerror} agrees: when $f^{(n)}$ stays bounded, the
+$1/n!$ factor wins.
+
+\paragraph{Where the trap does start.}
+The trap is real, it just begins at a higher node density. Re-running the
+same interval at $0.125\Ang$ spacing, $25$ nodes instead of $13$, gives best
+degree $13$ at RMS $0.0004\mHa$, degree $18$ at $0.0005\mHa$, and degree
+$23$ at $0.0065\mHa$: error bottoms out and then climbs by a factor of $16$.
+That is the Runge signature. The scale is worth noting, though: the whole
+effect plays out below one hundredth of a milli-Hartree, a clean textbook
+trend rather than the catastrophe the phenomenon is usually illustrated
+with. Contrast this with the \ce{N2O} surface (Section~\ref{sec:n2o}), where
+the polynomial failure is genuinely catastrophic.
+
+\figpair{lih_spline_curve.png}{Cubic spline reconstruction of the \ce{LiH}
+curve.}{lih_spline_curve}{lih_spline_error.png}{Spline and linear
+leave-one-out error. The spline improves on the linear baseline by
+$7.4\times$ in RMS, a solid result the polynomial nonetheless
+beats.}{lih_spline_err}
+
+\paragraph{Geometry.}
+Both reconstructions locate the minimum in essentially the same place:
+$1.5474\Ang$ (polynomial) and $1.5496\Ang$ (spline), against a best computed
+node of $1.65\Ang$. The polynomial value reproduces the model's own optimised
+bond length of $1.5474\Ang$ to four decimal places. From a $0.25\Ang$ grid,
+the interpolation recovers a geometry accurate to the model's own reference,
+roughly two orders of magnitude of resolution gained for zero extra quantum
+cost. Both sit $0.045$--$0.048\Ang$ below the experimental $1.5949\Ang$, and
+that gap belongs to the STO-3G/CAS$(2,5)$ model, not to the interpolation.
+
+% ---------------------------------------------------------------------
+\FloatBarrier
+\subsubsection{\ce{BeH2}: beryllium hydride}
+\label{sec:beh2}
+
+\paragraph{Setup.}
+\ce{BeH2} has six electrons in a $(4\text{e},4\text{o})$ active space, six
+qubits, $26$ parameters. It is the most thoroughly explored system in the
+campaign: a symmetric stretch ($16$ nodes, $0.9$--$2.4\Ang$), a bend ($19$
+nodes, $90$--$180^\circ$) and a full two-dimensional surface on an
+$11\times10$ grid, $110$ variational solves, the joint-largest surface here.
+
+\figwide{beh2_surface_anim_still.png}{\ce{BeH2} ground-state energy surface
+(animation frame). $110$ VQE energies rise out of a bond-length $\times$
+bond-angle grid in scan order while the molecular rendering redraws to match.
+The trough runs along the angle axis: bending is soft, stretching is stiff.
+The reconstruction analysis below turns this into a number.}{beh2_anim}
+
+\figwide{beh2_surface_scan_3d.png}{\ce{BeH2} completed energy surface, static
+render. The minimum sits at the linear geometry $\theta = 180^\circ$, as
+expected for a $\mathrm{D}_{\infty h}$ molecule.}{beh2_surface3d}
+
+\paragraph{Variational results.}
+The bend scan is excellent: mean error $0.0044\mHa$, maximum $0.0062\mHa$,
+four orders of magnitude inside chemical accuracy
+(Table~\ref{tab:data:beh2:bend}). The stretch scan is noticeably worse, mean
+$0.5595\mHa$ and maximum $3.4778\mHa$ (Table~\ref{tab:data:beh2:stretch}),
+and the surface inherits this at mean $0.4541\mHa$, maximum $4.6537\mHa$.
+The pattern makes physical sense: bending at a fixed bond length barely
+touches the electronic structure, while stretching towards dissociation
+drives the system multireference, where a $26$-parameter ansatz started at
+Hartree--Fock struggles most. The correlation energy tells the same story,
+rising from $5.9\mHa$ across the bend to $68.1\mHa$ across the stretch.
+
+
+\input{tables/tab_data_beh2_bend}
+
+\input{tables/tab_data_beh2_stretch}
+
+\paragraph{Bend reconstruction.}
+The bend is the easiest reconstruction problem in the campaign. The curve is
+smooth and nearly harmonic, and every method does well
+(Table~\ref{tab:interp}): linear $0.344\mHa$ RMS, the polynomial at best
+degree $9$ reaching $0.0001\mHa$, the spline $0.0008\mHa$. The degree sweep
+(Fig.~\ref{fig:beh2_bend_sweep}, Table~\ref{tab:deg:beh2:bend}) shows the
+classic bowl shape, with a worst-case RMS of $7.59\mHa$ at low degree,
+underfitting rather than oscillation.
+
+\figpair{beh2_bend_polynomial_curve.png}{\ce{BeH2} bend, polynomial
+reconstruction.}{beh2_bend_poly_curve}{beh2_bend_polynomial_degree_sweep.png}%
+{\ce{BeH2} bend degree sweep. Error falls to $0.0001\mHa$ at degree $9$.}%
+{beh2_bend_sweep}
+\input{tables/tab_deg_beh2_bend}
+
+
+\figpair{beh2_bend_polynomial_error.png}{\ce{BeH2} bend, polynomial versus
+linear leave-one-out error.}{beh2_bend_poly_err}{beh2_bend_spline_curve.png}%
+{\ce{BeH2} bend, cubic spline reconstruction.}{beh2_bend_spline_curve}
+
+\figone{beh2_bend_spline_error.png}{\ce{BeH2} bend, spline leave-one-out
+error. RMS $0.0008\mHa$ against a linear baseline of $0.344\mHa$, a
+$430\times$ improvement on an already easy problem.}{beh2_bend_spline_err}
+
+\paragraph{Stretch reconstruction, and a spurious minimum.}
+The stretch is harder, and it gives the campaign's clearest example of why a
+good fit statistic does not mean a usable curve. Polynomial and spline are
+almost tied statistically, $4.496\mHa$ versus $4.647\mHa$ RMS, both roughly
+$2.2\times$ better than the $10.12\mHa$ linear baseline. But the recovered
+geometries disagree completely: the spline places the minimum at
+$1.289\Ang$, close to the reference $1.3264\Ang$, while the full-degree
+polynomial places it at $0.9305\Ang$, at the extreme left edge of the
+scanned interval, $0.40\Ang$ off, and physically meaningless.
+
+This is Runge's phenomenon caught in the act. The degree-$15$ interpolant
+oscillates near the interval boundary, and the oscillation dips below the
+true curve at the edge, creating a spurious global minimum. The degree sweep
+(Table~\ref{tab:deg:beh2:stretch}) confirms the mechanism: worst-case RMS
+reaches $572.5\mHa$, four orders of magnitude above the best degree. The
+lesson generalises to every polynomial row in Table~\ref{tab:geom}: an
+aggregate error metric can look fine while the interpolant is qualitatively
+wrong exactly where someone would read it.
+
+\figpair{beh2_stretch_polynomial_curve.png}{\ce{BeH2} symmetric stretch,
+polynomial reconstruction. Note the behaviour at the left edge, which
+produces the spurious minimum discussed in the
+text.}{beh2_str_poly_curve}{beh2_stretch_polynomial_degree_sweep.png}%
+{\ce{BeH2} stretch degree sweep. Worst-case RMS reaches $572.5\mHa$.}%
+{beh2_str_sweep}
+\input{tables/tab_deg_beh2_stretch}
+
+
+\figpair{beh2_stretch_polynomial_error.png}{\ce{BeH2} stretch, polynomial
+versus linear leave-one-out
+error.}{beh2_str_poly_err}{beh2_stretch_spline_curve.png}{\ce{BeH2} stretch,
+cubic spline reconstruction. The spline stays monotone at the edges and
+places the minimum at $1.289\Ang$.}{beh2_str_spline_curve}
+
+\figone{beh2_stretch_spline_error.png}{\ce{BeH2} stretch, spline
+leave-one-out error, RMS $4.647\mHa$.}{beh2_str_spline_err}
+
+\paragraph{Surface reconstruction.}
+The half-grid holdout earns its keep here. Fitting on a $6\times5$ subgrid,
+one quarter of the $110$ computed points, and scoring on the remaining three
+quarters gives bicubic spline RMS $3.098\mHa$ against a bilinear baseline of
+$17.97\mHa$, a $5.8\times$ improvement. The total-degree polynomial reaches
+$3.966\mHa$ but, unlike the 1-D case, carries a nonzero in-sample residual of
+$8.58\mHa$: it cannot represent the surface exactly even on the points it was
+fitted to.
+
+The practical reading is direct: \emph{we could have run a quarter of this
+surface and reconstructed the rest to within about $3\mHa$ RMS}. At two to
+four minutes per point, that saves several hours, and it is the result that
+justifies coarse grids on more expensive molecules.
+
+\figwide{beh2_surface_polynomial_surface.png}{\ce{BeH2} surface, total-degree
+polynomial reconstruction.}{beh2_surf_poly}
+\figwide{beh2_surface_polynomial_error.png}{\ce{BeH2} surface, polynomial holdout error distribution.}{beh2_surf_poly_err}
+
+\figwide{beh2_surface_spline_surface.png}{\ce{BeH2} surface, bicubic spline
+reconstruction from the half grid.}{beh2_surf_spline}
+\figwide{beh2_surface_spline_error.png}{\ce{BeH2} surface, spline holdout error.
+RMS $3.098\mHa$ against $17.97\mHa$ bilinear.}{beh2_surf_spline_err}
+
+\paragraph{Geometry.}
+The spline surface locates the minimum at $(1.292\Ang, 180.0^\circ)$ against
+the reference $(1.3264\Ang, 180.0^\circ)$: the angle exactly right, the bond
+$0.034\Ang$ short, recovered from a grid whose bond spacing is $0.15\Ang$.
+The polynomial surface gives $(1.2995\Ang,\allowbreak 176.38^\circ)$, missing the linear
+geometry by nearly four degrees, a qualitative error for a molecule whose
+linearity is a symmetry requirement.
+
+% ---------------------------------------------------------------------
+\FloatBarrier
+\subsubsection{\ce{H2O}: water}
+\label{sec:h2o}
+
+\paragraph{Setup.}
+\ce{H2O} has ten electrons in a $(4\text{e},4\text{o})$ active space, six
+qubits, $26$ parameters. The repository holds one scan: the H--O--H bend from
+$70$ to $160^\circ$ in $5^\circ$ steps at a fixed bond length, $19$
+geometries. A symmetric-stretch coordinate is implemented in the driver and
+documented in the project README, but no saved stretch scan is present, so we
+cannot report on it here.
+
+\paragraph{Variational results.}
+Table~\ref{tab:data:h2o:bend} gives the complete scan. Accuracy is among the
+best in the campaign: mean error $0.0007\mHa$, maximum $0.0015\mHa$, three
+orders of magnitude inside chemical accuracy. The minimum falls at $\theta =
+100^\circ$ with $E = -74.971353\Ha$. The experimental H--O--H angle is
+$104.5^\circ$; the $4.5^\circ$ gap belongs to the minimal basis and small
+active space, and no improvement to the solver would remove it. Correlation
+energy across the scan reaches $11.1\mHa$, small, because bending at a fixed
+bond length is a gentle perturbation of the electronic structure, exactly as
+we saw for \ce{BeH2}.
+
+
+\input{tables/tab_data_h2o_bend}
+
+\paragraph{Reconstruction.}
+As with \ce{H2}, none was done: the repository has no
+\texttt{h2o\_polynomial/} or \texttt{h2o\_spline/} directory. \ce{H2O}
+therefore contributes no rows to Table~\ref{tab:interp} and no figures. Since
+\ce{H2O} is the molecule named in the project README as the worked example,
+this is the most conspicuous gap in the campaign, and we flag it rather than
+let it pass quietly.
+
+% ---------------------------------------------------------------------
+\FloatBarrier
+\subsubsection{\ce{NH3}: ammonia}
+\label{sec:nh3}
+
+\paragraph{Setup.}
+\ce{NH3} has ten electrons in a $(6\text{e},5\text{o})$ active space, eight
+qubits, $54$ parameters, $\mathrm{C}_{3v}$ symmetry with two free
+coordinates. SLSQP converged in $255$--$348$ evaluations depending on the
+scan. Three scans were run: an umbrella bend ($9$ nodes,
+$96$--$120^\circ$), a symmetric N--H stretch ($11$ nodes, $0.85$--$1.6\Ang$)
+and a $7\times7$ surface ($49$ points).
+
+\ce{NH3} is the one molecule whose raw scan plots survive in the repository
+alongside the interpolation figures, so Figs.~\ref{fig:nh3_bend_raw} to
+\ref{fig:nh3_surf_raw} show the campaign's output in its original form.
+
+\figpair{nh3_bend_curve.png}{\ce{NH3} umbrella bend, raw VQE scan.}%
+{nh3_bend_raw}{nh3_stretch_curve.png}{\ce{NH3} symmetric N--H stretch, raw
+VQE scan.}{nh3_str_raw}
+
+\figwide{nh3_surface.png}{\ce{NH3} raw energy surface over the
+bond-length $\times$ umbrella-angle grid, $49$ VQE
+solves.}{nh3_surf_raw}
+
+\paragraph{Variational results.}
+All three scans reach chemical accuracy. The bend attains mean $0.0158\mHa$
+(maximum $0.0494$), the stretch mean $0.1937\mHa$ (maximum $0.7605$), and the
+surface mean $0.3343\mHa$, although the surface maximum, $4.5362\mHa$,
+exceeds the threshold at its worst point, presumably the most stretched
+corner of the grid. The stretch-versus-bend contrast mirrors \ce{BeH2}
+exactly.
+
+
+\input{tables/tab_data_nh3_bend}
+
+\input{tables/tab_data_nh3_stretch}
+
+\paragraph{The inversion barrier.}
+\ce{NH3} carries a real physical observable that only a $C^2$ reconstruction
+can deliver. The molecule tunnels between two pyramidal configurations
+through a planar transition state at $120^\circ$, and the height of that
+barrier is a classic spectroscopic quantity. From the spline reconstruction
+of the bend curve, the barrier is
+\begin{equation}
+\Delta E_{\text{inv}} = 17.06\mHa \approx 10.7\,\text{kcal}\,\text{mol}^{-1},
+\end{equation}
+measured from the interpolated minimum at $104.38^\circ$ to the planar
+geometry. The experimental value is roughly
+$5.8\,\text{kcal}\,\text{mol}^{-1}$; the overestimate belongs to the minimal
+basis and restricted active space rather than to the reconstruction. The
+methodological point is what matters here: the barrier is read off the
+\emph{interpolated} curve, because the planar geometry $120^\circ$ is an
+endpoint of a $3^\circ$ grid and the minimum at $104.38^\circ$ falls between
+nodes. A piecewise-linear reconstruction would have snapped the minimum to
+$105^\circ$ and distorted the barrier along with it.
+
+\figpair{nh3_bend_polynomial_curve.png}{\ce{NH3} bend, polynomial
+reconstruction.}{nh3_bend_poly}{nh3_bend_polynomial_degree_sweep.png}%
+{\ce{NH3} bend degree sweep; best degree $4$ at RMS $0.061\mHa$.}%
+{nh3_bend_sweep}
+\input{tables/tab_deg_nh3_bend}
+
+
+\figpair{nh3_bend_polynomial_error.png}{\ce{NH3} bend, polynomial versus
+linear leave-one-out error.}{nh3_bend_poly_err}{nh3_bend_spline_curve.png}%
+{\ce{NH3} bend, cubic spline reconstruction, the curve the inversion barrier
+is measured from.}{nh3_bend_spline}
+
+\figone{nh3_bend_spline_error.png}{\ce{NH3} bend, spline leave-one-out error.
+RMS $0.067\mHa$ against a linear baseline of $0.653\mHa$.}{nh3_bend_spline_err}
+
+\paragraph{Reconstruction.}
+With only $9$ and $11$ nodes respectively, the \ce{NH3} curves are the
+sparsest 1-D data in the campaign, and the results are correspondingly
+instructive. On the bend, polynomial ($0.061\mHa$ at degree $4$) and spline
+($0.067\mHa$) are statistically indistinguishable, and both beat linear
+($0.653\mHa$) by an order of magnitude. On the stretch the polynomial wins
+more clearly, $0.466\mHa$ at degree $6$ against $0.920\mHa$ for the spline
+and $12.79\mHa$ for linear, a $27\times$ improvement over the baseline.
+
+The surface is the hardest case. With a $7\times7$ grid, the half-grid
+holdout leaves a $4\times4$ subgrid, the bare minimum that supports a bicubic
+spline on both axes. Spline RMS is $8.28\mHa$ and total-degree polynomial
+$8.49\mHa$, against a bilinear baseline of $30.11\mHa$: a $3.6\times$
+improvement, but well above chemical accuracy in absolute terms. This is the
+clearest evidence in the campaign that the half-grid experiment has a floor:
+below roughly five points per axis there is not enough information left to
+reconstruct a surface accurately, whichever method is used. We also did not
+generate a half-grid error map for the \ce{NH3} surface the way we did for
+\ce{BeH2}, \ce{NO2} and \ce{N2O}, so only the reconstructed surfaces
+themselves are shown below, not an error plot.
+
+\figpair{nh3_stretch_polynomial_curve.png}{\ce{NH3} stretch, polynomial
+reconstruction.}{nh3_str_poly}{nh3_stretch_polynomial_degree_sweep.png}%
+{\ce{NH3} stretch degree sweep; best degree $6$.}{nh3_str_sweep}
+\input{tables/tab_deg_nh3_stretch}
+
+
+\figpair{nh3_stretch_polynomial_error.png}{\ce{NH3} stretch, polynomial
+versus linear leave-one-out
+error.}{nh3_str_poly_err}{nh3_stretch_spline_curve.png}{\ce{NH3} stretch,
+cubic spline reconstruction.}{nh3_str_spline}
+
+\figone{nh3_stretch_spline_error.png}{\ce{NH3} stretch, spline leave-one-out
+error, RMS $0.920\mHa$.}{nh3_str_spline_err}
+
+\figwide{nh3_surface_polynomial.png}{\ce{NH3} surface, total-degree
+polynomial reconstruction (degree $6$).}{nh3_surf_poly}
+\figwide{nh3_surface_spline.png}{\ce{NH3} surface, bicubic spline reconstruction
+from the $4\times4$ half grid.}{nh3_surf_spline}
+\input{tables/tab_deg_nh3_surface}
+
+
+\paragraph{Geometry.}
+The reconstructions recover the model's own optimised geometry almost
+exactly. The bend minimum sits at $104.38^\circ$ (both methods) against a
+model reference of $104.27^\circ$, an error of $0.11^\circ$ from a grid
+spaced at $3^\circ$. The stretch minimum sits at $1.0391$ (polynomial) and
+$1.0394\Ang$ (spline) against a model reference of $1.0401\Ang$: errors of
+$0.0010$ and $0.0007\Ang$ from a grid spaced at $0.075\Ang$, a hundredfold
+gain in effective resolution and the single most convincing demonstration in
+the campaign of what interpolation buys. The surface agrees, placing the
+minimum at $(1.0454\Ang, 102.49^\circ)$ against the model surface reference
+$(1.05\Ang, 102.05^\circ)$.
+
+Against \emph{experiment}, $1.0124\Ang$ and $106.67^\circ$, the gaps are
+larger, $0.027\Ang$ and $2.3^\circ$, and again these belong to the model, not
+to anything interpolation could fix.
+
+% ---------------------------------------------------------------------
+\FloatBarrier
+\subsubsection{\ce{N2}: nitrogen}
+\label{sec:n2}
+
+\paragraph{Setup.}
+\ce{N2} has fourteen electrons in a $(6\text{e},6\text{o})$ active space, ten
+qubits, and the largest ansatz in the campaign at $117$ parameters. Nine
+nodes from $0.8$ to $2.4\Ang$ in $0.2\Ang$ steps, optimised with COBYLA under
+a $1000$-evaluation ceiling.
+
+\paragraph{Variational results.}
+This is the campaign's hardest optimisation and its least accurate result:
+mean error $10.48\mHa$, maximum $36.35\mHa$, an order of magnitude outside
+chemical accuracy (Table~\ref{tab:data:n2:bond}).
+
+The diagnosis is clear. COBYLA spends its full $1000$-evaluation budget at
+every geometry, which on a $117$-dimensional landscape is fewer than nine
+evaluations per parameter, not enough for a derivative-free method to map the
+surface, let alone converge on it. The variational bound is never violated,
+so the algorithm behaves correctly; it is simply stopped early. Triple-bond
+breaking is also the most strongly multireference process in the campaign,
+so the landscape being searched is the roughest one here.
+
+Context matters, though: Hartree--Fock misses $777.0\mHa$ of correlation
+energy on this curve, the largest deficit anywhere in the campaign. Missing
+$10.5\mHa$ of that still means recovering $98.6\%$ of the correlation the
+mean-field reference leaves out. The calculation is far from useless; it is
+simply not converged to spectroscopic standards.
+
+
+\input{tables/tab_data_n2_bond}
+
+\paragraph{Reconstruction.}
+With only nine nodes at $0.2\Ang$ spacing across a bond-breaking curve, this
+is the sparsest and most sharply curved 1-D reconstruction problem in the
+campaign, and all the errors are correspondingly large. Linear interpolation
+gives $134.18\mHa$ RMS, a value too large for any chemical purpose. The
+polynomial at its best degree of $6$ reaches $20.34\mHa$ and the spline
+$37.59\mHa$; the polynomial wins by a factor of $1.8$ and improves on the
+baseline by $6.6\times$.
+
+None of these reconstructions reaches chemical accuracy. Nine nodes across a
+triple-bond dissociation is too coarse a grid for any interpolant to rescue,
+regardless of which one comes out ahead in the comparison. The degree sweep (Table~\ref{tab:deg:n2:bond})
+supports this: even the worst degree reaches only $207.5\mHa$, because with
+seven testable degrees there is no room for the dramatic Runge failures seen
+elsewhere.
+
+\figpair{n2_polynomial_curve.png}{\ce{N2} dissociation curve, polynomial
+reconstruction.}{n2_poly_curve}{n2_polynomial_degree_sweep.png}{\ce{N2}
+degree sweep; best degree $6$ at $20.34\mHa$
+RMS.}{n2_sweep}
+\input{tables/tab_deg_n2_bond}
+
+
+\figpair{n2_polynomial_error.png}{\ce{N2} polynomial versus linear
+leave-one-out error.}{n2_poly_err}{n2_spline_curve.png}{\ce{N2} cubic spline
+reconstruction.}{n2_spline_curve}
+
+\figone{n2_spline_error.png}{\ce{N2} spline leave-one-out error, RMS
+$37.59\mHa$. Compare the vertical scale with
+Fig.~\ref{fig:beh2_bend_spline_err}: this is a two-orders-of-magnitude harder
+problem.}{n2_spline_err}
+
+\paragraph{Geometry.}
+The polynomial places the minimum at $1.191\Ang$ and the spline at
+$1.1685\Ang$, against an experimental bond length of $1.098\Ang$. Both
+overestimate by $0.07$--$0.09\Ang$. Most of that error belongs to the minimal
+basis and restricted active space, but with a $10.5\mHa$ mean variational
+error sitting on top of a curve whose well depth is being read to
+sub-milli-Hartree precision, some of it belongs to the incomplete
+optimisation as well. This is the one molecule in the campaign where solver
+error and model error cannot be cleanly separated, and we do not claim to
+separate them.
+
+% ---------------------------------------------------------------------
+\FloatBarrier
+\subsubsection{\ce{O2}: oxygen}
+\label{sec:o2}
+
+\paragraph{Setup.}
+\ce{O2} has sixteen electrons in an $(8\text{e},6\text{o})$ active space with
+five $\alpha$ and three $\beta$ electrons, ten qubits, $68$ parameters.
+\ce{O2} is a ground-state \emph{triplet} ($2S = 2$), which needed a
+restricted open-shell Hartree--Fock reference rather than the closed-shell
+RHF used for most of the campaign. Nine nodes from $0.9$ to $2.5\Ang$ in
+$0.2\Ang$ steps, COBYLA.
+
+\paragraph{Variational results.}
+Accuracy is poor for the same reason as \ce{N2}: mean $10.55\mHa$, maximum
+$28.55\mHa$, with COBYLA saturating its $1000$-evaluation budget at every
+geometry (Table~\ref{tab:data:o2:bond}). The open-shell reference adds a
+further difficulty: the ansatz has to represent a state of definite spin
+multiplicity, and nothing in the hardware-efficient construction enforces
+that, so part of the optimiser's work goes into maintaining a symmetry that a
+spin-adapted ansatz would get for free. Hartree--Fock misses $576.5\mHa$
+here, so VQE again recovers roughly $98\%$ of the correlation energy despite
+missing chemical accuracy.
+
+
+\input{tables/tab_data_o2_bond}
+
+\paragraph{Reconstruction.}
+The polynomial wins clearly: $7.99\mHa$ RMS at degree $6$, against
+$22.00\mHa$ for the spline and $80.54\mHa$ for linear, improvements of
+$10.1\times$ and $3.7\times$ on the baseline. As with \ce{N2}, nine nodes is
+too sparse for any method to reach chemical accuracy, so read this comparison
+as a ranking, not an endorsement.
+
+The pattern across \ce{N2}, \ce{O2} and \ce{F2} is itself the finding: on
+sparse, smooth, single-coordinate dissociation curves the global polynomial
+outperforms the spline, and more decisively as the node count rises. With
+nine nodes the margin is $2.8\times$ (\ce{O2}); with seventeen it becomes
+$109\times$ (\ce{F2}, next section).
+
+\figpair{o2_polynomial_curve.png}{\ce{O2} dissociation curve, polynomial
+reconstruction.}{o2_poly_curve}{o2_polynomial_degree_sweep.png}{\ce{O2}
+degree sweep; best degree $6$ at $7.99\mHa$ RMS, worst $130.17\mHa$.}%
+{o2_sweep}
+\input{tables/tab_deg_o2_bond}
+
+
+\figpair{o2_polynomial_error.png}{\ce{O2} polynomial versus linear
+leave-one-out error.}{o2_poly_err}{o2_spline_curve.png}{\ce{O2} cubic spline
+reconstruction.}{o2_spline_curve}
+
+\figone{o2_spline_error.png}{\ce{O2} spline leave-one-out error, RMS
+$22.00\mHa$.}{o2_spline_err}
+
+\paragraph{Geometry.}
+Polynomial $1.3028\Ang$, spline $1.2754\Ang$, experiment $1.208\Ang$. The
+spline is the closer of the two, $0.067\Ang$ above experiment. Both sit above
+the true value, consistent with the general tendency of minimal-basis CAS
+calculations to over-lengthen bonds.
+
+% ---------------------------------------------------------------------
+\FloatBarrier
+\subsubsection{\ce{F2}: fluorine}
+\label{sec:f2}
+
+\paragraph{Setup.}
+\ce{F2} has eighteen electrons in a $(10\text{e},6\text{o})$ active space,
+the largest electron count in any active space here, ten qubits, but only
+$35$ ansatz parameters. Seventeen nodes from $0.9$ to $2.5\Ang$ in $0.1\Ang$
+steps.
+
+\paragraph{Variational results.}
+\ce{F2} is the campaign's clearest demonstration that circuit \emph{depth},
+not molecular size, governs VQE accuracy. It has more active electrons than
+\ce{N2} or \ce{O2} and the same qubit count, yet its ansatz carries $35$
+parameters against their $117$ and $68$, and it reaches mean error
+$0.0589\mHa$ and maximum $0.6568\mHa$, comfortably inside chemical accuracy
+(Table~\ref{tab:data:f2:bond}). Single-bond dissociation is also far less
+multireference than breaking a triple bond. Hartree--Fock misses $359.7\mHa$
+on this curve; VQE recovers $99.98\%$ of it.
+
+
+\input{tables/tab_data_f2_bond}
+
+\paragraph{Reconstruction: the polynomial's best case.}
+This is where global polynomial interpolation is vindicated most clearly. At
+degree $13$ the leave-one-out RMS is $0.0221\mHa$, against $2.42\mHa$ for the
+cubic spline and $31.28\mHa$ for the linear baseline. The polynomial is
+$109\times$ better than the spline and $1415\times$ better than the
+baseline, and it is the only reconstruction in the campaign to land more
+than an order of magnitude \emph{below} the variational error of the data it
+is fitting. At that point the interpolation has stopped being the limiting
+source of error at all.
+
+The conditions that make this work are the ones identified in
+Section~\ref{sec:lih}: a smooth, gently varying, single-minimum curve with no
+nearby complex singularity, sampled densely enough ($17$ nodes) to support a
+high degree. The degree sweep (Table~\ref{tab:deg:f2:bond}) still shows a
+worst-case RMS of $122.14\mHa$, confirming that the good behaviour comes from
+choosing the right degree, not from high degree in general.
+
+\figpair{f2_polynomial_curve.png}{\ce{F2} dissociation curve, polynomial
+reconstruction at degree $13$, the most accurate reconstruction in the
+campaign.}{f2_poly_curve}{f2_polynomial_degree_sweep.png}{\ce{F2} degree
+sweep. Best degree $13$ at $0.022\mHa$ RMS.}{f2_sweep}
+\input{tables/tab_deg_f2_bond}
+
+
+\figpair{f2_polynomial_error.png}{\ce{F2} polynomial versus linear
+leave-one-out error. Note the logarithmic separation between the two
+methods.}{f2_poly_err}{f2_spline_curve.png}{\ce{F2} cubic spline
+reconstruction, RMS $2.42\mHa$.}{f2_spline_curve}
+
+\figone{f2_spline_error.png}{\ce{F2} spline leave-one-out error. A
+$12.9\times$ improvement on the linear baseline, respectable on its own, but
+two orders of magnitude behind the polynomial on this
+curve.}{f2_spline_err}
+
+\paragraph{Geometry.}
+Polynomial $1.3932\Ang$ and spline $1.3931\Ang$ agree to four decimal places,
+against an experimental $1.412\Ang$. The $0.019\Ang$ gap is the smallest
+geometry error of any diatomic in the campaign and belongs entirely to the
+model. That two structurally very different interpolants agree this closely
+is itself evidence that the reconstruction is well determined here.
+
+% ---------------------------------------------------------------------
+\FloatBarrier
+\subsubsection{\ce{H2O2}: hydrogen peroxide}
+\label{sec:h2o2}
+
+\paragraph{Setup.}
+\ce{H2O2} has eighteen electrons in an $(8\text{e},6\text{o})$ active space,
+ten qubits, $92$ parameters, COBYLA at $1000$ evaluations. It is the
+geometrically richest system in the campaign, the only molecule with a
+genuine \emph{torsional} degree of freedom. Four scans were run: an O--O
+stretch ($21$ nodes, $1.0$--$3.0\Ang$), an O--O--H bend ($13$ nodes,
+$80$--$140^\circ$), a dihedral twist ($19$ nodes, $0$--$180^\circ$) and a
+$10\times5$ dihedral $\times$ angle surface ($50$ points).
+
+\figwide{h2o2_surface_anim_still.png}{\ce{H2O2} energy surface over the
+dihedral $\times$ bend grid (animation frame). The torsional coordinate is
+the soft direction; the bend is stiffer.}{h2o2_anim}
+
+\figwide{h2o2_surface_scan_3d.png}{\ce{H2O2} completed energy surface, static
+render of the $10\times5$ grid.}{h2o2_surf3d}
+
+\figwide{h2o2_twist_anim_still.png}{\ce{H2O2} dihedral twist (animation
+frame). The molecule rotates about the O--O axis through the full
+$0$--$180^\circ$ range while the energy curve is traced
+alongside.}{h2o2_twist_anim}
+
+\paragraph{Variational results.}
+Accuracy is moderate and depends on the scan: twist mean $0.2545\mHa$,
+surface $0.2830\mHa$, stretch $0.6311\mHa$, bend $0.8882\mHa$, all four
+inside chemical accuracy on the mean, with maxima of $0.45$, $0.92$, $2.10$
+and $2.97\mHa$ respectively. The $92$-parameter ansatz with a
+$1000$-evaluation budget is close to the practical limit of what COBYLA can
+handle, and this system sits right at the boundary between the
+well-converged and stagnating groups from Section~\ref{sec:protocol}.
+
+The torsional potential is physically the most interesting curve in the
+campaign. The computed minimum falls at a dihedral of $90^\circ$
+(Table~\ref{tab:data:h2o2:twist}), reflecting the competition between
+lone-pair repulsion, which favours a perpendicular arrangement, and
+hyperconjugation, which favours planarity. The experimental gas-phase
+dihedral is $111.5^\circ$; the model's preference for exactly $90^\circ$
+reflects the minimal basis, and the curve is flat enough near there that the
+$0.45\mHa$ variational noise is a non-trivial fraction of the feature being
+located.
+
+
+\input{tables/tab_data_h2o2_bend}
+
+\input{tables/tab_data_h2o2_stretch}
+
+\input{tables/tab_data_h2o2_twist}
+
+\paragraph{Reconstruction.}
+\ce{H2O2} is the cleanest spline win in the campaign: the spline takes all
+three 1-D scans.
+
+On the \emph{bend}, spline RMS is $0.776\mHa$ against $1.252\mHa$ for the
+polynomial and $2.440\mHa$ for linear, a $3.1\times$ improvement on the
+baseline. On the \emph{stretch}, the margin widens: $1.030\mHa$ spline,
+$1.335\mHa$ polynomial, $14.617\mHa$ linear, a $14.2\times$ improvement. The
+stretch degree sweep (Table~\ref{tab:deg:h2o2:stretch}) reaches a worst-case
+RMS of $1446.8\mHa$, the second-largest polynomial failure in the campaign,
+and the reason is visible in Table~\ref{tab:geom}: the full-degree polynomial
+places the stretch minimum at $2.975\Ang$, more than an \AA ngstr\"om past
+the true value of $1.458\Ang$ and near the far edge of the scanned interval.
+That is the \ce{BeH2} edge-oscillation failure again, in its most extreme
+1-D form.
+
+The \emph{twist} is the one case in the campaign where the global polynomial
+loses outright to the piecewise-linear baseline, $2.044\mHa$ against
+$1.421\mHa$, with the spline narrowly ahead of both at $1.365\mHa$. A
+torsional potential is periodic with a broad flat minimum, exactly the shape
+a global polynomial handles worst; the degree sweep peaks at $858.5\mHa$.
+The polynomial's interpolated minimum, $167.1^\circ$, sits nearly $80^\circ$
+from the computed minimum, and even the spline's $134.3^\circ$ is off by
+$44^\circ$ because the well is so shallow. Where the function is flat, tiny
+energy errors turn into large positional errors, a statement about
+conditioning, not about the interpolation method being wrong.
+
+\paragraph{No surface reconstruction.}
+Although the $50$-point surface was computed, the repository has no surface
+entry in either the \texttt{h2o2\_polynomial/} or \texttt{h2o2\_spline/}
+output; only the bend, stretch and twist were post-processed. \ce{H2O2}
+therefore contributes no surface row to Table~\ref{tab:interp}. The
+$10\times5$ grid would have left only $5\times3$ points after halving, below
+the bicubic threshold on one axis, so the omission is defensible, but it is
+still an omission and we record it as one.
+
+\figpair{h2o2_bend_polynomial_curve.png}{\ce{H2O2} O--O--H bend, polynomial
+reconstruction.}{h2o2_bend_poly}{h2o2_bend_polynomial_degree_sweep.png}%
+{\ce{H2O2} bend degree sweep; best degree $5$.}{h2o2_bend_sweep}
+\input{tables/tab_deg_h2o2_bend}
+
+
+\figpair{h2o2_bend_polynomial_error.png}{\ce{H2O2} bend, polynomial versus
+linear leave-one-out
+error.}{h2o2_bend_poly_err}{h2o2_bend_spline_curve.png}{\ce{H2O2} bend,
+cubic spline reconstruction, RMS $0.776\mHa$.}{h2o2_bend_spline}
+
+\figone{h2o2_bend_spline_error.png}{\ce{H2O2} bend, spline leave-one-out
+error.}{h2o2_bend_spline_err}
+
+\figpair{h2o2_stretch_polynomial_curve.png}{\ce{H2O2} O--O stretch,
+polynomial reconstruction. The behaviour near the right edge produces the
+spurious $2.975\Ang$ minimum discussed in the
+text.}{h2o2_str_poly}{h2o2_stretch_polynomial_degree_sweep.png}{\ce{H2O2}
+stretch degree sweep; worst-case RMS $1446.8\mHa$.}{h2o2_str_sweep}
+\input{tables/tab_deg_h2o2_stretch}
+
+
+\figpair{h2o2_stretch_polynomial_error.png}{\ce{H2O2} stretch, polynomial
+versus linear leave-one-out
+error.}{h2o2_str_poly_err}{h2o2_stretch_spline_curve.png}{\ce{H2O2} stretch,
+cubic spline reconstruction, RMS $1.030\mHa$.}{h2o2_str_spline}
+
+\figone{h2o2_stretch_spline_error.png}{\ce{H2O2} stretch, spline
+leave-one-out error.}{h2o2_str_spline_err}
+
+\figpair{h2o2_twist_polynomial_curve.png}{\ce{H2O2} dihedral twist,
+polynomial reconstruction. This is the one scan in the campaign where the
+polynomial is beaten by piecewise-linear
+interpolation.}{h2o2_twist_poly}{h2o2_twist_polynomial_degree_sweep.png}%
+{\ce{H2O2} twist degree sweep; worst-case RMS $858.5\mHa$.}{h2o2_twist_sweep}
+\input{tables/tab_deg_h2o2_twist}
+
+
+\figpair{h2o2_twist_polynomial_error.png}{\ce{H2O2} twist, polynomial versus
+linear leave-one-out error.}{h2o2_twist_poly_err}%
+{h2o2_twist_spline_curve.png}{\ce{H2O2} twist, cubic spline reconstruction of
+the torsional potential, RMS $1.365\mHa$.}{h2o2_twist_spline}
+
+\figone{h2o2_twist_spline_error.png}{\ce{H2O2} twist, spline leave-one-out
+error.}{h2o2_twist_spline_err}
+
+% ---------------------------------------------------------------------
+\FloatBarrier
+\subsubsection{\ce{NO2}: nitrogen dioxide}
+\label{sec:no2}
+
+\paragraph{Setup.}
+\ce{NO2} has twenty-three electrons, an \emph{odd} number, which makes it an
+open-shell doublet radical ($2S=1$) needing an ROHF reference. Two active
+spaces were used: $(5\text{e},4\text{o})$ on six qubits with $20$ parameters
+for the bend and the surface, and $(7\text{e},5\text{o})$ on eight qubits
+with $37$ parameters for the stretch. Three scans: bend ($19$ nodes,
+$90$--$180^\circ$), symmetric stretch ($16$ nodes, $0.9$--$2.4\Ang$) and an
+$11\times10$ surface ($110$ points, joint-largest in the campaign).
+
+\figwide{no2_surface_scan_3d.png}{\ce{NO2} energy surface over the bond-length
+$\times$ bond-angle grid, $110$ VQE solves.}{no2_surf3d}
+
+\paragraph{Variational results.}
+\ce{NO2} is the campaign's least accurate system after \ce{N2} and \ce{O2}:
+bend mean $18.93\mHa$ (maximum $38.58$), stretch mean $6.34\mHa$ (maximum
+$30.32$), surface mean $9.61\mHa$ (maximum $42.10$). All three miss chemical
+accuracy by a wide margin.
+
+The cause here is different from \ce{N2}. The ansatz is small, $20$
+parameters for the bend, and COBYLA still uses $831$ evaluations, plenty for
+that dimensionality. The difficulty is the open-shell doublet: a
+$20$-parameter hardware-efficient circuit started from an ROHF reference has
+limited ability to represent the correct spin state, so the variational
+minimum it can reach genuinely sits above the exact ground state. This is
+\emph{ansatz-expressivity} error rather than optimiser stagnation, and it is
+the one place in the campaign where the two causes separate cleanly:
+\ce{N2} had a large ansatz and too few evaluations; \ce{NO2} has enough
+evaluations and too small an ansatz.
+
+
+\input{tables/tab_data_no2_bend}
+
+\input{tables/tab_data_no2_stretch}
+
+\paragraph{Reconstruction.}
+The \ce{NO2} bend is the campaign's only case where the cubic spline is
+beaten by the \emph{linear} baseline: spline $7.258\mHa$ against linear
+$5.049\mHa$, with the polynomial best at $3.924\mHa$. The explanation is the
+$18.93\mHa$ mean variational error. The spline's advantage rests on the data
+being a smooth function sampled exactly; when each node carries an
+independent error comparable to the curvature being fitted, the $C^2$
+constraint spreads that noise into neighbouring intervals, while
+piecewise-linear interpolation keeps each error inside its own two
+subintervals. The general caveat that follows is important: spline
+superiority assumes accurate data, and that assumption can be tested.
+
+On the stretch, where the variational error is a third as large, normal
+service resumes: polynomial $5.233\mHa$, spline $8.469\mHa$, linear
+$54.194\mHa$, the polynomial improving on the baseline by $10.4\times$.
+
+On the surface the spline wins clearly, $38.28\mHa$ against $46.23\mHa$ for
+the total-degree polynomial and $112.96\mHa$ for bilinear, and the
+polynomial's in-sample residual of $122.5\mHa$ shows it cannot even represent
+the fitted points, let alone the held-out ones.
+
+\paragraph{Geometry.}
+The bend reconstructions disagree sharply. The spline places the minimum at
+$142.27^\circ$ against a reference of $134.3^\circ$, an error of $8.0^\circ$.
+The full-degree polynomial places it at $173.43^\circ$, an error of
+$39.1^\circ$, close enough to the linear geometry to be qualitatively wrong
+about the molecule's shape. The stretch shows the same pattern in
+exaggerated form: spline $1.265\Ang$ versus reference $1.194\Ang$ (error
+$0.071\Ang$), polynomial $2.373\Ang$ (error $1.179\Ang$, at the far edge of
+the interval). The degree sweeps reach worst-case RMS values of $2170.2\mHa$
+and $1071.8\mHa$ respectively, the largest 1-D polynomial failures in the
+campaign.
+
+\figpair{no2_bend_polynomial_curve.png}{\ce{NO2} bend, polynomial
+reconstruction.}{no2_bend_poly}{no2_bend_polynomial_degree_sweep.png}%
+{\ce{NO2} bend degree sweep; worst-case RMS $2170.2\mHa$.}{no2_bend_sweep}
+\input{tables/tab_deg_no2_bend}
+
+
+\figpair{no2_bend_polynomial_error.png}{\ce{NO2} bend, polynomial versus
+linear leave-one-out error.}{no2_bend_poly_err}{no2_bend_spline_curve.png}%
+{\ce{NO2} bend, cubic spline reconstruction.}{no2_bend_spline}
+
+\figone{no2_bend_spline_error.png}{\ce{NO2} bend, spline leave-one-out error.
+At $7.26\mHa$ RMS this is \emph{worse} than the $5.05\mHa$ linear baseline,
+the campaign's one spline defeat, caused by the $18.9\mHa$ variational noise
+in the underlying data.}{no2_bend_spline_err}
+
+\figpair{no2_stretch_polynomial_curve.png}{\ce{NO2} symmetric stretch,
+polynomial reconstruction.}{no2_str_poly}%
+{no2_stretch_polynomial_degree_sweep.png}{\ce{NO2} stretch degree sweep.}%
+{no2_str_sweep}
+\input{tables/tab_deg_no2_stretch}
+
+
+\figpair{no2_stretch_polynomial_error.png}{\ce{NO2} stretch, polynomial
+versus linear leave-one-out error.}{no2_str_poly_err}%
+{no2_stretch_spline_curve.png}{\ce{NO2} stretch, cubic spline
+reconstruction.}{no2_str_spline}
+
+\figone{no2_stretch_spline_error.png}{\ce{NO2} stretch, spline leave-one-out
+error, RMS $8.47\mHa$.}{no2_str_spline_err}
+
+\figwide{no2_surface_polynomial_surface.png}{\ce{NO2} surface, total-degree
+polynomial reconstruction. The in-sample residual alone is $122.5\mHa$.}{no2_surf_poly}
+\figwide{no2_surface_polynomial_error.png}{\ce{NO2} surface,
+polynomial holdout error.}{no2_surf_poly_err}
+
+\figwide{no2_surface_spline_surface.png}{\ce{NO2} surface, bicubic spline
+reconstruction from the half grid.}{no2_surf_spline}
+\figwide{no2_surface_spline_error.png}{\ce{NO2} surface, spline holdout error, RMS
+$38.28\mHa$ against $112.96\mHa$ bilinear.}{no2_surf_spline_err}
+
+% ---------------------------------------------------------------------
+\FloatBarrier
+\subsubsection{\ce{N2O}: nitrous oxide}
+\label{sec:n2o}
+
+\paragraph{Setup.}
+\ce{N2O} has twenty-two electrons in a linear triatomic with two inequivalent
+bonds, which makes it the most thoroughly decomposed system in the campaign:
+the N--N and N--O stretches were scanned \emph{separately}, plus a bend, plus
+a two-dimensional $r_{\text{NN}} \times r_{\text{NO}}$ surface on a
+$10\times6$ grid at fixed linear geometry. The bend and surface used
+$(4\text{e},4\text{o})$ on six qubits ($26$ parameters); the two stretches
+used $(6\text{e},5\text{o})$ on eight qubits ($54$ parameters).
+
+\figwide{n2o_surface_scan_3d.png}{\ce{N2O} energy surface over the two
+independent bond lengths at fixed linear geometry, $60$ VQE
+solves.}{n2o_surf3d}
+
+\paragraph{Variational results.}
+Accuracy is poor throughout: bend mean $9.07\mHa$, N--N stretch $8.69\mHa$,
+N--O stretch $2.72\mHa$, surface $6.98\mHa$. None reaches chemical accuracy.
+The $(4\text{e},4\text{o})$ active space used for the bend and surface is
+plainly too small for a $22$-electron molecule with two multiple bonds; it
+correlates only four electrons out of twenty-two. The N--O stretch, which
+used the larger $(6\text{e},5\text{o})$ space, is correspondingly the most
+accurate of the four, and that correlation between active-space size and
+accuracy is the clearest single-molecule evidence in the campaign that the
+active space, not the optimiser, is the binding constraint here.
+
+
+\input{tables/tab_data_n2o_bend}
+
+\input{tables/tab_data_n2o_nn_stretch}
+
+\input{tables/tab_data_n2o_no_stretch}
+
+\paragraph{Reconstruction: the campaign's worst failure.}
+The \ce{N2O} surface produces the most dramatic failure in this report. The
+total-degree polynomial has an in-sample residual of $30.7\mHa$, already
+poor, and a \emph{half-grid holdout RMS of $5186.4\mHa$}, with a maximum
+error of $10362.8\mHa$. That is an error of more than ten Hartree on a
+surface whose total energy variation is a fraction of one Hartree. The
+reconstruction is off by four orders of magnitude, and $69\times$
+\emph{worse} than the trivial bilinear baseline of $74.7\mHa$.
+
+The mechanism is the two-dimensional version of edge oscillation. A
+total-degree fit on a $5\times3$ subgrid, what remains of a $10\times6$ grid
+after halving, has more coefficients than the data can pin down in the short
+direction, so the fit is effectively unconstrained along one axis and drifts
+away from the fitted points. The bicubic spline on the same subgrid achieves
+$43.2\mHa$, comfortably beating bilinear's $74.7\mHa$. This is the strongest
+argument in the report for using splines by default on surfaces: the spline
+degrades gracefully where the polynomial fails catastrophically, and on an
+expensive surface there is no way to find out which regime you are in after
+the fact.
+
+\paragraph{1-D reconstructions.}
+The one-dimensional scans behave far better, and, unusually, split their
+verdicts three ways. On the \emph{bend}, the spline wins at $1.895\mHa$
+against $2.627\mHa$ polynomial and $3.502\mHa$ linear. On the \emph{N--N
+stretch}, the spline wins again at $2.526\mHa$ against $3.812\mHa$ and
+$25.902\mHa$, a $10.3\times$ improvement on the baseline. But on the
+\emph{N--O stretch} the polynomial wins decisively: $0.119\mHa$ at degree
+$12$ against $1.741\mHa$ spline and $26.824\mHa$ linear, a factor of $225$
+over the baseline.
+
+The same molecule, scanned along two chemically similar coordinates with the
+same active space and node spacing, gives opposite verdicts, and that is the
+sharpest demonstration in the report of its central methodological claim:
+\emph{which interpolant wins is an empirical property of the particular
+curve, and has to be measured rather than assumed}. The N--O curve happens to
+be smooth enough over its interval to support a degree-$12$ fit; the N--N
+curve, spanning a stronger bond over a wider effective range, is not.
+
+\paragraph{Geometry.}
+The N--O stretch reconstructions are excellent, placing the minimum at
+$1.1924$ (polynomial) and $1.1927\Ang$ (spline) against a reference of
+$1.185\Ang$, errors below $0.008\Ang$ from a $0.15\Ang$ grid. The N--N
+stretch is worse, $1.213$ and $1.216\Ang$ against $1.128\Ang$, errors of
+roughly $0.086\Ang$ that reflect the small active space rather than the
+interpolation. On the bend, the spline correctly returns the linear geometry
+$180.0^\circ$ exactly, while the polynomial reports $173.48^\circ$, once
+again inventing a spurious interior minimum where the true minimum sits at
+an endpoint.
+
+\figpair{n2o_bend_polynomial_curve.png}{\ce{N2O} bend, polynomial
+reconstruction.}{n2o_bend_poly}{n2o_bend_polynomial_degree_sweep.png}%
+{\ce{N2O} bend degree sweep; worst-case RMS $1959.1\mHa$.}{n2o_bend_sweep}
+\input{tables/tab_deg_n2o_bend}
+
+
+\figpair{n2o_bend_polynomial_error.png}{\ce{N2O} bend, polynomial versus
+linear leave-one-out error.}{n2o_bend_poly_err}{n2o_bend_spline_curve.png}%
+{\ce{N2O} bend, cubic spline reconstruction.}{n2o_bend_spline}
+
+\figone{n2o_bend_spline_error.png}{\ce{N2O} bend, spline leave-one-out error,
+RMS $1.895\mHa$.}{n2o_bend_spline_err}
+
+\figpair{n2o_nn_stretch_polynomial_curve.png}{\ce{N2O} N--N stretch,
+polynomial reconstruction.}{n2o_nn_poly}%
+{n2o_nn_stretch_polynomial_degree_sweep.png}{\ce{N2O} N--N stretch degree
+sweep; best degree $7$.}{n2o_nn_sweep}
+\input{tables/tab_deg_n2o_nn_stretch}
+
+
+\figpair{n2o_nn_stretch_polynomial_error.png}{\ce{N2O} N--N stretch,
+polynomial versus linear leave-one-out error.}{n2o_nn_poly_err}%
+{n2o_nn_stretch_spline_curve.png}{\ce{N2O} N--N stretch, cubic spline
+reconstruction, RMS $2.526\mHa$.}{n2o_nn_spline}
+
+\figone{n2o_nn_stretch_spline_error.png}{\ce{N2O} N--N stretch, spline
+leave-one-out error.}{n2o_nn_spline_err}
+
+\figpair{n2o_no_stretch_polynomial_curve.png}{\ce{N2O} N--O stretch,
+polynomial reconstruction at degree $12$, RMS $0.119\mHa$, the second-best
+reconstruction in the campaign.}{n2o_no_poly}%
+{n2o_no_stretch_polynomial_degree_sweep.png}{\ce{N2O} N--O stretch degree
+sweep. Contrast the shape with the N--N sweep
+(Fig.~\ref{fig:n2o_nn_sweep}), the same molecule, opposite
+verdicts.}{n2o_no_sweep}
+\input{tables/tab_deg_n2o_no_stretch}
+
+
+\figpair{n2o_no_stretch_polynomial_error.png}{\ce{N2O} N--O stretch,
+polynomial versus linear leave-one-out error.}{n2o_no_poly_err}%
+{n2o_no_stretch_spline_curve.png}{\ce{N2O} N--O stretch, cubic spline
+reconstruction, RMS $1.741\mHa$.}{n2o_no_spline}
+
+\figone{n2o_no_stretch_spline_error.png}{\ce{N2O} N--O stretch, spline
+leave-one-out error.}{n2o_no_spline_err}
+
+\figwide{n2o_surface_polynomial_surface.png}{\ce{N2O} surface, total-degree
+polynomial reconstruction. Holdout RMS $5186.4\mHa$, the campaign's worst
+failure, $69\times$ worse than bilinear
+interpolation.}{n2o_surf_poly}
+\figwide{n2o_surface_polynomial_error.png}{\ce{N2O}
+surface, polynomial holdout error. Note the scale.}{n2o_surf_poly_err}
+
+\figwide{n2o_surface_spline_surface.png}{\ce{N2O} surface, bicubic spline
+reconstruction from the $5\times3$ half grid, the same data on which the
+polynomial fails.}{n2o_surf_spline}
+\figwide{n2o_surface_spline_error.png}{\ce{N2O}
+surface, spline holdout error, RMS $43.2\mHa$ against $74.7\mHa$
+bilinear.}{n2o_surf_spline_err}
+
+
+\FloatBarrier
+\subsection{Campaign-wide accuracy}
+\label{sec:accuracy}
+Table~\ref{tab:vqeacc} gives the variational error against exact
+diagonalisation for every scan. Three things stand out.
+
+\subsubsection{The variational bound holds everywhere}
+Across all $692$ optimisations, $E_{\text{VQE}} \geq E_{\text{exact}}$ with
+no exception. This is the correctness check Section~\ref{sec:theory}
+promised: an energy below the exact reference would point to a Hamiltonian
+construction error or a mismatched active space, and we found none.
+
+\subsubsection{Accuracy tracks ansatz depth, not molecule size}
+The scans split cleanly into two groups. Systems with modest parameter
+counts, \ce{H2} ($\overline{\Delta}<0.001\mHa$), \ce{H2O}
+($0.0007\mHa$), \ce{LiH} ($0.0001\mHa$), the \ce{BeH2} bend ($0.0044\mHa$),
+the \ce{NH3} bend ($0.0158\mHa$), reach chemical accuracy by three or four
+orders of magnitude. Systems with the deepest circuits, \ce{N2}
+($p=117$, $\overline{\Delta}=10.48\mHa$), \ce{O2} ($p=68$, $10.55\mHa$),
+the \ce{NO2} bend ($18.93\mHa$), fall short of it.
+
+This is not a failure of the variational principle. It is optimiser
+stagnation: COBYLA gets $1000$ evaluations, and on a $117$-parameter
+landscape that budget runs out before convergence. The evidence is direct:
+the scans that miss chemical accuracy are exactly the ones whose evaluation
+counts saturate at the $1000$-evaluation ceiling, while SLSQP on \ce{LiH}
+converges in $167$ evaluations and on \ce{NH3} in $255$--$348$, comfortably
+inside budget, and both reach chemical accuracy. The fix is more evaluations
+or a better-conditioned ansatz, not a different algorithm.
+
+\subsubsection{Even the worst variational errors are small next to the
+correlation energy}
+The $\Delta^{\text{HF}}_{\max}$ column puts the errors in context. For
+\ce{N2}, Hartree--Fock misses $777\mHa$ of correlation energy, while VQE
+misses $10.5\mHa$ on average, so the variational calculation still recovers
+about $98.6\%$ of what mean-field theory left out. For \ce{F2} the numbers
+are $359.7\mHa$ missed by Hartree--Fock against $0.059\mHa$ by VQE, a
+recovery of $99.98\%$. The method is doing real work even where it misses the
+chemical-accuracy threshold.
+
+\input{tables/tab_vqeacc}
+
+\subsection{Campaign-wide reconstruction}
+\label{sec:recon}
+Table~\ref{tab:interp} collects the out-of-sample reconstruction errors for
+every post-processed scan, and Table~\ref{tab:geom} the recovered
+equilibrium geometries; Section~\ref{sec:results} already interpreted these
+numbers molecule by molecule, and Section~\ref{sec:discussion} draws the
+conclusions that only make sense across all of them.
+
+Two things worth restating here. First, \ce{H2} and \ce{H2O} were scanned but
+never post-processed: the repository has no \texttt{h2\_polynomial/},
+\texttt{h2\_spline/}, \texttt{h2o\_polynomial/} or \texttt{h2o\_spline/}
+directory, and correspondingly no interpolation figures for either. Their
+sections above present scan data only, and we said so there rather than
+quietly skipping the molecules. Second, the \emph{Winner} column of
+Table~\ref{tab:interp} is decided on out-of-sample RMS alone; where the
+margin is narrow, the per-molecule discussion already said so.
+
+\input{tables/tab_interp}
+\input{tables/tab_geom}
+
+\subsection{Discussion}
+\label{sec:discussion}
+\subsubsection{When does the variational solver succeed?}
+
+Across $692$ optimisations, accuracy tracks ansatz conditioning rather than
+molecular size. Table~\ref{tab:vqeacc} splits cleanly into three groups.
+
+\textbf{Well-converged (14 of 23 scans).} Small to moderate parameter counts
+with an optimiser that converges inside budget. \ce{H2}, \ce{H2O}, \ce{LiH},
+\ce{F2}, the \ce{BeH2} bend and all three \ce{NH3} scans reach mean errors
+between $10^{-4}$ and $0.2\mHa$, three to four orders of magnitude inside
+chemical accuracy. \ce{F2} makes the point most sharply: ten qubits and ten
+active electrons, yet only $35$ parameters, and a mean error of $0.059\mHa$.
+
+\textbf{Optimiser-limited.} \ce{N2} ($p=117$) and \ce{O2} ($p=68$) both
+saturate COBYLA's $1000$-evaluation ceiling at every geometry and land at
+$10.5\mHa$ mean error. Fewer than nine evaluations per parameter is not
+enough for a derivative-free method. The fix is more budget, a
+gradient-based optimiser (the parameter-shift rule of
+Section~\ref{sec:theory} exists for exactly this), or, as the
+\ce{O2} anecdote in Section~\ref{sec:theory} shows, simply warm-starting from
+a neighbouring geometry. It is not a different algorithm.
+
+\textbf{Ansatz-limited.} \ce{NO2} has only $20$ parameters and uses $831$
+evaluations, so it is not starved of budget; its $18.9\mHa$ bend error is a
+genuine limit of what that circuit can represent for an open-shell doublet.
+\ce{N2O} is limited the same way by a $(4\text{e},4\text{o})$ active space
+over $22$ electrons, and the fact that its one scan with a larger active
+space, the N--O stretch, $(6\text{e},5\text{o})$, is also its most accurate,
+makes the diagnosis concrete.
+
+The distinction matters because the two failure modes have opposite
+remedies. Adding evaluations helps an optimiser-limited run and does nothing
+for an ansatz-limited one; enlarging the active space helps the latter and
+makes the former worse.
+
+\subsubsection{When does each interpolant win?}
+
+Counting the winners in Table~\ref{tab:interp}: the global polynomial takes
+$9$ of $18$ scored scans, the spline $8$, and piecewise-linear interpolation
+$1$ (the \ce{NO2} bend). No method dominates, and the exceptions are
+informative.
+
+\textbf{The polynomial wins on smooth, densely sampled 1-D curves.} \ce{F2}
+($0.022\mHa$ at $17$ nodes), \ce{LiH} ($0.047\mHa$ at $13$ nodes) and the
+\ce{N2O} N--O stretch ($0.119\mHa$ at $15$ nodes) are the three best
+reconstructions in the campaign, and all three are global polynomials. The
+common features are a single smooth minimum, no nearby complex singularity,
+and enough nodes to support a high degree. Where these hold, the polynomial
+wins by one to two orders of magnitude.
+
+\textbf{The spline wins where the curve is shaped awkwardly.} All three
+\ce{H2O2} scans, the \ce{N2O} N--N stretch, the \ce{N2O} bend, and every
+surface but one go to the spline. Torsional potentials, flat wells and
+functions with an endpoint minimum all defeat a global polynomial, and the
+spline's locality handles them without incident.
+
+\textbf{The spline wins decisively on surfaces.} Four of five surfaces go to
+the spline, and the fifth, \ce{NH3}, is a statistical tie. The \ce{N2O}
+surface is the crucial data point: the total-degree polynomial reaches a
+holdout RMS of $5186\mHa$, $69\times$ worse than doing nothing clever at all,
+while the bicubic spline on the same subgrid achieves $43.2\mHa$. Downside
+risk of that size settles the default choice on its own.
+
+\textbf{Linear interpolation wins when the data are noisy.} The \ce{NO2}
+bend, carrying $18.9\mHa$ of variational error per node, is the one scan
+where the spline loses to the baseline. Spline superiority assumes the
+samples are accurate; when node error approaches the curvature being fitted,
+the $C^2$ constraint spreads noise rather than suppressing it. That this
+happened exactly once, in exactly the scan with the largest variational
+error, is a reassuring consistency check.
+
+\subsubsection{What interpolation buys, quantitatively}
+
+Two concrete returns justify the post-processing layer.
+
+\paragraph{Sub-grid geometry resolution.}
+Table~\ref{tab:geom} shows equilibrium geometries recovered to
+$0.0007$--$0.09\Ang$ from grids spaced at $0.075$--$0.25\Ang$. The best cases
+stand out: \ce{NH3}'s stretch minimum lands within $0.0007\Ang$ of the model
+reference from a $0.075\Ang$ grid, a hundredfold gain; \ce{LiH} reproduces
+its model bond length to four decimals from a $0.25\Ang$ grid. Since the
+piecewise-linear minimum is always a grid node by construction, none of these
+gains would exist without a smooth reconstruction.
+
+\paragraph{Avoiding quadratic cost on surfaces.}
+The half-grid holdout answers a question with a direct budget attached. On
+\ce{BeH2}, fitting a bicubic spline to one quarter of the $110$-point surface
+reconstructs the remaining three quarters at $3.10\mHa$ RMS. On \ce{NO2},
+$38.3\mHa$; on \ce{N2O}, $43.2\mHa$; on \ce{NH3}, $8.28\mHa$. At two to four
+minutes per variational solve, running quarter grids would have saved
+several hours per surface.
+
+The caveat is the floor. On \ce{NH3}, halving a $7\times7$ grid leaves
+$4\times4$, the bare minimum for a bicubic spline, and the holdout error of
+$8.28\mHa$ sits well outside chemical accuracy. Below roughly five points per
+axis there is not enough information left, whatever method is used. The
+practical rule that follows: sample at least ten points per axis if the
+surface is going to be halved, and use a spline.
+
+\subsubsection{On reporting the \ce{LiH} result}
+
+Section~\ref{sec:lih} documents an experiment written to demonstrate Runge's
+phenomenon that failed to demonstrate it. We report this as the headline
+finding for that molecule rather than bury it, for three reasons.
+
+First, it is true, and the measurement is unambiguous: leave-one-out RMS
+falls monotonically to the highest testable degree, and the full interpolant
+has exactly one interior minimum.
+
+Second, the reason is more instructive than the expected result would have
+been. Runge's phenomenon is often taught as a consequence of high degree on
+equally spaced nodes, which oversimplifies it: it is a consequence of the
+interpolated function having a singularity near the real interval. A
+numerical-analysis course is better served by a worked example that exposes
+that distinction than by one more copy of the standard picture.
+
+Third, the campaign has plenty of genuine Runge failures to balance it: the
+\ce{BeH2} stretch, where the degree-$15$ interpolant invents a minimum at the
+interval edge and misplaces the bond length by $0.40\Ang$; the \ce{H2O2}
+stretch, misplacing it by $1.52\Ang$; the \ce{NO2} stretch, by $1.18\Ang$;
+and the \ce{N2O} surface, failing by four orders of magnitude. The
+phenomenon is real. It just is not automatic, and only measuring out of
+sample tells the two cases apart.
+
+\subsubsection{Supplementary: execution on IBM Quantum hardware}
+\label{sec:ibm}
+
+A separate Qiskit implementation queues the same \ce{LiH} calculation on real
+IBM Quantum hardware, using \texttt{PySCFDriver}, a UCCSD ansatz mapped with
+a \texttt{ParityMapper}, and SLSQP. The optimisation loop itself always runs
+against a free, exact statevector estimator; only the already-optimised
+circuit for each bond length is sent to real hardware for one final energy
+evaluation. Reproducing this part of the project needs an IBM Quantum
+account, whose credentials (a Cloud Resource Name and an API key) go in a
+\texttt{.env} file copied from \texttt{.env.example}.
+
+Running real hardware costs real quota, and the script is written around
+that constraint: it picks whichever backend \texttt{service.least\_busy}
+reports as least busy, submits every bond length as a single batched job
+rather than one job per point, asks for explicit confirmation before
+submitting, and fixes the shot count at $2000$ rather than leaving it at the
+service default. The shot-count choice has a documented reason: an earlier
+run left the shot count unset and burned about four minutes of a ten-minute
+account quota on a single seven-point job before it had to be cancelled.
+Error mitigation is switched off (\texttt{resilience\_level = 0}) to keep
+runtime and cost down. That last choice matters for reading
+Table~\ref{tab:ibm}: the huge hardware error below is device noise measured
+with mitigation deliberately turned off to fit inside a small quota, not a
+measurement of the hardware at its best.
+
+\begin{table}[!htbp]
+\caption{\ce{LiH} on an exact statevector simulator versus IBM Quantum
+hardware, from \texttt{VQE demo on IBM Quantum Computer/}. Errors are
+$|E_{\text{VQE}} - E_{\text{exact}}|$ in mHa. The simulator is accurate to
+sub-micro-Hartree; the hardware, run with error mitigation off to control
+cost, is off by more than two Hartree.}
+\label{tab:ibm}
+\centering\footnotesize
+\adjustbox{max width=\columnwidth}{%
+\begin{tabular}{rrrrr}
+\toprule
+$r$ (\AA) & $E_{\text{exact}}$ & $E_{\text{sim}}$ & $\delta_{\text{sim}}$
+& $\delta_{\text{hw}}$ \\
+\midrule
+0.50 & $-7.047910$ & $-7.047910$ & $0.000287$ & $2143.85$ \\
+0.75 & $-7.574579$ & $-7.574579$ & $0.000110$ & $2127.61$ \\
+1.00 & $-7.784021$ & $-7.784021$ & $0.000028$ & --- \\
+1.25 & $-7.861612$ & $-7.861612$ & $0.000043$ & --- \\
+1.50 & $-7.882140$ & $-7.882140$ & $0.000105$ & --- \\
+1.75 & $-7.876947$ & $-7.876947$ & $0.000075$ & --- \\
+2.00 & $-7.860828$ & $-7.860828$ & $0.000049$ & --- \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Only two of the seven bond lengths finished on hardware; the rest were left
+out to stay inside the account's quota. The simulator reproduces exact
+diagonalisation to better than $3\times10^{-4}\mHa$ at every point, four
+orders of magnitude inside chemical accuracy. The two completed hardware runs
+are off by about $2.14\Ha$, roughly $1340\times$ the chemical-accuracy
+threshold, and larger than the entire correlation energy being sought. Gate
+errors, readout errors, decoherence, and the decision to skip error
+mitigation to save quota, together overwhelm the quantity of interest.
+
+This is not a criticism of the hardware, it is a statement of where the
+technology stands today with mitigation off and a tight quota, and it
+justifies the architectural choice made throughout the rest of this project:
+the physics and the numerical analysis are both better served by exact
+classical simulation of the quantum circuits. Every result in
+Sections~\ref{sec:protocol} and \ref{sec:results} is a statement about the
+VQE \emph{algorithm}, not about a particular noisy device.
+
+\subsubsection{Comparison with the base paper}
+\label{sec:comparison}
+
+The base paper~\cite{peruzzo2014} established that a variational loop of
+short quantum circuits and a classical optimiser can recover a molecular
+dissociation curve, demonstrated on one two-qubit molecule. Our campaign
+confirms its two load-bearing claims at a much larger scale. The variational
+bound it relies on held in all $692$ optimisations, and the algorithm reaches
+chemical accuracy on $14$ of $23$ scans with up to ten qubits and $117$
+parameters. Where it falls short, the cause is the classical half of the loop
+the base paper introduced, the optimiser and the ansatz, not the variational
+principle itself (Section~\ref{sec:discussion}). Our supplementary hardware
+run (Section~\ref{sec:ibm}) also echoes the base paper's motivation from the
+other side: on present-day hardware, without error mitigation, device noise is
+larger than the entire correlation energy being sought. Finally, where the
+base paper reports energies only at the sampled bond lengths, our
+reconstruction results show that the curve between those samples can be
+recovered to sub-grid accuracy, provided the reconstruction method is chosen
+by out-of-sample measurement rather than assumed.
+
+% =====================================================================
+\FloatBarrier
+\FloatBarrier
+\section{Conclusion and Future Work}
+\label{sec:conclusion}
+
+\subsection{Key takeaways}
+This project treated building molecular potential energy surfaces as what it
+is from a numerical-analysis standpoint: reconstructing a smooth function
+from a small number of very expensive samples. We implemented the
+Variational Quantum Eigensolver over CUDA-Q and PySCF, ran $23$ scans across
+$11$ molecules totalling $692$ variational optimisations, checked every
+energy against exact diagonalisation of the identical active-space
+Hamiltonian, and reconstructed each scan by three interpolation methods
+scored strictly out of sample.
+
+The main findings are these.
+
+\begin{enumerate}[leftmargin=1.5em]
+\item \textbf{VQE accuracy tracks ansatz conditioning, not molecular size.}
+Fourteen of $23$ scans reach chemical accuracy, several by three to four
+orders of magnitude. \ce{F2}, with ten active electrons and only $35$
+parameters, outperforms \ce{N2}, with six active electrons and $117$. The
+failures split cleanly into optimiser-limited and ansatz-limited cases with
+opposite remedies.
+
+\item \textbf{The variational bound held in all $692$ optimisations}, the
+strongest evidence available that the Hamiltonian construction and
+active-space bookkeeping are correct throughout.
+
+\item \textbf{Splines are the safer default; polynomials are the better
+gamble when the curve allows it.} The polynomial takes $9$ of $18$ scored
+scans and produces the three best reconstructions in the campaign ($0.022$,
+$0.047$ and $0.119\mHa$). But it also produces every catastrophic failure,
+including a surface reconstruction $69\times$ worse than doing nothing. The
+spline never fails badly. On an expensive surface, that asymmetry is worth
+more than the polynomial's occasional win.
+
+\item \textbf{Interpolation buys roughly an order of magnitude of effective
+grid resolution for no extra quantum cost.} Equilibrium geometries were
+located to $0.0007$--$0.09\Ang$ from grids spaced at $0.075$--$0.25\Ang$, and
+the half-grid holdout shows that quarter-cost surfaces reconstruct to
+$3$--$43\mHa$ RMS, provided at least about ten points per axis are sampled.
+
+\item \textbf{Runge's phenomenon is a property of the function, not of the
+degree.} On \ce{LiH} the global polynomial outperformed the cubic spline by
+$38\times$ with no oscillation at any testable degree, and we found the node
+density at which the expected failure does appear. The campaign still
+contains four clear Runge failures, so the phenomenon is real, it is simply
+not automatic, and only out-of-sample measurement tells the two cases apart.
+\end{enumerate}
+
+The idea that ties these together, and the one we would most want carried
+forward, is that in-sample residuals carry no information for an
+interpolant. Our polynomial fits reach residuals as low as
+$1.4\times10^{-11}\mHa$ while being wrong by four orders of magnitude between
+nodes. Only leave-one-out cross-validation and the half-grid holdout tell a
+reconstruction that works apart from one that merely fits.
+
+\subsection{Limitations of the current approach}
+\label{sec:limitations}
+We state the limitations of this work plainly.
+
+\textbf{Minimal basis throughout.} Every calculation uses STO-3G. Absolute
+energies are far from the basis-set limit, and equilibrium geometries carry
+model errors of up to $0.09\Ang$ and several degrees (Table~\ref{tab:geom}).
+No conclusion about \emph{chemistry} should be drawn from these numbers; the
+conclusions here are about \emph{numerical methods}, for which internal
+consistency against exact diagonalisation is what matters.
+
+\textbf{Small active spaces.} Active spaces range from $(2\text{e},5\text{o})$
+to $(10\text{e},6\text{o})$. For \ce{N2O}, $(4\text{e},4\text{o})$ correlates
+four electrons out of twenty-two, inadequate by any chemical standard, and
+that shows up in the results.
+
+\textbf{Optimiser budgets not converged for the largest ans\"atze.}
+\ce{N2}, \ce{O2}, \ce{NO2} and \ce{N2O} did not reach chemical accuracy. For
+the first two the cause is a $1000$-evaluation ceiling, and those scans
+should be rerun with a larger budget, or with warm-starting, before their
+numbers are quoted as converged results.
+
+\textbf{Coverage gaps.} \ce{H2} and \ce{H2O} were scanned but never
+post-processed, so the campaign's densest scan and its canonical example
+molecule contribute no interpolation evidence. The \ce{H2O2} surface was
+computed but not reconstructed. The \ce{H2O} symmetric stretch is implemented
+in the driver and documented in the project README, but no saved scan exists
+in the repository. These are gaps in the campaign, not choices we can justify
+after the fact.
+
+\textbf{Half-grid holdout is a proxy.} The 2-D validation withholds three
+quarters of the points from a rectangular subgrid. That is the right question
+for cost planning, but it is not leave-one-out, and its error estimates run
+pessimistic relative to what a well-chosen adaptive sampling scheme would
+achieve.
+
+\textbf{No treatment of noise or error mitigation in the main campaign.} The
+main campaign simulates circuits exactly. Shot noise, gate error, and the
+error-mitigation techniques that would matter on hardware sit outside its
+scope, as Section~\ref{sec:ibm} makes clear, and the one hardware run we do
+report was taken with error mitigation switched off to control cost.
+
+\textbf{Reference values are heterogeneous.} Table~\ref{tab:geom} compares
+some molecules against experimental values and others against the model's
+own optimised geometry, depending on what the scan metadata recorded. The
+column is labelled accordingly, but cross-molecule comparison of the final
+column should keep that in mind.
+
+\subsection{Future work}
+The clearest next steps: rerun \ce{N2}, \ce{O2} and \ce{NO2} with
+gradient-based optimisation and the parameter-shift rule, to separate
+optimiser error from ansatz error definitively; close the coverage gaps by
+post-processing \ce{H2}, \ce{H2O} and the \ce{H2O2} surface; replace the
+uniform grids with Chebyshev-distributed nodes, which would remove the
+edge-oscillation failures behind every bad polynomial geometry in
+Table~\ref{tab:geom}; and extend the half-grid study into adaptive sampling,
+placing new expensive points where the current reconstruction is least
+certain instead of on a fixed lattice.
+
+\begin{acks}
+The authors thank their supervisor, Ishrat Jahan, for guidance throughout
+CSE 402. This work builds on NVIDIA CUDA-Q Solvers, PySCF, Qiskit, NumPy,
+SciPy and Matplotlib.
+\end{acks}
+
+% =====================================================================
+\FloatBarrier
+\section{Code and Installation}
+\label{sec:code}
+
+\ProjectBanner
+\medskip
+
+The complete implementation is in a public GitHub repository~\cite{projectrepo}.
+It contains the VQE core, every per-molecule experiment driver, the numerical
+post-processing scripts, the saved scan files from which every table and
+figure in this report was generated, the supplementary IBM Quantum script and
+the LaTeX source of this report. The code is Python and builds on CUDA-Q
+Solvers~\cite{cudaq}, PySCF~\cite{pyscf}, Qiskit~\cite{qiskit},
+NumPy~\cite{numpy}, SciPy~\cite{scipy} and Matplotlib~\cite{matplotlib}.
+
+\paragraph{Installation.}
+Clone the repository, create a virtual environment (Python 3.10 or newer) and
+install the pinned requirements, as in Listing~\ref{lst:install}.
+
+\begin{lstlisting}[language=bash,caption={Installation.},label={lst:install}]
+git clone https://github.com/QuitttCat/CSE-402-Numerical-Analysis-Simulation-and-Modeling-Project.git
+cd CSE-402-Numerical-Analysis-Simulation-and-Modeling-Project
+python -m venv .venv
+source .venv/bin/activate      # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+\end{lstlisting}
+
+The per-molecule experiment drivers need only Qiskit, Qiskit Nature and PySCF.
+\texttt{cudaq-solvers}, used by the \texttt{src/} core and the demo scripts, is
+declared in \texttt{requirements.txt} as a Linux/WSL-only dependency
+(\texttt{sys\_platform != "win32"}), so those parts need WSL or a Linux
+machine, while the post-processing scripts run anywhere Python and SciPy do.
+The supplementary IBM Quantum run additionally needs an IBM Quantum account,
+whose credentials go in a \texttt{.env} file copied from
+\texttt{.env.example} (Section~\ref{sec:ibm}).
+
+\subsection{Reproduction}
+\label{sec:repro}
+Every figure and table in this report can be regenerated without re-running
+any quantum simulation, because every scan is saved with its metadata. Note
+that \texttt{cudaq-solvers} is a Linux/WSL-only dependency, so the VQE scans
+themselves need a Linux environment even though the post-processing scripts
+run anywhere Python and SciPy do.
+
+\begin{lstlisting}[language=bash,caption={Reproducing the campaign.}]
+# environment
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+
+# --- re-run a scan from scratch (expensive) ---
+python experiment/h2/h2_ground_state_estimation.py \
+       --start 0.3 --stop 2.5 --step 0.1
+python experiment/h2o/h2o_ground_state_estimation.py \
+       --coordinate bend --start 70 --stop 160 --step 5
+
+# --- reopen a saved scan interactively (seconds) ---
+python experiment/beh2/beh2_ground_state_estimation.py \
+       --load beh2_surface_scan.json
+python experiment/h2o/h2o_ground_state_estimation.py \
+       --load h2o_bend_scan.json
+
+# --- numerical post-processing (runs no chemistry) ---
+python experiment/beh2_spline/beh2_spline_interpolation.py
+python experiment/lih_polynomial/lih_polynomial_interpolation.py
+
+# --- reproduce the LiH Runge finding ---
+python experiment/lih/lih_ground_state_estimation.py \
+       --step 0.125 --save lih_fine
+python experiment/lih_polynomial/lih_polynomial_interpolation.py \
+       --load lih_fine.json
+
+# --- quick tour of every ansatz, optimiser and visualisation
+#     backend, without running a full molecular scan ---
+python examples/molecule_demo.py
+python examples/vqe_demo.py --quantum
+
+# --- regenerate this report's tables from the saved scans ---
+python CSE402_report_acm/gen_tables.py
+\end{lstlisting}
+
+\subsection{Repository structure}
+\label{sec:structure}
+
+\begin{lstlisting}[language=bash,caption={Layout of the project repository.}]
+src/
+  molecule.py     # CUDA-Q / PySCF wrapper + 3D visualisation (1887 lines)
+  vqe.py          # ansatze, optimisers, parameter-shift rule (740 lines)
+examples/
+  molecule_demo.py, vqe_demo.py   # runnable tour of src/
+out/
+  *.html          # visualisation backends exercised by molecule_demo.py
+experiment/
+  scan_io.py      # shared save/load contract, format_version guard
+  <mol>/          # ground-state estimation driver + saved scans
+  <mol>_polynomial/   # global polynomial reconstruction + LOO
+  <mol>_spline/       # cubic/bicubic spline reconstruction + LOO
+NEW_MOLECULE_PROMPT.md
+  # the project's own notes for adding a new molecule: DOF-counting,
+  # reusable code patterns, and a list of traps found the hard way
+VQE demo on IBM Quantum Computer/
+  qiskit_vqe.py, lih_energies.csv, lih_energies_simulator.csv
+Presentation slides/
+  Molecular Simulation - Proposal Presentation.pptx, Project Plan.pdf
+CSE402_report_acm/
+  report.tex, refs.bib, gen_tables.py, figures/, tables/   # this report
+\end{lstlisting}
+
+Molecules with an \texttt{experiment/} directory: \ce{H2}, \ce{H2O},
+\ce{LiH}, \ce{BeH2}, \ce{N2}, \ce{O2}, \ce{F2}, \ce{NH3}, \ce{H2O2},
+\ce{NO2}, \ce{N2O}. Of these, all but \ce{H2} and \ce{H2O} additionally have
+\texttt{\_polynomial} and \texttt{\_spline} post-processing directories.
+
+% =====================================================================
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{refs}
+
+\end{document}
