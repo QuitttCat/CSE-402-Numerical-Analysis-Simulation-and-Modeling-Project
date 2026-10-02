@@ -1,0 +1,564 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{peruzzo2014,mcclean2016}
+\providecommand \oddpage@label [2]{}
+\@writefile{toc}{\contentsline {section}{Abstract}{1}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction and Base Paper Review}{1}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{1}{Introduction and Base Paper Review}{section.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Background and motivation}{1}{subsection.1.1}\protected@file@percent }
+\citation{peruzzo2014}
+\citation{mcclean2016}
+\citation{kandala2017}
+\citation{tilly2022}
+\citation{larocca2024bp}
+\citation{nakaji2024gqe}
+\citation{cudaq}
+\citation{pyscf}
+\citation{schuld2019}
+\citation{qiskit}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Base paper review}{2}{subsection.1.2}\protected@file@percent }
+\newlabel{sec:basepaper}{{1.2}{2}{Base paper review}{subsection.1.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Citation.}{2}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Problem addressed.}{2}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Method.}{2}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Demonstration and findings.}{2}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{How this work builds on it.}{2}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Related work.}{2}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Core objective}{2}{subsection.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}What this report covers}{2}{subsection.1.4}\protected@file@percent }
+\newlabel{sec:contributions}{{1.4}{2}{What this report covers}{subsection.1.4}{}}
+\citation{szabo,helgaker}
+\citation{jordanwigner}
+\citation{bravyikitaev}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}What this project is not}{3}{subsection.1.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.6}How the rest of the report is organised}{3}{subsection.1.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Methodology}{3}{section.2}\protected@file@percent }
+\newlabel{sec:method}{{2}{3}{Methodology}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Background: quantum chemistry and the variational method}{3}{subsection.2.1}\protected@file@percent }
+\newlabel{sec:theory}{{2.1}{3}{Background: quantum chemistry and the variational method}{subsection.2.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}The electronic structure problem}{3}{subsubsection.2.1.1}\protected@file@percent }
+\newlabel{eq:elec-ham}{{1}{3}{The electronic structure problem}{equation.2.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}Second quantisation and the active space}{3}{subsubsection.2.1.2}\protected@file@percent }
+\newlabel{eq:secondquant}{{3}{3}{Second quantisation and the active space}{equation.2.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.3}Fermion-to-qubit mapping}{3}{subsubsection.2.1.3}\protected@file@percent }
+\newlabel{eq:pauli}{{5}{3}{Fermion-to-qubit mapping}{equation.2.5}{}}
+\citation{kandala2017}
+\citation{scipy}
+\citation{powell1994}
+\citation{schuld2019}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.4}The variational principle}{4}{subsubsection.2.1.4}\protected@file@percent }
+\newlabel{eq:variational}{{6}{4}{The variational principle}{equation.2.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.5}Ansatz design}{4}{subsubsection.2.1.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Hardware-efficient ansatz.}{4}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{UCCSD ansatz.}{4}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.6}Classical optimisation and the parameter-shift rule}{4}{subsubsection.2.1.6}\protected@file@percent }
+\newlabel{eq:paramshift}{{10}{4}{Classical optimisation and the parameter-shift rule}{equation.2.10}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Variational Quantum Eigensolver at one fixed geometry}}{4}{algorithm.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{alg:vqe}{{1}{4}{Variational Quantum Eigensolver at one fixed geometry}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.7}The reference calculations}{4}{subsubsection.2.1.7}\protected@file@percent }
+\citation{burden,trefethen}
+\citation{runge1901}
+\citation{deboor}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Numerical methods for surface reconstruction}{5}{subsection.2.2}\protected@file@percent }
+\newlabel{sec:numerics}{{2.2}{5}{Numerical methods for surface reconstruction}{subsection.2.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}The piecewise-linear baseline}{5}{subsubsection.2.2.1}\protected@file@percent }
+\newlabel{eq:linbound}{{14}{5}{The piecewise-linear baseline}{equation.2.14}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Global polynomial interpolation}{5}{subsubsection.2.2.2}\protected@file@percent }
+\newlabel{eq:lagrange}{{15}{5}{Global polynomial interpolation}{equation.2.15}{}}
+\newlabel{eq:polyerror}{{16}{5}{Global polynomial interpolation}{equation.2.16}{}}
+\@writefile{toc}{\contentsline {paragraph}{Runge's phenomenon.}{5}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Degree sweeps.}{5}{section*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.3}Cubic spline interpolation}{5}{subsubsection.2.2.3}\protected@file@percent }
+\newlabel{eq:splinebound}{{19}{6}{Cubic spline interpolation}{equation.2.19}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.4}Two-dimensional reconstruction}{6}{subsubsection.2.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Bilinear}{6}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Bicubic spline}{6}{section*.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Total-degree polynomial}{6}{section*.17}\protected@file@percent }
+\newlabel{sec:holdout}{{2.2.5}{6}{Validation methodology}{subsubsection.2.2.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.5}Validation methodology}{6}{subsubsection.2.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Leave-one-out cross-validation (1-D).}{6}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Half-grid holdout (2-D).}{6}{section*.19}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Leave-one-out cross-validation at the interior nodes}}{6}{algorithm.2}\protected@file@percent }
+\newlabel{alg:loo}{{2}{6}{Leave-one-out cross-validation at the interior nodes}{algorithm.2}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Half-grid holdout for a 2-D surface}}{6}{algorithm.3}\protected@file@percent }
+\newlabel{alg:holdout}{{3}{6}{Half-grid holdout for a 2-D surface}{algorithm.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{Error metrics.}{6}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.6}Locating the minimum}{6}{subsubsection.2.2.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Implementation and Experiments}{6}{section.3}\protected@file@percent }
+\newlabel{sec:impl}{{3}{6}{Implementation and Experiments}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Software architecture}{6}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:software}{{3.1}{6}{Software architecture}{subsection.3.1}{}}
+\citation{cudaq}
+\citation{pyscf}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Layer 1: core (\texttt  {src/})}{7}{subsubsection.3.1.1}\protected@file@percent }
+\newlabel{lst:hea}{{1}{7}{Hardware-efficient ansatz. The parameter count is exactly \texttt {n\_qubits * depth}; increasing \texttt {depth} enlarges the trial-state family at the cost of a harder optimisation, the same flexibility-versus-conditioning trade-off as raising a polynomial degree}{lstlisting.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}{\ignorespaces Hardware-efficient ansatz. The parameter count is exactly \texttt  {n\_qubits * depth}; increasing \texttt  {depth} enlarges the trial-state family at the cost of a harder optimisation, the same flexibility-versus-conditioning trade-off as raising a polynomial degree.}}{7}{lstlisting.1}\protected@file@percent }
+\newlabel{lst:psr}{{2}{7}{Gradient descent with parameter-shift gradients. The inner loop costs $2p$ energy evaluations per gradient, which is why COBYLA is the practical default for production scans}{lstlisting.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2}{\ignorespaces Gradient descent with parameter-shift gradients. The inner loop costs $2p$ energy evaluations per gradient, which is why COBYLA is the practical default for production scans.}}{7}{lstlisting.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Layer 2: experiments (\texttt  {experiment/})}{7}{subsubsection.3.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{The chemistry engine of the drivers.}{7}{section*.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Persistence and the \texttt  {scan\_io} contract.}{7}{section*.22}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Animating a surface.}{8}{section*.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Extending the pipeline.}{8}{section*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}Layer 3: numerical post-processing}{8}{subsubsection.3.1.3}\protected@file@percent }
+\newlabel{lst:loo}{{3}{8}{Leave-one-out cross-validation at the interior nodes. Endpoints return \texttt {NaN} because withholding one turns the problem into extrapolation; nodes where the remaining data cannot support the requested degree are excluded the same way}{lstlisting.3}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3}{\ignorespaces Leave-one-out cross-validation at the interior nodes. Endpoints return \texttt  {NaN} because withholding one turns the problem into extrapolation; nodes where the remaining data cannot support the requested degree are excluded the same way.}}{8}{lstlisting.3}\protected@file@percent }
+\newlabel{lst:holdout}{{4}{8}{Half-grid holdout for surfaces. Taking every other value on each axis keeps the subgrid rectangular, which leave-one-out cannot do, while withholding roughly three quarters of the points}{lstlisting.4}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4}{\ignorespaces Half-grid holdout for surfaces. Taking every other value on each axis keeps the subgrid rectangular, which leave-one-out cannot do, while withholding roughly three quarters of the points.}}{8}{lstlisting.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.4}Reproducibility}{8}{subsubsection.3.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Simulation setup and computational protocol}{8}{subsection.3.2}\protected@file@percent }
+\newlabel{sec:protocol}{{3.2}{8}{Simulation setup and computational protocol}{subsection.3.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Complete computational campaign. Every VQE scan stored in the repository, with the active space, qubit count and ansatz parameter count actually used. $N$ is the number of geometries at which the variational problem was solved. Bond lengths are in \r A{} and angles in degrees.}}{9}{table.caption.25}\protected@file@percent }
+\newlabel{tab:campaign}{{1}{9}{Complete computational campaign. Every VQE scan stored in the repository, with the active space, qubit count and ansatz parameter count actually used. $N$ is the number of geometries at which the variational problem was solved. Bond lengths are in \AA {} and angles in degrees}{table.caption.25}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces The five two-dimensional scans. $N$ is the total number of variational solves, which grows as the product of the two axis lengths; this quadratic cost is the reason the holdout experiment of Section\nonbreakingspace \ref {sec:holdout} matters.}}{9}{table.caption.26}\protected@file@percent }
+\newlabel{tab:surfaces}{{2}{9}{The five two-dimensional scans. $N$ is the total number of variational solves, which grows as the product of the two axis lengths; this quadratic cost is the reason the holdout experiment of Section~\ref {sec:holdout} matters}{table.caption.26}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Parameter choices, datasets and benchmarks}{9}{subsection.3.3}\protected@file@percent }
+\newlabel{sec:params}{{3.3}{9}{Parameter choices, datasets and benchmarks}{subsection.3.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{Chemistry model.}{9}{section*.27}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Ansatz, optimiser and starting point.}{9}{section*.28}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Scan grids.}{9}{section*.29}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Datasets.}{9}{section*.30}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Benchmarks and metrics.}{9}{section*.31}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results and Discussion}{10}{section.4}\protected@file@percent }
+\newlabel{sec:resdisc}{{4}{10}{Results and Discussion}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Results by molecule}{10}{subsection.4.1}\protected@file@percent }
+\newlabel{sec:results}{{4.1}{10}{Results by molecule}{subsection.4.1}{}}
+\newlabel{sec:h2}{{4.1.1}{10}{\ce {H2}: hydrogen}{subsubsection.4.1.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}\ce {H2}: hydrogen}{10}{table.caption.32}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Setup.}{10}{section*.33}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Variational results.}{10}{section*.34}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Reconstruction.}{10}{section*.35}\protected@file@percent }
+\newlabel{sec:lih}{{4.1.2}{10}{\ce {LiH}: lithium hydride, and a negative result}{subsubsection.4.1.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}\ce {LiH}: lithium hydride, and a negative result}{10}{subsubsection.4.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Setup.}{10}{section*.36}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Variational results.}{10}{section*.37}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \ce {LiH} dissociation curve reconstructed by a single global polynomial through all $13$ nodes (degree $12$). The fit passes through every computed point by construction, with an in-sample residual of $1.4\times 10^{-11}\,\text  {mHa}$, machine precision. That residual is \emph  {not} evidence of accuracy, which is the whole point of the out-of-sample analysis in Fig.\nonbreakingspace \ref {fig:lih_poly_err}.}}{10}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:lih_poly_curve}{{1}{10}{\ce {LiH} dissociation curve reconstructed by a single global polynomial through all $13$ nodes (degree $12$). The fit passes through every computed point by construction, with an in-sample residual of $1.4\times 10^{-11}\mHa $, machine precision. That residual is \emph {not} evidence of accuracy, which is the whole point of the out-of-sample analysis in Fig.~\ref {fig:lih_poly_err}}{figure.caption.38}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \ce {LiH} polynomial degree sweep: leave-one-out error against fitted degree, tabulated in Table\nonbreakingspace \ref {tab:deg:lih:bond}. The Runge signature we expected, a minimum followed by a rise, does not appear. Error falls essentially monotonically to the highest testable degree.}}{10}{figure.caption.39}\protected@file@percent }
+\newlabel{fig:lih_poly_sweep}{{2}{10}{\ce {LiH} polynomial degree sweep: leave-one-out error against fitted degree, tabulated in Table~\ref {tab:deg:lih:bond}. The Runge signature we expected, a minimum followed by a rise, does not appear. Error falls essentially monotonically to the highest testable degree}{figure.caption.39}{}}
+\@writefile{toc}{\contentsline {paragraph}{The result the experiment did not expect.}{10}{section*.43}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces \ce {H2} bond length scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm  {VQE}}-E_{\mathrm  {exact}})\times 10^3$ (mHa).}}{11}{table.caption.32}\protected@file@percent }
+\newlabel{tab:data:h2:bond}{{3}{11}{\ce {H2} bond length scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm {VQE}}-E_{\mathrm {exact}})\times 10^3$ (mHa)}{table.caption.32}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces \ce {LiH} bond length polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold.}}{11}{table.caption.40}\protected@file@percent }
+\newlabel{tab:deg:lih:bond}{{4}{11}{\ce {LiH} bond length polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold}{table.caption.40}{}}
+\@writefile{toc}{\contentsline {paragraph}{Why.}{11}{section*.44}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \ce {LiH} leave-one-out error at each interior node for the polynomial and for the piecewise-linear baseline. The polynomial sits below the baseline everywhere, by two to three orders of magnitude.}}{11}{figure.caption.41}\protected@file@percent }
+\newlabel{fig:lih_poly_err}{{3}{11}{\ce {LiH} leave-one-out error at each interior node for the polynomial and for the piecewise-linear baseline. The polynomial sits below the baseline everywhere, by two to three orders of magnitude}{figure.caption.41}{}}
+\@writefile{toc}{\contentsline {paragraph}{Where the trap does start.}{11}{section*.45}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces \ce {LiH} bond length scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm  {VQE}}-E_{\mathrm  {exact}})\times 10^3$ (mHa).}}{12}{table.caption.42}\protected@file@percent }
+\newlabel{tab:data:lih:bond}{{5}{12}{\ce {LiH} bond length scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm {VQE}}-E_{\mathrm {exact}})\times 10^3$ (mHa)}{table.caption.42}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Cubic spline reconstruction of the \ce {LiH} curve.}}{12}{figure.caption.46}\protected@file@percent }
+\newlabel{fig:lih_spline_curve}{{4}{12}{Cubic spline reconstruction of the \ce {LiH} curve}{figure.caption.46}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Spline and linear leave-one-out error. The spline improves on the linear baseline by $7.4\times $ in RMS, a solid result the polynomial nonetheless beats.}}{12}{figure.caption.47}\protected@file@percent }
+\newlabel{fig:lih_spline_err}{{5}{12}{Spline and linear leave-one-out error. The spline improves on the linear baseline by $7.4\times $ in RMS, a solid result the polynomial nonetheless beats}{figure.caption.47}{}}
+\@writefile{toc}{\contentsline {paragraph}{Geometry.}{12}{section*.48}\protected@file@percent }
+\newlabel{sec:beh2}{{4.1.3}{12}{\ce {BeH2}: beryllium hydride}{subsubsection.4.1.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.3}\ce {BeH2}: beryllium hydride}{12}{subsubsection.4.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Setup.}{12}{section*.49}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Variational results.}{12}{section*.52}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces \ce {BeH2} bend angle scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm  {VQE}}-E_{\mathrm  {exact}})\times 10^3$ (mHa).}}{12}{table.caption.53}\protected@file@percent }
+\newlabel{tab:data:beh2:bend}{{6}{12}{\ce {BeH2} bend angle scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm {VQE}}-E_{\mathrm {exact}})\times 10^3$ (mHa)}{table.caption.53}{}}
+\@writefile{toc}{\contentsline {paragraph}{Bend reconstruction.}{12}{section*.55}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces \ce {BeH2} ground-state energy surface (animation frame). $110$ VQE energies rise out of a bond-length $\times $ bond-angle grid in scan order while the molecular rendering redraws to match. The trough runs along the angle axis: bending is soft, stretching is stiff. The reconstruction analysis below turns this into a number.}}{13}{figure.caption.50}\protected@file@percent }
+\newlabel{fig:beh2_anim}{{6}{13}{\ce {BeH2} ground-state energy surface (animation frame). $110$ VQE energies rise out of a bond-length $\times $ bond-angle grid in scan order while the molecular rendering redraws to match. The trough runs along the angle axis: bending is soft, stretching is stiff. The reconstruction analysis below turns this into a number}{figure.caption.50}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces \ce {BeH2} completed energy surface, static render. The minimum sits at the linear geometry $\theta = 180^\circ $, as expected for a $\mathrm  {D}_{\infty h}$ molecule.}}{13}{figure.caption.51}\protected@file@percent }
+\newlabel{fig:beh2_surface3d}{{7}{13}{\ce {BeH2} completed energy surface, static render. The minimum sits at the linear geometry $\theta = 180^\circ $, as expected for a $\mathrm {D}_{\infty h}$ molecule}{figure.caption.51}{}}
+\@writefile{toc}{\contentsline {paragraph}{Stretch reconstruction, and a spurious minimum.}{13}{section*.62}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces \ce {BeH2} symmetric stretch scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm  {VQE}}-E_{\mathrm  {exact}})\times 10^3$ (mHa).}}{14}{table.caption.54}\protected@file@percent }
+\newlabel{tab:data:beh2:stretch}{{7}{14}{\ce {BeH2} symmetric stretch scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm {VQE}}-E_{\mathrm {exact}})\times 10^3$ (mHa)}{table.caption.54}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces \ce {BeH2} bend, polynomial reconstruction.}}{14}{figure.caption.56}\protected@file@percent }
+\newlabel{fig:beh2_bend_poly_curve}{{8}{14}{\ce {BeH2} bend, polynomial reconstruction}{figure.caption.56}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces \ce {BeH2} bend degree sweep. Error falls to $0.0001\,\text  {mHa}$ at degree $9$.}}{14}{figure.caption.57}\protected@file@percent }
+\newlabel{fig:beh2_bend_sweep}{{9}{14}{\ce {BeH2} bend degree sweep. Error falls to $0.0001\mHa $ at degree $9$}{figure.caption.57}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces \ce {BeH2} bend angle polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold.}}{14}{table.caption.58}\protected@file@percent }
+\newlabel{tab:deg:beh2:bend}{{8}{14}{\ce {BeH2} bend angle polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold}{table.caption.58}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces \ce {BeH2} bend, polynomial versus linear leave-one-out error.}}{14}{figure.caption.59}\protected@file@percent }
+\newlabel{fig:beh2_bend_poly_err}{{10}{14}{\ce {BeH2} bend, polynomial versus linear leave-one-out error}{figure.caption.59}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces \ce {BeH2} bend, cubic spline reconstruction.}}{14}{figure.caption.60}\protected@file@percent }
+\newlabel{fig:beh2_bend_spline_curve}{{11}{14}{\ce {BeH2} bend, cubic spline reconstruction}{figure.caption.60}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces \ce {BeH2} bend, spline leave-one-out error. RMS $0.0008\,\text  {mHa}$ against a linear baseline of $0.344\,\text  {mHa}$, a $430\times $ improvement on an already easy problem.}}{15}{figure.caption.61}\protected@file@percent }
+\newlabel{fig:beh2_bend_spline_err}{{12}{15}{\ce {BeH2} bend, spline leave-one-out error. RMS $0.0008\mHa $ against a linear baseline of $0.344\mHa $, a $430\times $ improvement on an already easy problem}{figure.caption.61}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces \ce {BeH2} symmetric stretch, polynomial reconstruction. Note the behaviour at the left edge, which produces the spurious minimum discussed in the text.}}{15}{figure.caption.63}\protected@file@percent }
+\newlabel{fig:beh2_str_poly_curve}{{13}{15}{\ce {BeH2} symmetric stretch, polynomial reconstruction. Note the behaviour at the left edge, which produces the spurious minimum discussed in the text}{figure.caption.63}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces \ce {BeH2} stretch degree sweep. Worst-case RMS reaches $572.5\,\text  {mHa}$.}}{15}{figure.caption.64}\protected@file@percent }
+\newlabel{fig:beh2_str_sweep}{{14}{15}{\ce {BeH2} stretch degree sweep. Worst-case RMS reaches $572.5\mHa $}{figure.caption.64}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces \ce {BeH2} symmetric stretch polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold.}}{15}{table.caption.65}\protected@file@percent }
+\newlabel{tab:deg:beh2:stretch}{{9}{15}{\ce {BeH2} symmetric stretch polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold}{table.caption.65}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces \ce {BeH2} stretch, polynomial versus linear leave-one-out error.}}{15}{figure.caption.66}\protected@file@percent }
+\newlabel{fig:beh2_str_poly_err}{{15}{15}{\ce {BeH2} stretch, polynomial versus linear leave-one-out error}{figure.caption.66}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces \ce {BeH2} stretch, cubic spline reconstruction. The spline stays monotone at the edges and places the minimum at $1.289\text  {\r A}$.}}{15}{figure.caption.67}\protected@file@percent }
+\newlabel{fig:beh2_str_spline_curve}{{16}{15}{\ce {BeH2} stretch, cubic spline reconstruction. The spline stays monotone at the edges and places the minimum at $1.289\Ang $}{figure.caption.67}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces \ce {BeH2} stretch, spline leave-one-out error, RMS $4.647\,\text  {mHa}$.}}{16}{figure.caption.68}\protected@file@percent }
+\newlabel{fig:beh2_str_spline_err}{{17}{16}{\ce {BeH2} stretch, spline leave-one-out error, RMS $4.647\mHa $}{figure.caption.68}{}}
+\@writefile{toc}{\contentsline {paragraph}{Surface reconstruction.}{16}{section*.69}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Geometry.}{16}{section*.74}\protected@file@percent }
+\newlabel{sec:h2o}{{4.1.4}{16}{\ce {H2O}: water}{subsubsection.4.1.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.4}\ce {H2O}: water}{16}{subsubsection.4.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Setup.}{16}{section*.75}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Variational results.}{16}{section*.76}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Reconstruction.}{16}{section*.78}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces \ce {H2O} bend angle scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm  {VQE}}-E_{\mathrm  {exact}})\times 10^3$ (mHa).}}{16}{table.caption.77}\protected@file@percent }
+\newlabel{tab:data:h2o:bend}{{10}{16}{\ce {H2O} bend angle scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm {VQE}}-E_{\mathrm {exact}})\times 10^3$ (mHa)}{table.caption.77}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces \ce {BeH2} surface, total-degree polynomial reconstruction.}}{17}{figure.caption.70}\protected@file@percent }
+\newlabel{fig:beh2_surf_poly}{{18}{17}{\ce {BeH2} surface, total-degree polynomial reconstruction}{figure.caption.70}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces \ce {BeH2} surface, polynomial holdout error distribution.}}{17}{figure.caption.71}\protected@file@percent }
+\newlabel{fig:beh2_surf_poly_err}{{19}{17}{\ce {BeH2} surface, polynomial holdout error distribution}{figure.caption.71}{}}
+\newlabel{sec:nh3}{{4.1.5}{17}{\ce {NH3}: ammonia}{subsubsection.4.1.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.5}\ce {NH3}: ammonia}{17}{subsubsection.4.1.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Setup.}{17}{section*.79}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Variational results.}{17}{section*.83}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{The inversion barrier.}{17}{section*.86}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces \ce {BeH2} surface, bicubic spline reconstruction from the half grid.}}{18}{figure.caption.72}\protected@file@percent }
+\newlabel{fig:beh2_surf_spline}{{20}{18}{\ce {BeH2} surface, bicubic spline reconstruction from the half grid}{figure.caption.72}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces \ce {BeH2} surface, spline holdout error. RMS $3.098\,\text  {mHa}$ against $17.97\,\text  {mHa}$ bilinear.}}{18}{figure.caption.73}\protected@file@percent }
+\newlabel{fig:beh2_surf_spline_err}{{21}{18}{\ce {BeH2} surface, spline holdout error. RMS $3.098\mHa $ against $17.97\mHa $ bilinear}{figure.caption.73}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces \ce {NH3} umbrella bend, raw VQE scan.}}{18}{figure.caption.80}\protected@file@percent }
+\newlabel{fig:nh3_bend_raw}{{22}{18}{\ce {NH3} umbrella bend, raw VQE scan}{figure.caption.80}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces \ce {NH3} symmetric N--H stretch, raw VQE scan.}}{18}{figure.caption.81}\protected@file@percent }
+\newlabel{fig:nh3_str_raw}{{23}{18}{\ce {NH3} symmetric N--H stretch, raw VQE scan}{figure.caption.81}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces \ce {NH3} raw energy surface over the bond-length $\times $ umbrella-angle grid, $49$ VQE solves.}}{19}{figure.caption.82}\protected@file@percent }
+\newlabel{fig:nh3_surf_raw}{{24}{19}{\ce {NH3} raw energy surface over the bond-length $\times $ umbrella-angle grid, $49$ VQE solves}{figure.caption.82}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces \ce {NH3} bend angle scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm  {VQE}}-E_{\mathrm  {exact}})\times 10^3$ (mHa).}}{19}{table.caption.84}\protected@file@percent }
+\newlabel{tab:data:nh3:bend}{{11}{19}{\ce {NH3} bend angle scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm {VQE}}-E_{\mathrm {exact}})\times 10^3$ (mHa)}{table.caption.84}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces \ce {NH3} symmetric stretch scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm  {VQE}}-E_{\mathrm  {exact}})\times 10^3$ (mHa).}}{19}{table.caption.85}\protected@file@percent }
+\newlabel{tab:data:nh3:stretch}{{12}{19}{\ce {NH3} symmetric stretch scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm {VQE}}-E_{\mathrm {exact}})\times 10^3$ (mHa)}{table.caption.85}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces \ce {NH3} bend, polynomial reconstruction.}}{19}{figure.caption.87}\protected@file@percent }
+\newlabel{fig:nh3_bend_poly}{{25}{19}{\ce {NH3} bend, polynomial reconstruction}{figure.caption.87}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces \ce {NH3} bend angle polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold.}}{19}{table.caption.89}\protected@file@percent }
+\newlabel{tab:deg:nh3:bend}{{13}{19}{\ce {NH3} bend angle polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold}{table.caption.89}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces \ce {NH3} bend degree sweep; best degree $4$ at RMS $0.061\,\text  {mHa}$.}}{20}{figure.caption.88}\protected@file@percent }
+\newlabel{fig:nh3_bend_sweep}{{26}{20}{\ce {NH3} bend degree sweep; best degree $4$ at RMS $0.061\mHa $}{figure.caption.88}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces \ce {NH3} bend, polynomial versus linear leave-one-out error.}}{20}{figure.caption.90}\protected@file@percent }
+\newlabel{fig:nh3_bend_poly_err}{{27}{20}{\ce {NH3} bend, polynomial versus linear leave-one-out error}{figure.caption.90}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces \ce {NH3} bend, cubic spline reconstruction, the curve the inversion barrier is measured from.}}{20}{figure.caption.91}\protected@file@percent }
+\newlabel{fig:nh3_bend_spline}{{28}{20}{\ce {NH3} bend, cubic spline reconstruction, the curve the inversion barrier is measured from}{figure.caption.91}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces \ce {NH3} bend, spline leave-one-out error. RMS $0.067\,\text  {mHa}$ against a linear baseline of $0.653\,\text  {mHa}$.}}{20}{figure.caption.92}\protected@file@percent }
+\newlabel{fig:nh3_bend_spline_err}{{29}{20}{\ce {NH3} bend, spline leave-one-out error. RMS $0.067\mHa $ against a linear baseline of $0.653\mHa $}{figure.caption.92}{}}
+\@writefile{toc}{\contentsline {paragraph}{Reconstruction.}{20}{section*.93}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces \ce {NH3} stretch, polynomial reconstruction.}}{20}{figure.caption.94}\protected@file@percent }
+\newlabel{fig:nh3_str_poly}{{30}{20}{\ce {NH3} stretch, polynomial reconstruction}{figure.caption.94}{}}
+\@writefile{toc}{\contentsline {paragraph}{Geometry.}{20}{section*.103}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces \ce {NH3} stretch degree sweep; best degree $6$.}}{21}{figure.caption.95}\protected@file@percent }
+\newlabel{fig:nh3_str_sweep}{{31}{21}{\ce {NH3} stretch degree sweep; best degree $6$}{figure.caption.95}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces \ce {NH3} symmetric stretch polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold.}}{21}{table.caption.96}\protected@file@percent }
+\newlabel{tab:deg:nh3:stretch}{{14}{21}{\ce {NH3} symmetric stretch polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold}{table.caption.96}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces \ce {NH3} stretch, polynomial versus linear leave-one-out error.}}{21}{figure.caption.97}\protected@file@percent }
+\newlabel{fig:nh3_str_poly_err}{{32}{21}{\ce {NH3} stretch, polynomial versus linear leave-one-out error}{figure.caption.97}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {15}{\ignorespaces \ce {NH3} 2-D surface polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold.}}{21}{table.caption.102}\protected@file@percent }
+\newlabel{tab:deg:nh3:surface}{{15}{21}{\ce {NH3} 2-D surface polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold}{table.caption.102}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {33}{\ignorespaces \ce {NH3} stretch, cubic spline reconstruction.}}{21}{figure.caption.98}\protected@file@percent }
+\newlabel{fig:nh3_str_spline}{{33}{21}{\ce {NH3} stretch, cubic spline reconstruction}{figure.caption.98}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {34}{\ignorespaces \ce {NH3} stretch, spline leave-one-out error, RMS $0.920\,\text  {mHa}$.}}{21}{figure.caption.99}\protected@file@percent }
+\newlabel{fig:nh3_str_spline_err}{{34}{21}{\ce {NH3} stretch, spline leave-one-out error, RMS $0.920\mHa $}{figure.caption.99}{}}
+\newlabel{sec:n2}{{4.1.6}{21}{\ce {N2}: nitrogen}{subsubsection.4.1.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.6}\ce {N2}: nitrogen}{21}{subsubsection.4.1.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Setup.}{21}{section*.104}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Variational results.}{21}{section*.105}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {35}{\ignorespaces \ce {NH3} surface, total-degree polynomial reconstruction (degree $6$).}}{22}{figure.caption.100}\protected@file@percent }
+\newlabel{fig:nh3_surf_poly}{{35}{22}{\ce {NH3} surface, total-degree polynomial reconstruction (degree $6$)}{figure.caption.100}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces \ce {NH3} surface, bicubic spline reconstruction from the $4\times 4$ half grid.}}{22}{figure.caption.101}\protected@file@percent }
+\newlabel{fig:nh3_surf_spline}{{36}{22}{\ce {NH3} surface, bicubic spline reconstruction from the $4\times 4$ half grid}{figure.caption.101}{}}
+\@writefile{toc}{\contentsline {paragraph}{Reconstruction.}{22}{section*.107}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {16}{\ignorespaces \ce {N2} bond length scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm  {VQE}}-E_{\mathrm  {exact}})\times 10^3$ (mHa).}}{22}{table.caption.106}\protected@file@percent }
+\newlabel{tab:data:n2:bond}{{16}{22}{\ce {N2} bond length scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm {VQE}}-E_{\mathrm {exact}})\times 10^3$ (mHa)}{table.caption.106}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {37}{\ignorespaces \ce {N2} dissociation curve, polynomial reconstruction.}}{23}{figure.caption.108}\protected@file@percent }
+\newlabel{fig:n2_poly_curve}{{37}{23}{\ce {N2} dissociation curve, polynomial reconstruction}{figure.caption.108}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces \ce {N2} degree sweep; best degree $6$ at $20.34\,\text  {mHa}$ RMS.}}{23}{figure.caption.109}\protected@file@percent }
+\newlabel{fig:n2_sweep}{{38}{23}{\ce {N2} degree sweep; best degree $6$ at $20.34\mHa $ RMS}{figure.caption.109}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {17}{\ignorespaces \ce {N2} bond length polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold.}}{23}{table.caption.110}\protected@file@percent }
+\newlabel{tab:deg:n2:bond}{{17}{23}{\ce {N2} bond length polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold}{table.caption.110}{}}
+\@writefile{toc}{\contentsline {paragraph}{Geometry.}{23}{section*.114}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {39}{\ignorespaces \ce {N2} polynomial versus linear leave-one-out error.}}{23}{figure.caption.111}\protected@file@percent }
+\newlabel{fig:n2_poly_err}{{39}{23}{\ce {N2} polynomial versus linear leave-one-out error}{figure.caption.111}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {40}{\ignorespaces \ce {N2} cubic spline reconstruction.}}{23}{figure.caption.112}\protected@file@percent }
+\newlabel{fig:n2_spline_curve}{{40}{23}{\ce {N2} cubic spline reconstruction}{figure.caption.112}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {41}{\ignorespaces \ce {N2} spline leave-one-out error, RMS $37.59\,\text  {mHa}$. Compare the vertical scale with Fig.\nonbreakingspace \ref {fig:beh2_bend_spline_err}: this is a two-orders-of-magnitude harder problem.}}{23}{figure.caption.113}\protected@file@percent }
+\newlabel{fig:n2_spline_err}{{41}{23}{\ce {N2} spline leave-one-out error, RMS $37.59\mHa $. Compare the vertical scale with Fig.~\ref {fig:beh2_bend_spline_err}: this is a two-orders-of-magnitude harder problem}{figure.caption.113}{}}
+\newlabel{sec:o2}{{4.1.7}{24}{\ce {O2}: oxygen}{subsubsection.4.1.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.7}\ce {O2}: oxygen}{24}{subsubsection.4.1.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Setup.}{24}{section*.115}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Variational results.}{24}{section*.116}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {18}{\ignorespaces \ce {O2} bond length scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm  {VQE}}-E_{\mathrm  {exact}})\times 10^3$ (mHa).}}{24}{table.caption.117}\protected@file@percent }
+\newlabel{tab:data:o2:bond}{{18}{24}{\ce {O2} bond length scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm {VQE}}-E_{\mathrm {exact}})\times 10^3$ (mHa)}{table.caption.117}{}}
+\@writefile{toc}{\contentsline {paragraph}{Reconstruction.}{24}{section*.118}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Geometry.}{24}{section*.125}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {42}{\ignorespaces \ce {O2} dissociation curve, polynomial reconstruction.}}{24}{figure.caption.119}\protected@file@percent }
+\newlabel{fig:o2_poly_curve}{{42}{24}{\ce {O2} dissociation curve, polynomial reconstruction}{figure.caption.119}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {43}{\ignorespaces \ce {O2} degree sweep; best degree $6$ at $7.99\,\text  {mHa}$ RMS, worst $130.17\,\text  {mHa}$.}}{24}{figure.caption.120}\protected@file@percent }
+\newlabel{fig:o2_sweep}{{43}{24}{\ce {O2} degree sweep; best degree $6$ at $7.99\mHa $ RMS, worst $130.17\mHa $}{figure.caption.120}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {19}{\ignorespaces \ce {O2} bond length polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold.}}{24}{table.caption.121}\protected@file@percent }
+\newlabel{tab:deg:o2:bond}{{19}{24}{\ce {O2} bond length polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold}{table.caption.121}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {44}{\ignorespaces \ce {O2} polynomial versus linear leave-one-out error.}}{25}{figure.caption.122}\protected@file@percent }
+\newlabel{fig:o2_poly_err}{{44}{25}{\ce {O2} polynomial versus linear leave-one-out error}{figure.caption.122}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {45}{\ignorespaces \ce {O2} cubic spline reconstruction.}}{25}{figure.caption.123}\protected@file@percent }
+\newlabel{fig:o2_spline_curve}{{45}{25}{\ce {O2} cubic spline reconstruction}{figure.caption.123}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {46}{\ignorespaces \ce {O2} spline leave-one-out error, RMS $22.00\,\text  {mHa}$.}}{25}{figure.caption.124}\protected@file@percent }
+\newlabel{fig:o2_spline_err}{{46}{25}{\ce {O2} spline leave-one-out error, RMS $22.00\mHa $}{figure.caption.124}{}}
+\newlabel{sec:f2}{{4.1.8}{25}{\ce {F2}: fluorine}{subsubsection.4.1.8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.8}\ce {F2}: fluorine}{25}{subsubsection.4.1.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Setup.}{25}{section*.126}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Variational results.}{25}{section*.127}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {20}{\ignorespaces \ce {F2} bond length scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm  {VQE}}-E_{\mathrm  {exact}})\times 10^3$ (mHa).}}{25}{table.caption.128}\protected@file@percent }
+\newlabel{tab:data:f2:bond}{{20}{25}{\ce {F2} bond length scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm {VQE}}-E_{\mathrm {exact}})\times 10^3$ (mHa)}{table.caption.128}{}}
+\@writefile{toc}{\contentsline {paragraph}{Reconstruction: the polynomial's best case.}{25}{section*.129}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Geometry.}{25}{section*.136}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {47}{\ignorespaces \ce {F2} dissociation curve, polynomial reconstruction at degree $13$, the most accurate reconstruction in the campaign.}}{26}{figure.caption.130}\protected@file@percent }
+\newlabel{fig:f2_poly_curve}{{47}{26}{\ce {F2} dissociation curve, polynomial reconstruction at degree $13$, the most accurate reconstruction in the campaign}{figure.caption.130}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {48}{\ignorespaces \ce {F2} degree sweep. Best degree $13$ at $0.022\,\text  {mHa}$ RMS.}}{26}{figure.caption.131}\protected@file@percent }
+\newlabel{fig:f2_sweep}{{48}{26}{\ce {F2} degree sweep. Best degree $13$ at $0.022\mHa $ RMS}{figure.caption.131}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {21}{\ignorespaces \ce {F2} bond length polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold.}}{26}{table.caption.132}\protected@file@percent }
+\newlabel{tab:deg:f2:bond}{{21}{26}{\ce {F2} bond length polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold}{table.caption.132}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {49}{\ignorespaces \ce {F2} polynomial versus linear leave-one-out error. Note the logarithmic separation between the two methods.}}{26}{figure.caption.133}\protected@file@percent }
+\newlabel{fig:f2_poly_err}{{49}{26}{\ce {F2} polynomial versus linear leave-one-out error. Note the logarithmic separation between the two methods}{figure.caption.133}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {50}{\ignorespaces \ce {F2} cubic spline reconstruction, RMS $2.42\,\text  {mHa}$.}}{26}{figure.caption.134}\protected@file@percent }
+\newlabel{fig:f2_spline_curve}{{50}{26}{\ce {F2} cubic spline reconstruction, RMS $2.42\mHa $}{figure.caption.134}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {51}{\ignorespaces \ce {F2} spline leave-one-out error. A $12.9\times $ improvement on the linear baseline, respectable on its own, but two orders of magnitude behind the polynomial on this curve.}}{26}{figure.caption.135}\protected@file@percent }
+\newlabel{fig:f2_spline_err}{{51}{26}{\ce {F2} spline leave-one-out error. A $12.9\times $ improvement on the linear baseline, respectable on its own, but two orders of magnitude behind the polynomial on this curve}{figure.caption.135}{}}
+\newlabel{sec:h2o2}{{4.1.9}{27}{\ce {H2O2}: hydrogen peroxide}{subsubsection.4.1.9}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.9}\ce {H2O2}: hydrogen peroxide}{27}{subsubsection.4.1.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Setup.}{27}{section*.137}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Variational results.}{27}{section*.141}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {22}{\ignorespaces \ce {H2O2} bend angle scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm  {VQE}}-E_{\mathrm  {exact}})\times 10^3$ (mHa).}}{27}{table.caption.142}\protected@file@percent }
+\newlabel{tab:data:h2o2:bend}{{22}{27}{\ce {H2O2} bend angle scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm {VQE}}-E_{\mathrm {exact}})\times 10^3$ (mHa)}{table.caption.142}{}}
+\@writefile{toc}{\contentsline {paragraph}{Reconstruction.}{27}{section*.145}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {23}{\ignorespaces \ce {H2O2} symmetric stretch scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm  {VQE}}-E_{\mathrm  {exact}})\times 10^3$ (mHa).}}{27}{table.caption.143}\protected@file@percent }
+\newlabel{tab:data:h2o2:stretch}{{23}{27}{\ce {H2O2} symmetric stretch scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm {VQE}}-E_{\mathrm {exact}})\times 10^3$ (mHa)}{table.caption.143}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {24}{\ignorespaces \ce {H2O2} dihedral twist scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm  {VQE}}-E_{\mathrm  {exact}})\times 10^3$ (mHa).}}{27}{table.caption.144}\protected@file@percent }
+\newlabel{tab:data:h2o2:twist}{{24}{27}{\ce {H2O2} dihedral twist scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm {VQE}}-E_{\mathrm {exact}})\times 10^3$ (mHa)}{table.caption.144}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {52}{\ignorespaces \ce {H2O2} energy surface over the dihedral $\times $ bend grid (animation frame). The torsional coordinate is the soft direction; the bend is stiffer.}}{28}{figure.caption.138}\protected@file@percent }
+\newlabel{fig:h2o2_anim}{{52}{28}{\ce {H2O2} energy surface over the dihedral $\times $ bend grid (animation frame). The torsional coordinate is the soft direction; the bend is stiffer}{figure.caption.138}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {53}{\ignorespaces \ce {H2O2} completed energy surface, static render of the $10\times 5$ grid.}}{28}{figure.caption.139}\protected@file@percent }
+\newlabel{fig:h2o2_surf3d}{{53}{28}{\ce {H2O2} completed energy surface, static render of the $10\times 5$ grid}{figure.caption.139}{}}
+\@writefile{toc}{\contentsline {paragraph}{No surface reconstruction.}{28}{section*.146}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {54}{\ignorespaces \ce {H2O2} dihedral twist (animation frame). The molecule rotates about the O--O axis through the full $0$--$180^\circ $ range while the energy curve is traced alongside.}}{29}{figure.caption.140}\protected@file@percent }
+\newlabel{fig:h2o2_twist_anim}{{54}{29}{\ce {H2O2} dihedral twist (animation frame). The molecule rotates about the O--O axis through the full $0$--$180^\circ $ range while the energy curve is traced alongside}{figure.caption.140}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {55}{\ignorespaces \ce {H2O2} O--O--H bend, polynomial reconstruction.}}{29}{figure.caption.147}\protected@file@percent }
+\newlabel{fig:h2o2_bend_poly}{{55}{29}{\ce {H2O2} O--O--H bend, polynomial reconstruction}{figure.caption.147}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {56}{\ignorespaces \ce {H2O2} bend degree sweep; best degree $5$.}}{29}{figure.caption.148}\protected@file@percent }
+\newlabel{fig:h2o2_bend_sweep}{{56}{29}{\ce {H2O2} bend degree sweep; best degree $5$}{figure.caption.148}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {25}{\ignorespaces \ce {H2O2} bend angle polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold.}}{29}{table.caption.149}\protected@file@percent }
+\newlabel{tab:deg:h2o2:bend}{{25}{29}{\ce {H2O2} bend angle polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold}{table.caption.149}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {57}{\ignorespaces \ce {H2O2} bend, polynomial versus linear leave-one-out error.}}{29}{figure.caption.150}\protected@file@percent }
+\newlabel{fig:h2o2_bend_poly_err}{{57}{29}{\ce {H2O2} bend, polynomial versus linear leave-one-out error}{figure.caption.150}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {58}{\ignorespaces \ce {H2O2} bend, cubic spline reconstruction, RMS $0.776\,\text  {mHa}$.}}{30}{figure.caption.151}\protected@file@percent }
+\newlabel{fig:h2o2_bend_spline}{{58}{30}{\ce {H2O2} bend, cubic spline reconstruction, RMS $0.776\mHa $}{figure.caption.151}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {59}{\ignorespaces \ce {H2O2} bend, spline leave-one-out error.}}{30}{figure.caption.152}\protected@file@percent }
+\newlabel{fig:h2o2_bend_spline_err}{{59}{30}{\ce {H2O2} bend, spline leave-one-out error}{figure.caption.152}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {60}{\ignorespaces \ce {H2O2} O--O stretch, polynomial reconstruction. The behaviour near the right edge produces the spurious $2.975\text  {\r A}$ minimum discussed in the text.}}{30}{figure.caption.153}\protected@file@percent }
+\newlabel{fig:h2o2_str_poly}{{60}{30}{\ce {H2O2} O--O stretch, polynomial reconstruction. The behaviour near the right edge produces the spurious $2.975\Ang $ minimum discussed in the text}{figure.caption.153}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {61}{\ignorespaces \ce {H2O2} stretch degree sweep; worst-case RMS $1446.8\,\text  {mHa}$.}}{30}{figure.caption.154}\protected@file@percent }
+\newlabel{fig:h2o2_str_sweep}{{61}{30}{\ce {H2O2} stretch degree sweep; worst-case RMS $1446.8\mHa $}{figure.caption.154}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {26}{\ignorespaces \ce {H2O2} symmetric stretch polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold.}}{30}{table.caption.155}\protected@file@percent }
+\newlabel{tab:deg:h2o2:stretch}{{26}{30}{\ce {H2O2} symmetric stretch polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold}{table.caption.155}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {62}{\ignorespaces \ce {H2O2} stretch, polynomial versus linear leave-one-out error.}}{30}{figure.caption.156}\protected@file@percent }
+\newlabel{fig:h2o2_str_poly_err}{{62}{30}{\ce {H2O2} stretch, polynomial versus linear leave-one-out error}{figure.caption.156}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {63}{\ignorespaces \ce {H2O2} stretch, cubic spline reconstruction, RMS $1.030\,\text  {mHa}$.}}{31}{figure.caption.157}\protected@file@percent }
+\newlabel{fig:h2o2_str_spline}{{63}{31}{\ce {H2O2} stretch, cubic spline reconstruction, RMS $1.030\mHa $}{figure.caption.157}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {64}{\ignorespaces \ce {H2O2} stretch, spline leave-one-out error.}}{31}{figure.caption.158}\protected@file@percent }
+\newlabel{fig:h2o2_str_spline_err}{{64}{31}{\ce {H2O2} stretch, spline leave-one-out error}{figure.caption.158}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {65}{\ignorespaces \ce {H2O2} dihedral twist, polynomial reconstruction. This is the one scan in the campaign where the polynomial is beaten by piecewise-linear interpolation.}}{31}{figure.caption.159}\protected@file@percent }
+\newlabel{fig:h2o2_twist_poly}{{65}{31}{\ce {H2O2} dihedral twist, polynomial reconstruction. This is the one scan in the campaign where the polynomial is beaten by piecewise-linear interpolation}{figure.caption.159}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {66}{\ignorespaces \ce {H2O2} twist degree sweep; worst-case RMS $858.5\,\text  {mHa}$.}}{31}{figure.caption.160}\protected@file@percent }
+\newlabel{fig:h2o2_twist_sweep}{{66}{31}{\ce {H2O2} twist degree sweep; worst-case RMS $858.5\mHa $}{figure.caption.160}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {27}{\ignorespaces \ce {H2O2} dihedral twist polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold.}}{31}{table.caption.161}\protected@file@percent }
+\newlabel{tab:deg:h2o2:twist}{{27}{31}{\ce {H2O2} dihedral twist polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold}{table.caption.161}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {67}{\ignorespaces \ce {H2O2} twist, polynomial versus linear leave-one-out error.}}{31}{figure.caption.162}\protected@file@percent }
+\newlabel{fig:h2o2_twist_poly_err}{{67}{31}{\ce {H2O2} twist, polynomial versus linear leave-one-out error}{figure.caption.162}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {68}{\ignorespaces \ce {H2O2} twist, cubic spline reconstruction of the torsional potential, RMS $1.365\,\text  {mHa}$.}}{32}{figure.caption.163}\protected@file@percent }
+\newlabel{fig:h2o2_twist_spline}{{68}{32}{\ce {H2O2} twist, cubic spline reconstruction of the torsional potential, RMS $1.365\mHa $}{figure.caption.163}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {69}{\ignorespaces \ce {H2O2} twist, spline leave-one-out error.}}{32}{figure.caption.164}\protected@file@percent }
+\newlabel{fig:h2o2_twist_spline_err}{{69}{32}{\ce {H2O2} twist, spline leave-one-out error}{figure.caption.164}{}}
+\newlabel{sec:no2}{{4.1.10}{32}{\ce {NO2}: nitrogen dioxide}{subsubsection.4.1.10}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.10}\ce {NO2}: nitrogen dioxide}{32}{subsubsection.4.1.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Setup.}{32}{section*.165}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Variational results.}{32}{section*.167}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Reconstruction.}{32}{section*.170}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {28}{\ignorespaces \ce {NO2} bend angle scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm  {VQE}}-E_{\mathrm  {exact}})\times 10^3$ (mHa).}}{32}{table.caption.168}\protected@file@percent }
+\newlabel{tab:data:no2:bend}{{28}{32}{\ce {NO2} bend angle scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm {VQE}}-E_{\mathrm {exact}})\times 10^3$ (mHa)}{table.caption.168}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {29}{\ignorespaces \ce {NO2} symmetric stretch scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm  {VQE}}-E_{\mathrm  {exact}})\times 10^3$ (mHa).}}{32}{table.caption.169}\protected@file@percent }
+\newlabel{tab:data:no2:stretch}{{29}{32}{\ce {NO2} symmetric stretch scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm {VQE}}-E_{\mathrm {exact}})\times 10^3$ (mHa)}{table.caption.169}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {70}{\ignorespaces \ce {NO2} energy surface over the bond-length $\times $ bond-angle grid, $110$ VQE solves.}}{33}{figure.caption.166}\protected@file@percent }
+\newlabel{fig:no2_surf3d}{{70}{33}{\ce {NO2} energy surface over the bond-length $\times $ bond-angle grid, $110$ VQE solves}{figure.caption.166}{}}
+\@writefile{toc}{\contentsline {paragraph}{Geometry.}{33}{section*.171}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {71}{\ignorespaces \ce {NO2} bend, polynomial reconstruction.}}{33}{figure.caption.172}\protected@file@percent }
+\newlabel{fig:no2_bend_poly}{{71}{33}{\ce {NO2} bend, polynomial reconstruction}{figure.caption.172}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {72}{\ignorespaces \ce {NO2} bend degree sweep; worst-case RMS $2170.2\,\text  {mHa}$.}}{33}{figure.caption.173}\protected@file@percent }
+\newlabel{fig:no2_bend_sweep}{{72}{33}{\ce {NO2} bend degree sweep; worst-case RMS $2170.2\mHa $}{figure.caption.173}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {30}{\ignorespaces \ce {NO2} bend angle polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold.}}{33}{table.caption.174}\protected@file@percent }
+\newlabel{tab:deg:no2:bend}{{30}{33}{\ce {NO2} bend angle polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold}{table.caption.174}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {73}{\ignorespaces \ce {NO2} bend, polynomial versus linear leave-one-out error.}}{34}{figure.caption.175}\protected@file@percent }
+\newlabel{fig:no2_bend_poly_err}{{73}{34}{\ce {NO2} bend, polynomial versus linear leave-one-out error}{figure.caption.175}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {74}{\ignorespaces \ce {NO2} bend, cubic spline reconstruction.}}{34}{figure.caption.176}\protected@file@percent }
+\newlabel{fig:no2_bend_spline}{{74}{34}{\ce {NO2} bend, cubic spline reconstruction}{figure.caption.176}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {75}{\ignorespaces \ce {NO2} bend, spline leave-one-out error. At $7.26\,\text  {mHa}$ RMS this is \emph  {worse} than the $5.05\,\text  {mHa}$ linear baseline, the campaign's one spline defeat, caused by the $18.9\,\text  {mHa}$ variational noise in the underlying data.}}{34}{figure.caption.177}\protected@file@percent }
+\newlabel{fig:no2_bend_spline_err}{{75}{34}{\ce {NO2} bend, spline leave-one-out error. At $7.26\mHa $ RMS this is \emph {worse} than the $5.05\mHa $ linear baseline, the campaign's one spline defeat, caused by the $18.9\mHa $ variational noise in the underlying data}{figure.caption.177}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {76}{\ignorespaces \ce {NO2} symmetric stretch, polynomial reconstruction.}}{34}{figure.caption.178}\protected@file@percent }
+\newlabel{fig:no2_str_poly}{{76}{34}{\ce {NO2} symmetric stretch, polynomial reconstruction}{figure.caption.178}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {77}{\ignorespaces \ce {NO2} stretch degree sweep.}}{34}{figure.caption.179}\protected@file@percent }
+\newlabel{fig:no2_str_sweep}{{77}{34}{\ce {NO2} stretch degree sweep}{figure.caption.179}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {31}{\ignorespaces \ce {NO2} symmetric stretch polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold.}}{34}{table.caption.180}\protected@file@percent }
+\newlabel{tab:deg:no2:stretch}{{31}{34}{\ce {NO2} symmetric stretch polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold}{table.caption.180}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {78}{\ignorespaces \ce {NO2} stretch, polynomial versus linear leave-one-out error.}}{35}{figure.caption.181}\protected@file@percent }
+\newlabel{fig:no2_str_poly_err}{{78}{35}{\ce {NO2} stretch, polynomial versus linear leave-one-out error}{figure.caption.181}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {79}{\ignorespaces \ce {NO2} stretch, cubic spline reconstruction.}}{35}{figure.caption.182}\protected@file@percent }
+\newlabel{fig:no2_str_spline}{{79}{35}{\ce {NO2} stretch, cubic spline reconstruction}{figure.caption.182}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {80}{\ignorespaces \ce {NO2} stretch, spline leave-one-out error, RMS $8.47\,\text  {mHa}$.}}{35}{figure.caption.183}\protected@file@percent }
+\newlabel{fig:no2_str_spline_err}{{80}{35}{\ce {NO2} stretch, spline leave-one-out error, RMS $8.47\mHa $}{figure.caption.183}{}}
+\newlabel{sec:n2o}{{4.1.11}{35}{\ce {N2O}: nitrous oxide}{subsubsection.4.1.11}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.11}\ce {N2O}: nitrous oxide}{35}{subsubsection.4.1.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Setup.}{35}{section*.188}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Variational results.}{35}{section*.190}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {32}{\ignorespaces \ce {N2O} bend angle scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm  {VQE}}-E_{\mathrm  {exact}})\times 10^3$ (mHa).}}{35}{table.caption.191}\protected@file@percent }
+\newlabel{tab:data:n2o:bend}{{32}{35}{\ce {N2O} bend angle scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm {VQE}}-E_{\mathrm {exact}})\times 10^3$ (mHa)}{table.caption.191}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {33}{\ignorespaces \ce {N2O} N--N stretch scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm  {VQE}}-E_{\mathrm  {exact}})\times 10^3$ (mHa).}}{35}{table.caption.192}\protected@file@percent }
+\newlabel{tab:data:n2o:nn_stretch}{{33}{35}{\ce {N2O} N--N stretch scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm {VQE}}-E_{\mathrm {exact}})\times 10^3$ (mHa)}{table.caption.192}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {81}{\ignorespaces \ce {NO2} surface, total-degree polynomial reconstruction. The in-sample residual alone is $122.5\,\text  {mHa}$.}}{36}{figure.caption.184}\protected@file@percent }
+\newlabel{fig:no2_surf_poly}{{81}{36}{\ce {NO2} surface, total-degree polynomial reconstruction. The in-sample residual alone is $122.5\mHa $}{figure.caption.184}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {82}{\ignorespaces \ce {NO2} surface, polynomial holdout error.}}{36}{figure.caption.185}\protected@file@percent }
+\newlabel{fig:no2_surf_poly_err}{{82}{36}{\ce {NO2} surface, polynomial holdout error}{figure.caption.185}{}}
+\@writefile{toc}{\contentsline {paragraph}{Reconstruction: the campaign's worst failure.}{36}{section*.194}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{1-D reconstructions.}{36}{section*.195}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {83}{\ignorespaces \ce {NO2} surface, bicubic spline reconstruction from the half grid.}}{37}{figure.caption.186}\protected@file@percent }
+\newlabel{fig:no2_surf_spline}{{83}{37}{\ce {NO2} surface, bicubic spline reconstruction from the half grid}{figure.caption.186}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {84}{\ignorespaces \ce {NO2} surface, spline holdout error, RMS $38.28\,\text  {mHa}$ against $112.96\,\text  {mHa}$ bilinear.}}{37}{figure.caption.187}\protected@file@percent }
+\newlabel{fig:no2_surf_spline_err}{{84}{37}{\ce {NO2} surface, spline holdout error, RMS $38.28\mHa $ against $112.96\mHa $ bilinear}{figure.caption.187}{}}
+\@writefile{toc}{\contentsline {paragraph}{Geometry.}{37}{section*.196}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {85}{\ignorespaces \ce {N2O} energy surface over the two independent bond lengths at fixed linear geometry, $60$ VQE solves.}}{38}{figure.caption.189}\protected@file@percent }
+\newlabel{fig:n2o_surf3d}{{85}{38}{\ce {N2O} energy surface over the two independent bond lengths at fixed linear geometry, $60$ VQE solves}{figure.caption.189}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {34}{\ignorespaces \ce {N2O} N--O stretch scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm  {VQE}}-E_{\mathrm  {exact}})\times 10^3$ (mHa).}}{38}{table.caption.193}\protected@file@percent }
+\newlabel{tab:data:n2o:no_stretch}{{34}{38}{\ce {N2O} N--O stretch scan: Hartree--Fock, VQE and exact energies (Ha) at every geometry; $\delta = (E_{\mathrm {VQE}}-E_{\mathrm {exact}})\times 10^3$ (mHa)}{table.caption.193}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {86}{\ignorespaces \ce {N2O} bend, polynomial reconstruction.}}{38}{figure.caption.197}\protected@file@percent }
+\newlabel{fig:n2o_bend_poly}{{86}{38}{\ce {N2O} bend, polynomial reconstruction}{figure.caption.197}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {87}{\ignorespaces \ce {N2O} bend degree sweep; worst-case RMS $1959.1\,\text  {mHa}$.}}{38}{figure.caption.198}\protected@file@percent }
+\newlabel{fig:n2o_bend_sweep}{{87}{38}{\ce {N2O} bend degree sweep; worst-case RMS $1959.1\mHa $}{figure.caption.198}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {35}{\ignorespaces \ce {N2O} bend angle polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold.}}{38}{table.caption.199}\protected@file@percent }
+\newlabel{tab:deg:n2o:bend}{{35}{38}{\ce {N2O} bend angle polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold}{table.caption.199}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {88}{\ignorespaces \ce {N2O} bend, polynomial versus linear leave-one-out error.}}{39}{figure.caption.200}\protected@file@percent }
+\newlabel{fig:n2o_bend_poly_err}{{88}{39}{\ce {N2O} bend, polynomial versus linear leave-one-out error}{figure.caption.200}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {89}{\ignorespaces \ce {N2O} bend, cubic spline reconstruction.}}{39}{figure.caption.201}\protected@file@percent }
+\newlabel{fig:n2o_bend_spline}{{89}{39}{\ce {N2O} bend, cubic spline reconstruction}{figure.caption.201}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {90}{\ignorespaces \ce {N2O} bend, spline leave-one-out error, RMS $1.895\,\text  {mHa}$.}}{39}{figure.caption.202}\protected@file@percent }
+\newlabel{fig:n2o_bend_spline_err}{{90}{39}{\ce {N2O} bend, spline leave-one-out error, RMS $1.895\mHa $}{figure.caption.202}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {91}{\ignorespaces \ce {N2O} N--N stretch, polynomial reconstruction.}}{39}{figure.caption.203}\protected@file@percent }
+\newlabel{fig:n2o_nn_poly}{{91}{39}{\ce {N2O} N--N stretch, polynomial reconstruction}{figure.caption.203}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {92}{\ignorespaces \ce {N2O} N--N stretch degree sweep; best degree $7$.}}{39}{figure.caption.204}\protected@file@percent }
+\newlabel{fig:n2o_nn_sweep}{{92}{39}{\ce {N2O} N--N stretch degree sweep; best degree $7$}{figure.caption.204}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {36}{\ignorespaces \ce {N2O} N--N stretch polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold.}}{39}{table.caption.205}\protected@file@percent }
+\newlabel{tab:deg:n2o:nn_stretch}{{36}{39}{\ce {N2O} N--N stretch polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold}{table.caption.205}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {93}{\ignorespaces \ce {N2O} N--N stretch, polynomial versus linear leave-one-out error.}}{40}{figure.caption.206}\protected@file@percent }
+\newlabel{fig:n2o_nn_poly_err}{{93}{40}{\ce {N2O} N--N stretch, polynomial versus linear leave-one-out error}{figure.caption.206}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {94}{\ignorespaces \ce {N2O} N--N stretch, cubic spline reconstruction, RMS $2.526\,\text  {mHa}$.}}{40}{figure.caption.207}\protected@file@percent }
+\newlabel{fig:n2o_nn_spline}{{94}{40}{\ce {N2O} N--N stretch, cubic spline reconstruction, RMS $2.526\mHa $}{figure.caption.207}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {95}{\ignorespaces \ce {N2O} N--N stretch, spline leave-one-out error.}}{40}{figure.caption.208}\protected@file@percent }
+\newlabel{fig:n2o_nn_spline_err}{{95}{40}{\ce {N2O} N--N stretch, spline leave-one-out error}{figure.caption.208}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {96}{\ignorespaces \ce {N2O} N--O stretch, polynomial reconstruction at degree $12$, RMS $0.119\,\text  {mHa}$, the second-best reconstruction in the campaign.}}{40}{figure.caption.209}\protected@file@percent }
+\newlabel{fig:n2o_no_poly}{{96}{40}{\ce {N2O} N--O stretch, polynomial reconstruction at degree $12$, RMS $0.119\mHa $, the second-best reconstruction in the campaign}{figure.caption.209}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {97}{\ignorespaces \ce {N2O} N--O stretch degree sweep. Contrast the shape with the N--N sweep (Fig.\nonbreakingspace \ref {fig:n2o_nn_sweep}), the same molecule, opposite verdicts.}}{40}{figure.caption.210}\protected@file@percent }
+\newlabel{fig:n2o_no_sweep}{{97}{40}{\ce {N2O} N--O stretch degree sweep. Contrast the shape with the N--N sweep (Fig.~\ref {fig:n2o_nn_sweep}), the same molecule, opposite verdicts}{figure.caption.210}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {37}{\ignorespaces \ce {N2O} N--O stretch polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold.}}{40}{table.caption.211}\protected@file@percent }
+\newlabel{tab:deg:n2o:no_stretch}{{37}{40}{\ce {N2O} N--O stretch polynomial degree sweep: leave-one-out error (mHa) against fitted degree $d$; the best degree is in bold}{table.caption.211}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {98}{\ignorespaces \ce {N2O} N--O stretch, polynomial versus linear leave-one-out error.}}{41}{figure.caption.212}\protected@file@percent }
+\newlabel{fig:n2o_no_poly_err}{{98}{41}{\ce {N2O} N--O stretch, polynomial versus linear leave-one-out error}{figure.caption.212}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {99}{\ignorespaces \ce {N2O} N--O stretch, cubic spline reconstruction, RMS $1.741\,\text  {mHa}$.}}{41}{figure.caption.213}\protected@file@percent }
+\newlabel{fig:n2o_no_spline}{{99}{41}{\ce {N2O} N--O stretch, cubic spline reconstruction, RMS $1.741\mHa $}{figure.caption.213}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {100}{\ignorespaces \ce {N2O} N--O stretch, spline leave-one-out error.}}{41}{figure.caption.214}\protected@file@percent }
+\newlabel{fig:n2o_no_spline_err}{{100}{41}{\ce {N2O} N--O stretch, spline leave-one-out error}{figure.caption.214}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Campaign-wide accuracy}{41}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:accuracy}{{4.2}{41}{Campaign-wide accuracy}{subsection.4.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}The variational bound holds everywhere}{41}{subsubsection.4.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Accuracy tracks ansatz depth, not molecule size}{41}{subsubsection.4.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Even the worst variational errors are small next to the correlation energy}{41}{subsubsection.4.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Campaign-wide reconstruction}{41}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:recon}{{4.3}{41}{Campaign-wide reconstruction}{subsection.4.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Discussion}{41}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:discussion}{{4.4}{41}{Discussion}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}When does the variational solver succeed?}{41}{subsubsection.4.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {101}{\ignorespaces \ce {N2O} surface, total-degree polynomial reconstruction. Holdout RMS $5186.4\,\text  {mHa}$, the campaign's worst failure, $69\times $ worse than bilinear interpolation.}}{42}{figure.caption.215}\protected@file@percent }
+\newlabel{fig:n2o_surf_poly}{{101}{42}{\ce {N2O} surface, total-degree polynomial reconstruction. Holdout RMS $5186.4\mHa $, the campaign's worst failure, $69\times $ worse than bilinear interpolation}{figure.caption.215}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {102}{\ignorespaces \ce {N2O} surface, polynomial holdout error. Note the scale.}}{42}{figure.caption.216}\protected@file@percent }
+\newlabel{fig:n2o_surf_poly_err}{{102}{42}{\ce {N2O} surface, polynomial holdout error. Note the scale}{figure.caption.216}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}When does each interpolant win?}{42}{subsubsection.4.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {103}{\ignorespaces \ce {N2O} surface, bicubic spline reconstruction from the $5\times 3$ half grid, the same data on which the polynomial fails.}}{43}{figure.caption.217}\protected@file@percent }
+\newlabel{fig:n2o_surf_spline}{{103}{43}{\ce {N2O} surface, bicubic spline reconstruction from the $5\times 3$ half grid, the same data on which the polynomial fails}{figure.caption.217}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {104}{\ignorespaces \ce {N2O} surface, spline holdout error, RMS $43.2\,\text  {mHa}$ against $74.7\,\text  {mHa}$ bilinear.}}{43}{figure.caption.218}\protected@file@percent }
+\newlabel{fig:n2o_surf_spline_err}{{104}{43}{\ce {N2O} surface, spline holdout error, RMS $43.2\mHa $ against $74.7\mHa $ bilinear}{figure.caption.218}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {38}{\ignorespaces Accuracy of the variational solution against exact diagonalisation of the same active-space Hamiltonian, in milli-Hartree. $\overline  {\Delta }$ and $\Delta _{\max }$ are the mean and maximum of $|E_{\mathrm  {VQE}}-E_{\mathrm  {exact}}|$ over the scan; $\Delta ^{\mathrm  {HF}}_{\max }$ is the largest correlation energy the Hartree--Fock reference misses on the same points, i.e.\ the error the variational calculation is trying to recover. The chemical-accuracy threshold is $1.6$\nonbreakingspace mHa.}}{44}{table.caption.219}\protected@file@percent }
+\newlabel{tab:vqeacc}{{38}{44}{Accuracy of the variational solution against exact diagonalisation of the same active-space Hamiltonian, in milli-Hartree. $\overline {\Delta }$ and $\Delta _{\max }$ are the mean and maximum of $|E_{\mathrm {VQE}}-E_{\mathrm {exact}}|$ over the scan; $\Delta ^{\mathrm {HF}}_{\max }$ is the largest correlation energy the Hartree--Fock reference misses on the same points, i.e.\ the error the variational calculation is trying to recover. The chemical-accuracy threshold is $1.6$~mHa}{table.caption.219}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.3}What interpolation buys, quantitatively}{44}{subsubsection.4.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Sub-grid geometry resolution.}{44}{section*.222}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Avoiding quadratic cost on surfaces.}{44}{section*.223}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.4}On reporting the \ce {LiH} result}{44}{subsubsection.4.4.4}\protected@file@percent }
+\newlabel{sec:ibm}{{4.4.5}{44}{Supplementary: execution on IBM Quantum hardware}{subsubsection.4.4.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.5}Supplementary: execution on IBM Quantum hardware}{44}{subsubsection.4.4.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {39}{\ignorespaces Out-of-sample reconstruction error for every scan that was post-processed, in milli-Hartree. One-dimensional scans are scored by leave-one-out at the interior nodes; surfaces by the half-grid holdout of Section\nonbreakingspace \ref {sec:holdout}. \emph  {Linear} is the piecewise-linear baseline implied by every raw scan plot. A dash means the method was not applied to that scan; \emph  {n/a} means the full interpolating degree left too few points to score.}}{45}{table.caption.220}\protected@file@percent }
+\newlabel{tab:interp}{{39}{45}{Out-of-sample reconstruction error for every scan that was post-processed, in milli-Hartree. One-dimensional scans are scored by leave-one-out at the interior nodes; surfaces by the half-grid holdout of Section~\ref {sec:holdout}. \emph {Linear} is the piecewise-linear baseline implied by every raw scan plot. A dash means the method was not applied to that scan; \emph {n/a} means the full interpolating degree left too few points to score}{table.caption.220}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {40}{\ignorespaces Equilibrium geometries recovered from the reconstructed curves and surfaces, compared with the best node actually computed and with the reference value (experimental where quoted in the scan metadata, otherwise the model's own optimised geometry). Lengths in \r A, angles in degrees. The gap between the \emph  {best node} and the \emph  {interpolated} column is the resolution the interpolant buys over the raw grid.}}{45}{table.caption.221}\protected@file@percent }
+\newlabel{tab:geom}{{40}{45}{Equilibrium geometries recovered from the reconstructed curves and surfaces, compared with the best node actually computed and with the reference value (experimental where quoted in the scan metadata, otherwise the model's own optimised geometry). Lengths in \AA , angles in degrees. The gap between the \emph {best node} and the \emph {interpolated} column is the resolution the interpolant buys over the raw grid}{table.caption.221}{}}
+\citation{peruzzo2014}
+\@writefile{lot}{\contentsline {table}{\numberline {41}{\ignorespaces \ce {LiH} on an exact statevector simulator versus IBM Quantum hardware, from \texttt  {VQE demo on IBM Quantum Computer/}. Errors are $|E_{\text  {VQE}} - E_{\text  {exact}}|$ in mHa. The simulator is accurate to sub-micro-Hartree; the hardware, run with error mitigation off to control cost, is off by more than two Hartree.}}{46}{table.caption.224}\protected@file@percent }
+\newlabel{tab:ibm}{{41}{46}{\ce {LiH} on an exact statevector simulator versus IBM Quantum hardware, from \texttt {VQE demo on IBM Quantum Computer/}. Errors are $|E_{\text {VQE}} - E_{\text {exact}}|$ in mHa. The simulator is accurate to sub-micro-Hartree; the hardware, run with error mitigation off to control cost, is off by more than two Hartree}{table.caption.224}{}}
+\newlabel{sec:comparison}{{4.4.6}{46}{Comparison with the base paper}{subsubsection.4.4.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.6}Comparison with the base paper}{46}{subsubsection.4.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion and Future Work}{46}{section.5}\protected@file@percent }
+\newlabel{sec:conclusion}{{5}{46}{Conclusion and Future Work}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Key takeaways}{46}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Limitations of the current approach}{46}{subsection.5.2}\protected@file@percent }
+\newlabel{sec:limitations}{{5.2}{46}{Limitations of the current approach}{subsection.5.2}{}}
+\citation{projectrepo}
+\citation{cudaq}
+\citation{pyscf}
+\citation{qiskit}
+\citation{numpy}
+\citation{scipy}
+\citation{matplotlib}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Future work}{47}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{Acknowledgments}{47}{section*.226}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Code and Installation}{47}{section.6}\protected@file@percent }
+\newlabel{sec:code}{{6}{47}{Code and Installation}{section.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Installation.}{47}{section*.227}\protected@file@percent }
+\newlabel{lst:install}{{5}{47}{Installation}{lstlisting.5}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5}{\ignorespaces Installation.}}{47}{lstlisting.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Reproduction}{47}{subsection.6.1}\protected@file@percent }
+\newlabel{sec:repro}{{6.1}{47}{Reproduction}{subsection.6.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6}{\ignorespaces Reproducing the campaign.}}{47}{lstlisting.6}\protected@file@percent }
+\bibstyle{ACM-Reference-Format}
+\bibdata{refs}
+\bibcite{bravyikitaev}{{1}{2002}{{Bravyi and Kitaev}}{{}}}
+\bibcite{burden}{{2}{2011}{{Burden and Faires}}{{}}}
+\bibcite{deboor}{{3}{2001}{{de~Boor}}{{}}}
+\bibcite{numpy}{{4}{2020}{{Harris et~al\mbox  {.}}}{{}}}
+\bibcite{helgaker}{{5}{2000}{{Helgaker et~al\mbox  {.}}}{{}}}
+\bibcite{matplotlib}{{6}{2007}{{Hunter}}{{}}}
+\bibcite{jordanwigner}{{7}{1928}{{Jordan and Wigner}}{{}}}
+\bibcite{kandala2017}{{8}{2017}{{Kandala et~al\mbox  {.}}}{{}}}
+\bibcite{larocca2024bp}{{9}{2024}{{Larocca et~al\mbox  {.}}}{{}}}
+\bibcite{mcclean2016}{{10}{2016}{{McClean et~al\mbox  {.}}}{{}}}
+\bibcite{nakaji2024gqe}{{11}{2024}{{Nakaji et~al\mbox  {.}}}{{}}}
+\bibcite{cudaq}{{12}{[n.\,d.]}{{NVIDIA}}{{}}}
+\bibcite{peruzzo2014}{{13}{2014}{{Peruzzo et~al\mbox  {.}}}{{}}}
+\bibcite{powell1994}{{14}{1994}{{Powell}}{{}}}
+\bibcite{qiskit}{{15}{2023}{{Qiskit contributors}}{{}}}
+\bibcite{runge1901}{{16}{1901}{{Runge}}{{}}}
+\bibcite{schuld2019}{{17}{2019}{{Schuld et~al\mbox  {.}}}{{}}}
+\bibcite{projectrepo}{{18}{2026}{{Siyam et~al\mbox  {.}}}{{}}}
+\bibcite{pyscf}{{19}{2018}{{Sun et~al\mbox  {.}}}{{}}}
+\bibcite{szabo}{{20}{1996}{{Szabo and Ostlund}}{{}}}
+\bibcite{tilly2022}{{21}{2022}{{Tilly et~al\mbox  {.}}}{{}}}
+\bibcite{trefethen}{{22}{2013}{{Trefethen}}{{}}}
+\bibcite{scipy}{{23}{2020}{{Virtanen et~al\mbox  {.}}}{{}}}
+\newlabel{tocindent-1}{0pt}
+\newlabel{tocindent0}{0pt}
+\newlabel{tocindent1}{4.185pt}
+\newlabel{tocindent2}{10.34999pt}
+\newlabel{tocindent3}{20.69998pt}
+\newlabel{tocindent4}{0pt}
+\newlabel{tocindent5}{0pt}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Repository structure}{48}{subsection.6.2}\protected@file@percent }
+\newlabel{sec:structure}{{6.2}{48}{Repository structure}{subsection.6.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7}{\ignorespaces Layout of the project repository.}}{48}{lstlisting.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{References}{48}{section*.229}\protected@file@percent }
+\newlabel{TotPages}{{48}{48}{}{page.48}{}}
+\gdef \@abspage@last{48}

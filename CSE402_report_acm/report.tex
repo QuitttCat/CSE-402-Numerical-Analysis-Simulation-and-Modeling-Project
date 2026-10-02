@@ -48,6 +48,47 @@
 \setlength{\emergencystretch}{2em}
 
 % ---------------------------------------------------------------------
+%  Spacing fixes.
+%  (1) \raggedbottom: never stretch the space between paragraphs and
+%      headings to fill a column (acmart defaults to \flushbottom, which
+%      produced the large blank gaps inside columns).
+%  (2) After \FloatBarrier flushes pending floats onto float-only pages,
+%      LaTeX can start the next column with a stale, too-small column
+%      height (\@colroom), so the column ended after a few lines.  When a
+%      column starts empty and holds no top/bottom floats, reset its
+%      height to the full column height.
+% ---------------------------------------------------------------------
+\raggedbottom
+\makeatletter
+\newcommand{\@resetcolroom}{%
+  \ifdim\pagetotal=\z@
+    \ifx\@toplist\@empty\ifx\@botlist\@empty\ifx\@midlist\@empty
+      \global\@colroom\@colht
+      \global\vsize\@colht
+    \fi\fi\fi
+  \fi}
+\let\@origFloatBarrier\FloatBarrier
+\renewcommand{\FloatBarrier}{\@origFloatBarrier\@resetcolroom}
+%  (3) \MoleculeBarrier, used between the molecule subsections: like
+%      \FloatBarrier, but it only waits for column-width floats.  Page-wide
+%      floats (figure*, table*) can only go to the top of a later page
+%      anyway, so waiting for them used to leave the rest of the page
+%      blank.  Sections and subsections keep the strict \FloatBarrier.
+\newif\if@narrowpending
+\newcommand{\@checknarrow}[1]{\ifdim\wd#1>\columnwidth\else\global\@narrowpendingtrue\fi}
+\newcommand{\MoleculeBarrier}{\par\begingroup
+  \global\@narrowpendingfalse
+  \let\@elt\@checknarrow \@botlist\@deferlist
+  \if@narrowpending
+    \ifx\@fltovf\relax
+      \if@firstcolumn\clearpage\else\null\newpage\MoleculeBarrier\fi
+    \else
+      \newpage\let\@fltovf\relax\MoleculeBarrier
+    \fi
+  \fi\endgroup\@resetcolroom}
+\makeatother
+
+% ---------------------------------------------------------------------
 %  Project banner (course / group / section / supervisor + GitHub link).
 %  Used under the title, at the end of the abstract and in the
 %  "Code and Installation" section.
@@ -1247,7 +1288,7 @@ with no interpolation evidence behind it. We flag it as a gap rather than
 paper over it.
 
 % ---------------------------------------------------------------------
-\FloatBarrier
+\MoleculeBarrier
 \subsubsection{\ce{LiH}: lithium hydride, and a negative result}
 \label{sec:lih}
 
@@ -1353,7 +1394,7 @@ cost. Both sit $0.045$--$0.048\Ang$ below the experimental $1.5949\Ang$, and
 that gap belongs to the STO-3G/CAS$(2,5)$ model, not to the interpolation.
 
 % ---------------------------------------------------------------------
-\FloatBarrier
+\MoleculeBarrier
 \subsubsection{\ce{BeH2}: beryllium hydride}
 \label{sec:beh2}
 
@@ -1484,7 +1525,7 @@ geometry by nearly four degrees, a qualitative error for a molecule whose
 linearity is a symmetry requirement.
 
 % ---------------------------------------------------------------------
-\FloatBarrier
+\MoleculeBarrier
 \subsubsection{\ce{H2O}: water}
 \label{sec:h2o}
 
@@ -1519,7 +1560,7 @@ this is the most conspicuous gap in the campaign, and we flag it rather than
 let it pass quietly.
 
 % ---------------------------------------------------------------------
-\FloatBarrier
+\MoleculeBarrier
 \subsubsection{\ce{NH3}: ammonia}
 \label{sec:nh3}
 
@@ -1649,7 +1690,7 @@ larger, $0.027\Ang$ and $2.3^\circ$, and again these belong to the model, not
 to anything interpolation could fix.
 
 % ---------------------------------------------------------------------
-\FloatBarrier
+\MoleculeBarrier
 \subsubsection{\ce{N2}: nitrogen}
 \label{sec:n2}
 
@@ -1725,7 +1766,7 @@ error and model error cannot be cleanly separated, and we do not claim to
 separate them.
 
 % ---------------------------------------------------------------------
-\FloatBarrier
+\MoleculeBarrier
 \subsubsection{\ce{O2}: oxygen}
 \label{sec:o2}
 
@@ -1785,7 +1826,7 @@ the true value, consistent with the general tendency of minimal-basis CAS
 calculations to over-lengthen bonds.
 
 % ---------------------------------------------------------------------
-\FloatBarrier
+\MoleculeBarrier
 \subsubsection{\ce{F2}: fluorine}
 \label{sec:f2}
 
@@ -1850,7 +1891,7 @@ model. That two structurally very different interpolants agree this closely
 is itself evidence that the reconstruction is well determined here.
 
 % ---------------------------------------------------------------------
-\FloatBarrier
+\MoleculeBarrier
 \subsubsection{\ce{H2O2}: hydrogen peroxide}
 \label{sec:h2o2}
 
@@ -1984,7 +2025,7 @@ the torsional potential, RMS $1.365\mHa$.}{h2o2_twist_spline}
 error.}{h2o2_twist_spline_err}
 
 % ---------------------------------------------------------------------
-\FloatBarrier
+\MoleculeBarrier
 \subsubsection{\ce{NO2}: nitrogen dioxide}
 \label{sec:no2}
 
@@ -2096,7 +2137,7 @@ reconstruction from the half grid.}{no2_surf_spline}
 $38.28\mHa$ against $112.96\mHa$ bilinear.}{no2_surf_spline_err}
 
 % ---------------------------------------------------------------------
-\FloatBarrier
+\MoleculeBarrier
 \subsubsection{\ce{N2O}: nitrous oxide}
 \label{sec:n2o}
 
@@ -2226,6 +2267,8 @@ reconstruction, RMS $1.741\mHa$.}{n2o_no_spline}
 \figone{n2o_no_stretch_spline_error.png}{\ce{N2O} N--O stretch, spline
 leave-one-out error.}{n2o_no_spline_err}
 
+
+
 \figwide{n2o_surface_polynomial_surface.png}{\ce{N2O} surface, total-degree
 polynomial reconstruction. Holdout RMS $5186.4\mHa$, the campaign's worst
 failure, $69\times$ worse than bilinear
@@ -2241,7 +2284,7 @@ surface, spline holdout error, RMS $43.2\mHa$ against $74.7\mHa$
 bilinear.}{n2o_surf_spline_err}
 
 
-\FloatBarrier
+\MoleculeBarrier
 \subsection{Campaign-wide accuracy}
 \label{sec:accuracy}
 Table~\ref{tab:vqeacc} gives the variational error against exact
