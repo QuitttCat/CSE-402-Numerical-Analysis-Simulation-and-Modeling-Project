@@ -140,3 +140,4 @@ NEW_MOLECULE_PROMPT.md
 *.toc
 *.synctex.gz
 CSE402_report_acm/*.log
+CSE402_report_acm/*.cut
